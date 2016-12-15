@@ -1,0 +1,289 @@
+.lgnBdy
+{
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:16px;
+  background-color: white;
+  background-image: url("../img/bg_01.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.hdr_Bdy
+{
+  font-family: impact;
+  font-size: 50px;
+  background-color: #626263;
+  background-image: url("../img/header.jpeg");
+  /*background-repeat: no-repeat;*/
+  background-size: 165px;
+}
+
+.lgnLbl
+{
+  font-weight:bold;
+  width:100px;
+  font-size:20px;
+}
+
+.lgnBox
+{
+  border:#626263 solid 1px;
+  font-size: 20px;
+  width: 250px;
+}
+
+.footer
+{
+  background-color: #214a8c;
+}
+
+.mnu_body
+{
+  background-color: #e7e5f9;
+}
+
+.mnu
+{
+  width: 200px;
+}
+
+.mnu_td
+{
+  height: 10ox;
+}
+
+.mnu_td:hover
+{
+  height: 30px;
+  color: white;
+  background-color: #214a8c;
+}
+
+.mnu_lnk:link
+{
+  color: black;
+}
+
+.mnu_lnk:hover
+{
+  color: white;
+}
+
+.frm
+{
+  align-self: center;
+  background-color: transparent;
+  width: 100%;
+}
+
+.frm_tr
+{
+  background-color: #e0dbf9;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.frm_th
+{
+  background-color: #e0dbf9;
+  border-width: thin;
+  border-style: none;;
+  border-color: black;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.frm_btn
+{
+  background-color: #e0dbf9;
+  border-width: thin;
+  border-style: none;
+  border-color: black;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.frm_td
+{
+  background-color: white;
+  border-width: thin;
+  border-style: none;
+  border-color: black;
+  border-collapse: collapse;
+  border-radius:;
+  text-align: left;
+}
+
+.frmbox
+{
+  border-style: hidden;
+  border-width: thin;
+  background-color: #fcf7e3;
+  text-align: left;
+}
+
+input[type=text], input[type=textarea], input[type=date], input[type=number], select
+{
+  width: 250px;
+}
+
+.lst_bdy
+{
+  background-color: white;
+  /*background-image: url("../img/bg_02.jpg");*/
+  background-repeat: no-repeat;
+  background-size: 100% ;
+}
+
+.lst
+{
+  width: 100%;
+  border: 1px solid black;
+  border-bottom: 2px solid black;
+}
+
+.lst_th
+{
+  background-color: #e7e5f9;
+  border-bottom: 2px solid black;
+  text-align: left;
+  border-spacing: 0px;
+}
+
+.lst_td
+{
+  text-align: left;
+  border-bottom: 1px solid #b3b6bc;
+}
+
+.lst_id
+{
+  text-align: left;
+  border-bottom: 1px solid #b3b6bc;
+  width: 90px;
+}
+
+.lst_dt
+{
+  text-align: left;
+  border-bottom: 1px solid #b3b6bc;
+  width: 90px;
+}
+
+.lst_btn
+{
+  text-align: left;
+  border-bottom: 1px solid #b3b6bc;
+  width: 30px;
+}
+
+.lst_tr:nth-child(even)
+{
+  background-color: #f2f2f2
+  overflow: visible;
+}
+
+.lst_tr:hover
+{
+  background-color: #fffae8;
+}
+
+/*pagination*/
+div.pagination
+{
+  padding: 3px;
+  margin: 3px;
+}
+
+div.pagination a
+{
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #626263;
+  text-decoration: none; /* no underline */
+  color: #626263;
+}
+
+div.pagination a:hover, div.pagination a:active
+{
+  border: 1px solid #e0dbf9;
+  color: red;
+  text-decoration: underline;
+}
+div.pagination span.current
+{
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #000099;
+  font-weight: bold;
+  background-color: #e0dbf9;
+  color: #000000;
+}
+
+div.pagination span.disabled
+{
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #d1d1d1;
+  color: #d1d1d1;
+}
+
+a:link
+{
+  color: #2200cc;
+}
+
+/* visited link */
+a:visited
+{
+  color: #2200cc;
+}
+
+/* mouse over link */
+a:hover
+{
+  color: red;
+}
+
+/* selected link */
+a:active
+{
+  color: #c9dbef;
+}
+
+b
+{
+  font-weight: bold;
+}
+
+.gmail-nav__nav-link:nth-of-type(4){background-color:#dd5347;color:#fff;display:none;padding:24px 48px}
+.gmail-nav__nav-links-wrap{float:right;position:relative;right:-450px;-webkit-transition:right 1s ease;transition:right 1s ease}
+.gmail-nav__nav-link{color:#4a4a4a;display:block;float:left;font-weight:500;height:16px;line-height:16px;padding:24px 32px;text-decoration:none;text-transform:uppercase;-webkit-transition:color 0.3s ease;transition:color 0.3s ease}
+.gmail-nav__nav-link:hover{-webkit-transition:color 0.3s ease;transition:color 0.3s ease;color:#dd5347}
+.gmail-nav__nav-link:nth-of-type(3){background-color:#dd5347;color:#fff;padding:24px 48px}
+
+
+.closebtn
+{
+  float: right;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.closebtn:hover
+{
+  color: #000;
+}
+/* Error Handling*/
+.reject
+{
+  font-weight: bold;
+  color: #FF0000;
+}
+
+.complete
+{
+  font-weight: bold;
+  color: #0216f2;
+}
