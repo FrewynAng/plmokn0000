@@ -85,23 +85,22 @@
   }
   ?>
 
-  <div align = "center">
-    <div style = "width:300px; border: solid 1px #333333; background-color:white;" align = "left">
-      <div style = "background-color:#626263; color:#FFFFFF; padding:3px;"><b>Login</b></div>
+  <!-- <div class="login_box"> -->
+  <div class="login_box_main">
+    <div class="login_title"><b>Login</b></div>
 
-      <div style = "margin:30px; background-color:white;">
-        <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-          <label class="lgnLbl">User Name  :</label>
-          <input type="text" class="lgnBox" name="UsrID" value="<?php echo $UsrID;?>"><br/><br/>
-          <label class="lgnLbl">Password  :</label>
-          <input type="password" class="lgnBox" name="UsrPass" value="<?php echo $UsrPass;?>"><br/><br/>
-          <input type="submit" value=" Submit "/><br/>
-        </form>
-        <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $rjtMsg; ?></div>
-
-      </div>
+    <div class="login_box">
+      <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
+        <div class="lgnLbl"><label>User Name :</label></div>
+        <div class="lgnBox"><input type="text" name="UsrID" value="<?php echo $UsrID;?>"></div>
+        <div class="lgnLbl"><label class="lgnLbl">Password :</label></div>
+        <div class="lgnBox"><input type="password" name="UsrPass" value="<?php echo $UsrPass;?>"></div>
+        <div class="lgn_btn"><input type="submit" value="Sign In"></div>
+      </form>
     </div>
+    <div class="login_box_msg"><?php echo $rjtMsg; ?></div>
   </div>
+  <!-- </div> -->
 
 </body>
 </html>

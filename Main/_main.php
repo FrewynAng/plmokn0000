@@ -17,7 +17,7 @@
 
 <frameset rows="12%,5%,*" bordercolor="#6699cc" border="0" framespacing="0" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
   <frame name="Head" src="/TimeSystem/WEB/Main/Header.php" scrolling="no" target="_self">
-  <frame name="Foot" src="../Main/LogOut.php" scrolling="auto" target="_self">
+  <frame name="Foot" src="../Main/LogOut.php" scrolling="no" target="_self">
 
   <frameset cols="12%,*" bordercolor="#6699cc" border="0" framespacing="0" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
     <frameset rows="30px,*," border="0" bordercolor="#6699cc">

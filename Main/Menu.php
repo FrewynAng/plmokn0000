@@ -29,15 +29,14 @@
   //execute the SQL query and return records
   $result = $conn->query($sql);
 
-  echo "<table class='mnu'><tbody>";
+echo "<div class='mnu'>";
   while($row = $result->fetch_assoc())
   {
     // $url ="<a href='" . $row['UsrAccLink'] . "' target='cdMain'>" . $row['UsrAccDsc'] . "</a><br>";
-    $url ="<tr><td class='mnu_td' onclick='dltData()' style='cursor: pointer;'>
-    <a  class='mnu_lnk' href='" . $row['UsrAccLink'] . "' target='cdMain'>" . $row['UsrAccDsc'] . "</a></td></tr>";
+    $url ="<a class='' href='" . $row['UsrAccLink'] . "' target='cdMain'><div class='mnu_lnk'>" . $row['UsrAccDsc'] . "</div></a>";
     echo $url;
   }
-  echo "</tbody></table>";
+echo "</div>";
 
   $conn->close();
   exit();
