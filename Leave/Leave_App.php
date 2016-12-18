@@ -20,7 +20,6 @@
   <?php
   include '../Main/getSysPar.php';
 
-  $rjtMsg = "";
   $valid = TRUE;
 
   $StaffID = "";
@@ -57,8 +56,8 @@
 
     if (empty($_POST["StaffID"]))
     {
-      $rjtMsg = "* STAFF ID is required";
       $valid = false;
+      echo "<div class='reject_div'> * STAFF ID is required.</div>";
     }
 
     $sql1 =
@@ -70,8 +69,8 @@
     $row1 = $result->fetch_assoc();
     if ($row1 == 0)
     {
-      $rjtMsg = "* INVALID STAFF ID";
       $valid = false;
+      echo "<div class='reject_div'> * INVALID STAFF ID.</div>";
     }
 
     $leav_Det = getLeaveDtl($conn, $StaffID, $LeaveTyp);
@@ -169,38 +168,38 @@
 
     if (empty($_POST["LeaveTyp"]))
     {
-      $rjtMsg = "* LEAVE TYPE is required";
       $valid = false;
+      echo "<div class='reject_div'> * LEAVE TYPE is required.</div>";
     }
 
     if (empty($_POST["Approval"]))
     {
-      $rjtMsg = "* APPROVAL is required";
       $valid = false;
+      echo "<div class='reject_div'> * APPROVAL is required.</div>";
     }
 
     if (date("d-m-Y", strtotime($DateTO)) < date("d-m-Y", strtotime($DateFR)))
     {
-      $rjtMsg = "* DATE TO cannot less than DATE FROM";
       $valid = false;
+      echo "<div class='reject_div'> * DATE TO cannot less than DATE FROM.</div>";
     }
 
     if (empty($_POST["DateFR"]))
     {
-      $rjtMsg = "* LEAVE DATE FROM is required";
       $valid = false;
+      echo "<div class='reject_div'> * LEAVE DATE FROM is required.</div>";
     }
 
     if (empty($_POST["DateTO"]))
     {
-      $rjtMsg = "* LEAVE DATE TO is required";
       $valid = false;
+      echo "<div class='reject_div'> * LEAVE DATE TO is required.</div>";
     }
 
     if (empty($_POST["NoOfDay"]))
     {
-      $rjtMsg = "* NO OF DAY is required";
       $valid = false;
+      echo "<div class='reject_div'> * NO OF DAY is required.</div>";
     }
 
     if($valid)
@@ -221,7 +220,7 @@
           }
           else
           {
-            $_SESSION['cmpMsg'] = "Error: " . $sql . "<br>" . $conn->error;
+            echo "<div class='reject_div'>Error: " . $sql4 . "<br>" . $conn->error . "</div>";
           }
 
           $conn->close();
@@ -298,7 +297,6 @@
             }
             ?>
 
-            <p><span class="reject"><?php echo $rjtMsg; ?></span></p>
             <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
               <table class="frm">

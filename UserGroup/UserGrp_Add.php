@@ -17,7 +17,6 @@
 <body>
   <?php
   include '../Main/getSysPar.php';
-  $rjtMsg = "";
   $valid = true;
 
   $UsrGrp = "";
@@ -54,8 +53,8 @@
 
     if (empty($_POST["UsrGrpNam"]))
     {
-      $rjtMsg = "* USER GROUP NAME is required";
       $valid = false;
+      echo "<div class='reject_div'> * USER GROUP NAME is required.</div>";
     }
     else
     {
@@ -95,7 +94,7 @@
         }
         else
         {
-          $_SESSION['cmpMsg'] = "Error: " . $sql . "<br>" . $conn->error;
+          echo "<div class='reject_div'>Error: " . $sql . "<br>" . $conn->error . "</div>";
         }
       }
 
@@ -106,7 +105,6 @@
 
   ?>
 
-  <p><span class="reject"><?php echo $rjtMsg; ?></span></p>
   <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <table class="frm">
       <thead class="frm_hdr">

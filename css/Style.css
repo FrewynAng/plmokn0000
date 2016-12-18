@@ -370,10 +370,14 @@ b
   color: #000;
 }
 /* Error Handling*/
-.reject
+.reject_div
 {
-  font-weight: bold;
+  background-color: white;
+  width: 99%;
+  font-size: 18px;
   color: red;
+  border: solid 1px red;
+  padding: 2px;
 }
 
 .complete

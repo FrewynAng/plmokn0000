@@ -52,8 +52,8 @@
 
     if (empty($_POST["HDate"]))
     {
-      $rjtMsg = "* DATE` is required";
       $valid = false;
+      echo "<div class='reject_div'> * DATE is required.</div>";
     }
 
     if($valid)
@@ -70,17 +70,15 @@
       }
       else
       {
-        $_SESSION['rjtMsg'] = "Error: " . $sql . $conn->error;
-        echo $_SESSION['rjtMsg'];
+        echo "<div class='reject_div'>Error: " . $sql1 . "<br>" . $conn->error . "</div>";
       }
 
-      $conn->close();       
+      $conn->close();
     }
   }
 
   ?>
 
-  <p><span class="reject"><?php echo $rjtMsg; ?></span></p>
   <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
     <table class="frm">

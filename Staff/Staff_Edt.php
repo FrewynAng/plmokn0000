@@ -79,7 +79,7 @@
   if ($_SERVER["REQUEST_METHOD"] == "POST")
   {
     $valid = TRUE;
-  
+
     $Name = $_POST["Name"];
     $ICNo = $_POST["ICNo"];
     $Gender = $_POST["Gender"];
@@ -114,68 +114,71 @@
 
     if ($StaffID == "")
     {
-      $rjtMsg = "* STAFF ID is required.";
       $valid = false;
-    }
-
-    if ($TagID == 0)
-    {
-      $rjtMsg = "* TAG ID is required.";
-      $valid = false;
+      echo "<div class='reject_div'> * STAFF ID is required.</div>";
     }
 
     if ($Name == "")
     {
-      $rjtMsg = "* NAME is required.";
+      $rjtMsg = "* .";
       $valid = false;
+      echo "<div class='reject_div'> * NAME is required.</div>";
     }
 
     if ($ICNo == "")
     {
-      $rjtMsg = "* IDENTITY NO. is required.";
+      $rjtMsg = "* .";
       $valid = false;
+      echo "<div class='reject_div'> * IDENTITY NO. is required.</div>";
     }
 
     if ($PhoneNo == "")
     {
       $rjtMsg = "* CONTACT NO. is required.";
       $valid = false;
+      echo "<div class='reject_div'> * IDENTITY NO. is required.</div>";
     }
 
     if ($Address1 == "")
     {
-      $rjtMsg = "* ADDRESS is required.";
+      $rjtMsg = "* .";
       $valid = false;
+      echo "<div class='reject_div'> * ADDRESS is required.</div>";
     }
 
     if ($State == "")
     {
-      $rjtMsg = "* STATE is required.";
+      $rjtMsg = "* .";
       $valid = false;
+      echo "<div class='reject_div'> * STATE is required.</div>";
     }
 
     if ($Country == "")
     {
-      $rjtMsg = "* COUNTRY is required.";
+      $rjtMsg = "* .";
       $valid = false;
+      echo "<div class='reject_div'> * COUNTRY is required.</div>";
     }
 
     if ($PostCode == "")
     {
-      $rjtMsg = "* POSTCODE is required.";
+      $rjtMsg = "* .";
       $valid = false;
+      echo "<div class='reject_div'> * POSTCODE is required.</div>";
     }
 
     if ($Race == "")
     {
-      $rjtMsg = "* RACE is required.";
+      $rjtMsg = "* .";
       $valid = false;
+      echo "<div class='reject_div'> * RACE is required.</div>";
     }
 
     if ($Religion == "")
     {
-      $rjtMsg = "* RACE is required.";
+      $rjtMsg = "* .";
       $valid = false;
+      echo "<div class='reject_div'> * RACE is required.</div>";
     }
 
     if($valid)
@@ -198,8 +201,7 @@
       }
       else
       {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-        $_SESSION['cmpMsg'] = "Error: " . $sql2 . $conn->error;
+        echo "<div class='reject_div'>Error: " . $sql2 . "<br>" . $conn->error . "</div>";
       }
       $conn->close();
     }
@@ -207,7 +209,6 @@
 
   ?>
 
-  <p><span class="reject"><?php echo $rjtMsg; ?></span></p>
   <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
     <table class="frm">

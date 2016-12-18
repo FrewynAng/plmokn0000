@@ -17,7 +17,6 @@
 <body>
   <?php
   include '../Main/getSysPar.php';
-  $rjtMsg = "";
   $valid = TRUE;
 
   if (($_GET["dpt_No"] <> "") AND ($_GET["dpt_desc"] <> ""))
@@ -48,8 +47,8 @@
 
     if ($dpt_desc == "")
     {
-      $rjtMsg = "* DEPARTMENT NAME is required";
       $valid = FALSE;
+      echo "<div class='reject_div'> * DEPARTMENT NAME is required.</div>";
     }
 
     if($valid)
@@ -66,7 +65,7 @@
       }
       else
       {
-        $_SESSION['cmpMsg'] = "Error: " . $sql . "<br>" . $conn->error;
+        echo "<div class='reject_div'>Error: " . $sql2 . "<br>" . $conn->error . "</div>";
       }
     }
 
@@ -76,7 +75,6 @@
 
   ?>
 
-  <p><span class="reject"><?php echo $rjtMsg; ?></span></p>
   <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <table class="frm">
       <thead class="frm_hdr">

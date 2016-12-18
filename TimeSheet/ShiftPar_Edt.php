@@ -20,7 +20,6 @@
   <?php
   include '../Main/getSysPar.php';
   $cmpMsg = "";
-  $rjtMsg = "";
 
   if ($_GET["SH_No"] <> "")
   {
@@ -40,6 +39,7 @@
       $SH_No = $row1['SH_No'];
       $SH_Name = $row1['SH_Name'];
       $SH_Grp = $row1['SH_Grp'];
+      $SH_OT_Cal = $row1['SH_OT_Cal'];
       // $SH_WrkDay = $row1['SH_WrkDay'];
       $SH_MaxLen = $row1['SH_MaxLen'];
       //Shift Time
@@ -73,37 +73,37 @@
       $SatLchStr = $row1['SatLchStr'];
       $SatLchEnd = $row1['SatLchEnd'];
       // Break 1
-      $SunBrkStr_1 = $row1['SunBrkStr_1'];
-      $SunBrkEnd_1 = $row1['SunBrkEnd_1'];
-      $MonBrkStr_1 = $row1['MonBrkStr_1'];
-      $MonBrkEnd_1 = $row1['MonBrkEnd_1'];
-      $TueBrkStr_1 = $row1['TueBrkStr_1'];
-      $TueBrkEnd_1 = $row1['TueBrkEnd_1'];
-      $WedBrkStr_1 = $row1['WedBrkStr_1'];
-      $WedBrkEnd_1 = $row1['WedBrkEnd_1'];
-      $ThuBrkStr_1 = $row1['ThuBrkStr_1'];
-      $ThuBrkEnd_1 = $row1['ThuBrkEnd_1'];
-      $FriBrkStr_1 = $row1['FriBrkStr_1'];
-      $FriBrkEnd_1 = $row1['FriBrkEnd_1'];
-      $SatBrkStr_1 = $row1['SatBrkStr_1'];
-      $SatBrkEnd_1 = $row1['SatBrkEnd_1'];
-      $Enable_Brk_1 = $row1['Enable_Brk_1'];
+      $SunBrkStr1 = $row1['SunBrkStr1'];
+      $SunBrkEnd1 = $row1['SunBrkEnd1'];
+      $MonBrkStr1 = $row1['MonBrkStr1'];
+      $MonBrkEnd1 = $row1['MonBrkEnd1'];
+      $TueBrkStr1 = $row1['TueBrkStr1'];
+      $TueBrkEnd1 = $row1['TueBrkEnd1'];
+      $WedBrkStr1 = $row1['WedBrkStr1'];
+      $WedBrkEnd1 = $row1['WedBrkEnd1'];
+      $ThuBrkStr1 = $row1['ThuBrkStr1'];
+      $ThuBrkEnd1 = $row1['ThuBrkEnd1'];
+      $FriBrkStr1 = $row1['FriBrkStr1'];
+      $FriBrkEnd1 = $row1['FriBrkEnd1'];
+      $SatBrkStr1 = $row1['SatBrkStr1'];
+      $SatBrkEnd1 = $row1['SatBrkEnd1'];
+      $Break1 = $row1['Break1'];
       // Break 2
-      $SunBrkStr_2 = $row1['SunBrkStr_2'];
-      $SunBrkEnd_2 = $row1['SunBrkEnd_2'];
-      $MonBrkStr_2 = $row1['MonBrkStr_2'];
-      $MonBrkEnd_2 = $row1['MonBrkEnd_2'];
-      $TueBrkStr_2 = $row1['TueBrkStr_2'];
-      $TueBrkEnd_2 = $row1['TueBrkEnd_2'];
-      $WedBrkStr_2 = $row1['WedBrkStr_2'];
-      $WedBrkEnd_2 = $row1['WedBrkEnd_2'];
-      $ThuBrkStr_2 = $row1['ThuBrkStr_2'];
-      $ThuBrkEnd_2 = $row1['ThuBrkEnd_2'];
-      $FriBrkStr_2 = $row1['FriBrkStr_2'];
-      $FriBrkEnd_2 = $row1['FriBrkEnd_2'];
-      $SatBrkStr_2 = $row1['SatBrkStr_2'];
-      $SatBrkEnd_2 = $row1['SatBrkEnd_2'];
-      $Enable_Brk_2 = $row1['Enable_Brk_2'];
+      $SunBrkStr2 = $row1['SunBrkStr2'];
+      $SunBrkEnd2 = $row1['SunBrkEnd2'];
+      $MonBrkStr2 = $row1['MonBrkStr2'];
+      $MonBrkEnd2 = $row1['MonBrkEnd2'];
+      $TueBrkStr2 = $row1['TueBrkStr2'];
+      $TueBrkEnd2 = $row1['TueBrkEnd2'];
+      $WedBrkStr2 = $row1['WedBrkStr2'];
+      $WedBrkEnd2 = $row1['WedBrkEnd2'];
+      $ThuBrkStr2 = $row1['ThuBrkStr2'];
+      $ThuBrkEnd2 = $row1['ThuBrkEnd2'];
+      $FriBrkStr2 = $row1['FriBrkStr2'];
+      $FriBrkEnd2 = $row1['FriBrkEnd2'];
+      $SatBrkStr2 = $row1['SatBrkStr2'];
+      $SatBrkEnd2 = $row1['SatBrkEnd2'];
+      $Break2 = $row1['Break2'];
     }
   }
 
@@ -181,35 +181,37 @@
     $SatLchStr = date("H:i:s", strtotime($_POST["SatLchStr"]));
     $SatLchEnd = date("H:i:s", strtotime($_POST["SatLchEnd"]));
 
-    $SunBrkStr_1 = date("H:i:s", strtotime($_POST["SunBrkStr_1"]));
-    $SunBrkEnd_1 = date("H:i:s", strtotime($_POST["SunBrkEnd_1"]));
-    $MonBrkStr_1 = date("H:i:s", strtotime($_POST["MonBrkStr_1"]));
-    $MonBrkEnd_1 = date("H:i:s", strtotime($_POST["MonBrkEnd_1"]));
-    $TueBrkStr_1 = date("H:i:s", strtotime($_POST["TueBrkStr_1"]));
-    $TueBrkEnd_1 = date("H:i:s", strtotime($_POST["TueBrkEnd_1"]));
-    $WedBrkStr_1 = date("H:i:s", strtotime($_POST["WedBrkStr_1"]));
-    $WedBrkEnd_1 = date("H:i:s", strtotime($_POST["WedBrkEnd_1"]));
-    $ThuBrkStr_1 = date("H:i:s", strtotime($_POST["ThuBrkStr_1"]));
-    $ThuBrkEnd_1 = date("H:i:s", strtotime($_POST["ThuBrkEnd_1"]));
-    $FriBrkStr_1 = date("H:i:s", strtotime($_POST["FriBrkStr_1"]));
-    $FriBrkEnd_1 = date("H:i:s", strtotime($_POST["FriBrkEnd_1"]));
-    $SatBrkStr_1 = date("H:i:s", strtotime($_POST["SatBrkStr_1"]));
-    $SatBrkEnd_1 = date("H:i:s", strtotime($_POST["SatBrkEnd_1"]));
+    $Break1 = $_POST['Break1'];
+    $SunBrkStr1 = date("H:i:s", strtotime($_POST["SunBrkStr1"]));
+    $SunBrkEnd1 = date("H:i:s", strtotime($_POST["SunBrkEnd1"]));
+    $MonBrkStr1 = date("H:i:s", strtotime($_POST["MonBrkStr1"]));
+    $MonBrkEnd1 = date("H:i:s", strtotime($_POST["MonBrkEnd1"]));
+    $TueBrkStr1 = date("H:i:s", strtotime($_POST["TueBrkStr1"]));
+    $TueBrkEnd1 = date("H:i:s", strtotime($_POST["TueBrkEnd1"]));
+    $WedBrkStr1 = date("H:i:s", strtotime($_POST["WedBrkStr1"]));
+    $WedBrkEnd1 = date("H:i:s", strtotime($_POST["WedBrkEnd1"]));
+    $ThuBrkStr1 = date("H:i:s", strtotime($_POST["ThuBrkStr1"]));
+    $ThuBrkEnd1 = date("H:i:s", strtotime($_POST["ThuBrkEnd1"]));
+    $FriBrkStr1 = date("H:i:s", strtotime($_POST["FriBrkStr1"]));
+    $FriBrkEnd1 = date("H:i:s", strtotime($_POST["FriBrkEnd1"]));
+    $SatBrkStr1 = date("H:i:s", strtotime($_POST["SatBrkStr1"]));
+    $SatBrkEnd1 = date("H:i:s", strtotime($_POST["SatBrkEnd1"]));
 
-    $SunBrkStr_2 = date("H:i:s", strtotime($_POST["SunBrkStr_2"]));
-    $SunBrkEnd_2 = date("H:i:s", strtotime($_POST["SunBrkEnd_2"]));
-    $MonBrkStr_2 = date("H:i:s", strtotime($_POST["MonBrkStr_2"]));
-    $MonBrkEnd_2 = date("H:i:s", strtotime($_POST["MonBrkEnd_2"]));
-    $TueBrkStr_2 = date("H:i:s", strtotime($_POST["TueBrkStr_2"]));
-    $TueBrkEnd_2 = date("H:i:s", strtotime($_POST["TueBrkEnd_2"]));
-    $WedBrkStr_2 = date("H:i:s", strtotime($_POST["WedBrkStr_2"]));
-    $WedBrkEnd_2 = date("H:i:s", strtotime($_POST["WedBrkEnd_2"]));
-    $ThuBrkStr_2 = date("H:i:s", strtotime($_POST["ThuBrkStr_2"]));
-    $ThuBrkEnd_2 = date("H:i:s", strtotime($_POST["ThuBrkEnd_2"]));
-    $FriBrkStr_2 = date("H:i:s", strtotime($_POST["FriBrkStr_2"]));
-    $FriBrkEnd_2 = date("H:i:s", strtotime($_POST["FriBrkEnd_2"]));
-    $SatBrkStr_2 = date("H:i:s", strtotime($_POST["SatBrkStr_2"]));
-    $SatBrkEnd_2 = date("H:i:s", strtotime($_POST["SatBrkEnd_2"]));
+    $Break2 = $_POST['Break2'];
+    $SunBrkStr2 = date("H:i:s", strtotime($_POST["SunBrkStr2"]));
+    $SunBrkEnd2 = date("H:i:s", strtotime($_POST["SunBrkEnd2"]));
+    $MonBrkStr2 = date("H:i:s", strtotime($_POST["MonBrkStr2"]));
+    $MonBrkEnd2 = date("H:i:s", strtotime($_POST["MonBrkEnd2"]));
+    $TueBrkStr2 = date("H:i:s", strtotime($_POST["TueBrkStr2"]));
+    $TueBrkEnd2 = date("H:i:s", strtotime($_POST["TueBrkEnd2"]));
+    $WedBrkStr2 = date("H:i:s", strtotime($_POST["WedBrkStr2"]));
+    $WedBrkEnd2 = date("H:i:s", strtotime($_POST["WedBrkEnd2"]));
+    $ThuBrkStr2 = date("H:i:s", strtotime($_POST["ThuBrkStr2"]));
+    $ThuBrkEnd2 = date("H:i:s", strtotime($_POST["ThuBrkEnd2"]));
+    $FriBrkStr2 = date("H:i:s", strtotime($_POST["FriBrkStr2"]));
+    $FriBrkEnd2 = date("H:i:s", strtotime($_POST["FriBrkEnd2"]));
+    $SatBrkStr2 = date("H:i:s", strtotime($_POST["SatBrkStr2"]));
+    $SatBrkEnd2 = date("H:i:s", strtotime($_POST["SatBrkEnd2"]));
 
     switch ($_POST["SH_Grc"])
     {
@@ -245,6 +247,33 @@
     else
     {
       $SH_Flx = "N";
+    }
+
+    switch ($_POST["SH_OT_Cal"])
+    {
+      case '15':
+      $SH_OT_Cal = "00:15:00";
+      break;
+
+      case '30':
+      $SH_OT_Cal = "00:30:00";
+      break;
+
+      case '45':
+      $SH_OT_Cal = "00:45:00";
+      break;
+
+      case '60':
+      $SH_OT_Cal = "01:00:00";
+      break;
+
+      case '90':
+      $SH_OT_Cal = "01:30:00";
+      break;
+
+      case '120':
+      $SH_OT_Cal = "02:00:00";
+      break;
     }
 
     switch ($_POST["SH_LchDur"])
@@ -319,8 +348,8 @@
 
     if ($_POST["SH_Name"] == "")
     {
-      $rjtMsg = "*SHIFT NAME is required";
       $valid = false;
+      echo "<div class='reject_div'> * SHIFT NAME is required.</div>";
     }
 
     // if($_POST["SH_Grp"] == 0)
@@ -333,7 +362,7 @@
     {
       $sql2 =
       "UPDATE `ShiftPar`
-      SET `SH_Name` = '$SH_Name', `SH_WrkDay` = '$SH_WrkDay', `SH_WrkHour` = '$SH_WrkHour', `SH_Grp` = '$SH_Grp', `SH_Flx` = '$SH_Flx',
+      SET `SH_Name` = '$SH_Name', `SH_WrkDay` = '$SH_WrkDay', `SH_WrkHour` = '$SH_WrkHour', `SH_Grp` = '$SH_Grp', `SH_Flx` = '$SH_Flx', `SH_OT_Cal` = '$SH_OT_Cal',
       `SH_SunStr` = '$SH_SunStr', `SH_SunEnd` = '$SH_SunEnd', `SH_MonStr` = '$SH_MonStr', `SH_MonEnd` = '$SH_MonEnd',
       `SH_TueStr` = '$SH_TueStr', `SH_TueEnd` = '$SH_TueEnd', `SH_WedStr` = '$SH_WedStr', `SH_WedEnd` = '$SH_WedEnd',
       `SH_ThuStr` = '$SH_ThuStr', `SH_ThuEnd` = '$SH_ThuEnd', `SH_FriStr` = '$SH_FriStr', `SH_FriEnd` = '$SH_FriEnd',
@@ -344,14 +373,14 @@
       `ThuLchStr` = '$ThuLchStr', `ThuLchEnd` = '$ThuLchEnd', `FriLchStr` = '$FriLchStr', `FriLchEnd` = '$FriLchEnd',
       `SatLchStr` = '$SatLchStr', `SatLchEnd` = '$SatLchEnd',
       `SH_LchFlx` = '$SH_LchFlx', `SH_LchGrc` = '$SH_LchGrc',
-      `SunBrkStr_1` = '$SunBrkStr_1',  `SunBrkEnd_1` = '$SunBrkEnd_1',  `MonBrkStr_1` = '$MonBrkStr_1',  `MonBrkEnd_1` = '$MonBrkEnd_1',
-      `TueBrkStr_1` = '$TueBrkStr_1',  `TueBrkEnd_1` = '$TueBrkEnd_1',  `WedBrkStr_1` = '$WedBrkStr_1',  `WedBrkEnd_1` = '$WedBrkEnd_1',
-      `ThuBrkStr_1` = '$ThuBrkStr_1',  `ThuBrkEnd_1` = '$ThuBrkEnd_1',  `FriBrkStr_1` = '$FriBrkStr_1',  `FriBrkEnd_1` = '$FriBrkEnd_1',
-      `SatBrkStr_1` = '$SatBrkStr_1',  `SatBrkEnd_1` = '$SatBrkEnd_1',  `Enable_Brk_1` = '$Enable_Brk_1',
-      `SunBrkStr_2` = '$SunBrkStr_2',  `SunBrkEnd_2` = '$SunBrkEnd_2',  `MonBrkStr_2` = '$MonBrkStr_2',  `MonBrkEnd_2` = '$MonBrkEnd_2',
-      `TueBrkStr_2` = '$TueBrkStr_2',  `TueBrkEnd_2` = '$TueBrkEnd_2',  `WedBrkStr_2` = '$WedBrkStr_2',  `WedBrkEnd_2` = '$WedBrkEnd_2',
-      `ThuBrkStr_2` = '$ThuBrkStr_2',  `ThuBrkEnd_2` = '$ThuBrkEnd_2',  `FriBrkStr_2` = '$FriBrkStr_2',  `FriBrkEnd_2` = '$FriBrkEnd_2',
-      `SatBrkStr_2` = '$SatBrkStr_2',  `SatBrkEnd_2` = '$SatBrkEnd_2',  `Enable_Brk_2` = '$Enable_Brk_2'
+      `SunBrkStr1` = '$SunBrkStr1',  `SunBrkEnd1` = '$SunBrkEnd1',  `MonBrkStr1` = '$MonBrkStr1',  `MonBrkEnd1` = '$MonBrkEnd1',
+      `TueBrkStr1` = '$TueBrkStr1',  `TueBrkEnd1` = '$TueBrkEnd1',  `WedBrkStr1` = '$WedBrkStr1',  `WedBrkEnd1` = '$WedBrkEnd1',
+      `ThuBrkStr1` = '$ThuBrkStr1',  `ThuBrkEnd1` = '$ThuBrkEnd1',  `FriBrkStr1` = '$FriBrkStr1',  `FriBrkEnd1` = '$FriBrkEnd1',
+      `SatBrkStr1` = '$SatBrkStr1',  `SatBrkEnd1` = '$SatBrkEnd1',  `Break1` = '$Break1',
+      `SunBrkStr2` = '$SunBrkStr2',  `SunBrkEnd2` = '$SunBrkEnd2',  `MonBrkStr2` = '$MonBrkStr2',  `MonBrkEnd2` = '$MonBrkEnd2',
+      `TueBrkStr2` = '$TueBrkStr2',  `TueBrkEnd2` = '$TueBrkEnd2',  `WedBrkStr2` = '$WedBrkStr2',  `WedBrkEnd2` = '$WedBrkEnd2',
+      `ThuBrkStr2` = '$ThuBrkStr2',  `ThuBrkEnd2` = '$ThuBrkEnd2',  `FriBrkStr2` = '$FriBrkStr2',  `FriBrkEnd2` = '$FriBrkEnd2',
+      `SatBrkStr2` = '$SatBrkStr2',  `SatBrkEnd2` = '$SatBrkEnd2',  `Break2` = '$Break2'
       WHERE `SH_No` = '$SH_No'";
 
       if ($conn->query($sql2) === TRUE)
@@ -362,6 +391,7 @@
       else
       {
         $_SESSION['rjtMsg'] = "Error: " . $sql2 . $conn->error;
+        echo "<div class='reject_div'>Error: " . $sql2 . "<br>" . $conn->error . "</div>";
       }
 
       $conn->close();
@@ -369,7 +399,7 @@
   }
 
   ?>
-  <p><span class="reject"><?php echo $rjtMsg; ?></span></p>
+
   <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
     <table class="frm">
@@ -482,21 +512,18 @@
           </td>
         </tr>
 
-        <!--
-          <tr>
-          <td>Shift Cut Off Duration :</td>
+        <tr>
+          <td>OT Calculation Before and After :</td>
           <td>
-            <select name="SH_MaxLen" value="<?php echo $SH_MaxLen;?>">
-              <option value="10">10 hours</option>
-              <option value="12">12 hours</option>
-              <option value="14">14 hours</option>
-              <option value="16">16 hours</option>
-              <option value="18">18 hours</option>
-              <option value="20">20 hours</option>
-              <option value="22" selected>22 hours</option>
+            <select name="SH_OT_Cal" value="<?php echo $SH_OT_Cal;?>">
+              <option value="15">15 minutes</option>
+              <option value="30">30 minutes</option>
+              <option value="45" selected>45 minutes</option>
+              <option value="60">60 minutes</option>
+              <option value="90">90 minutes</option>
+              <option value="120">120 minutes</option>
             </td>
           </tr>
-        -->
 
           <tr>
             <td colspan="4"><font color="white">/t </font></td>
@@ -757,7 +784,7 @@
           <tr>
             <td>Enable Break 1 :</td>
             <td>
-              <input type="checkbox" name="Enable_Brk_1" value="Y" checked>Yes
+              <input type="checkbox" name="Break1" value="Y" checked>Yes
             </td>
           </tr>
 
@@ -769,11 +796,11 @@
           <tr>
             <th class="frmbox">Sunday :</th>
             <td>
-              <input type="time" name="SunBrkStr_1" value="<?php echo $SunBrkStr_1;?>">
+              <input type="time" name="SunBrkStr1" value="<?php echo $SunBrkStr1;?>">
               <span class="reject">*</span>
             </td>
             <td>
-              <input type="time" name="SunBrkEnd_1" value="<?php echo $SunBrkEnd_1;?>">
+              <input type="time" name="SunBrkEnd1" value="<?php echo $SunBrkEnd1;?>">
               <span class="reject">*</span>
             </td>
           </tr>
@@ -782,11 +809,11 @@
           <tr>
             <th class="frmbox">Monday :</th>
             <td>
-              <input type="time" name="MonBrkStr_1" value="<?php echo $MonBrkStr_1;?>">
+              <input type="time" name="MonBrkStr1" value="<?php echo $MonBrkStr1;?>">
               <span class="reject">*</span>
             </td>
             <td>
-              <input type="time" name="MonBrkEnd_1" value="<?php echo $MonBrkEnd_1;?>">
+              <input type="time" name="MonBrkEnd1" value="<?php echo $MonBrkEnd1;?>">
               <span class="reject">*</span>
             </td>
           </tr>
@@ -795,11 +822,11 @@
           <tr>
             <th class="frmbox">Tuesday :</th>
             <td>
-              <input type="time" name="TueBrkStr_1" value="<?php echo $TueBrkStr_1;?>">
+              <input type="time" name="TueBrkStr1" value="<?php echo $TueBrkStr1;?>">
               <span class="reject">*</span>
             </td>
             <td>
-              <input type="time" name="TueBrkEnd_1" value="<?php echo $TueBrkEnd_1;?>">
+              <input type="time" name="TueBrkEnd1" value="<?php echo $TueBrkEnd1;?>">
               <span class="reject">*</span>
             </td>
           </tr>
@@ -808,11 +835,11 @@
           <tr>
             <th class="frmbox">Wednesday :</th>
             <td>
-              <input type="time" name="WedBrkStr_1" value="<?php echo $WedBrkStr_1;?>">
+              <input type="time" name="WedBrkStr1" value="<?php echo $WedBrkStr1;?>">
               <span class="reject">*</span>
             </td>
             <td>
-              <input type="time" name="WedBrkEnd_1" value="<?php echo $WedBrkEnd_1;?>">
+              <input type="time" name="WedBrkEnd1" value="<?php echo $WedBrkEnd1;?>">
               <span class="reject">*</span>
             </td>
           </tr>
@@ -821,11 +848,11 @@
           <tr>
             <th class="frmbox">Thursday :</th>
             <td>
-              <input type="time" name="ThuBrkStr_1" value="<?php echo $ThuBrkStr_1;?>">
+              <input type="time" name="ThuBrkStr1" value="<?php echo $ThuBrkStr1;?>">
               <span class="reject">*</span>
             </td>
             <td>
-              <input type="time" name="ThuBrkEnd_1" value="<?php echo $ThuBrkEnd_1;?>">
+              <input type="time" name="ThuBrkEnd1" value="<?php echo $ThuBrkEnd1;?>">
               <span class="reject">*</span>
             </td>
           </tr>
@@ -834,11 +861,11 @@
           <tr>
             <th class="frmbox">Friday :</th>
             <td>
-              <input type="time" name="FriBrkStr_1" value="<?php echo $FriBrkStr_1;?>">
+              <input type="time" name="FriBrkStr1" value="<?php echo $FriBrkStr1;?>">
               <span class="reject">*</span>
             </td>
             <td>
-              <input type="time" name="FriBrkEnd_1" value="<?php echo $FriBrkEnd_1;?>">
+              <input type="time" name="FriBrkEnd1" value="<?php echo $FriBrkEnd1;?>">
               <span class="reject">*</span>
             </td>
           </tr>
@@ -847,11 +874,11 @@
           <tr>
             <th class="frmbox">Saturday :</th>
             <td>
-              <input type="time" name="SatBrkStr_1" value="<?php echo $SatBrkStr_1;?>">
+              <input type="time" name="SatBrkStr1" value="<?php echo $SatBrkStr1;?>">
               <span class="reject">*</span>
             </td>
             <td>
-              <input type="time" name="SatBrkEnd_1" value="<?php echo $SatBrkEnd_1;?>">
+              <input type="time" name="SatBrkEnd1" value="<?php echo $SatBrkEnd1;?>">
               <span class="reject">*</span>
             </td>
           </tr>
@@ -868,7 +895,7 @@
           <tr>
             <td>Enable Break 2 :</td>
             <td>
-              <input type="checkbox" name="Enable_Brk_2" value="Y" checked>Yes
+              <input type="checkbox" name="Break2" value="Y" checked>Yes
             </td>
           </tr>
 
@@ -880,11 +907,11 @@
           <tr>
             <th class="frmbox">Sunday :</th>
             <td>
-              <input type="time" name="SunBrkStr_2" value="<?php echo $SunBrkStr_2;?>">
+              <input type="time" name="SunBrkStr2" value="<?php echo $SunBrkStr2;?>">
               <span class="reject">*</span>
             </td>
             <td>
-              <input type="time" name="SunBrkEnd_2" value="<?php echo $SunBrkEnd_2;?>">
+              <input type="time" name="SunBrkEnd2" value="<?php echo $SunBrkEnd2;?>">
               <span class="reject">*</span>
             </td>
           </tr>
@@ -893,11 +920,11 @@
           <tr>
             <th class="frmbox">Monday :</th>
             <td>
-              <input type="time" name="MonBrkStr_2" value="<?php echo $MonBrkStr_2;?>">
+              <input type="time" name="MonBrkStr2" value="<?php echo $MonBrkStr2;?>">
               <span class="reject">*</span>
             </td>
             <td>
-              <input type="time" name="MonBrkEnd_2" value="<?php echo $MonBrkEnd_2;?>">
+              <input type="time" name="MonBrkEnd2" value="<?php echo $MonBrkEnd2;?>">
               <span class="reject">*</span>
             </td>
           </tr>
@@ -906,11 +933,11 @@
           <tr>
             <th class="frmbox">Tuesday :</th>
             <td>
-              <input type="time" name="TueBrkStr_2" value="<?php echo $TueBrkStr_2;?>">
+              <input type="time" name="TueBrkStr2" value="<?php echo $TueBrkStr2;?>">
               <span class="reject">*</span>
             </td>
             <td>
-              <input type="time" name="TueBrkEnd_2" value="<?php echo $TueBrkEnd_2;?>">
+              <input type="time" name="TueBrkEnd2" value="<?php echo $TueBrkEnd2;?>">
               <span class="reject">*</span>
             </td>
           </tr>
@@ -919,11 +946,11 @@
           <tr>
             <th class="frmbox">Wednesday :</th>
             <td>
-              <input type="time" name="WedBrkStr_2" value="<?php echo $WedBrkStr_2;?>">
+              <input type="time" name="WedBrkStr2" value="<?php echo $WedBrkStr2;?>">
               <span class="reject">*</span>
             </td>
             <td>
-              <input type="time" name="WedBrkEnd_2" value="<?php echo $WedBrkEnd_2;?>">
+              <input type="time" name="WedBrkEnd2" value="<?php echo $WedBrkEnd2;?>">
               <span class="reject">*</span>
             </td>
           </tr>
@@ -932,11 +959,11 @@
           <tr>
             <th class="frmbox">Thursday :</th>
             <td>
-              <input type="time" name="ThuBrkStr_2" value="<?php echo $ThuBrkStr_2;?>">
+              <input type="time" name="ThuBrkStr2" value="<?php echo $ThuBrkStr2;?>">
               <span class="reject">*</span>
             </td>
             <td>
-              <input type="time" name="ThuBrkEnd_2" value="<?php echo $ThuBrkEnd_2;?>">
+              <input type="time" name="ThuBrkEnd2" value="<?php echo $ThuBrkEnd2;?>">
               <span class="reject">*</span>
             </td>
           </tr>
@@ -945,11 +972,11 @@
           <tr>
             <th class="frmbox">Friday :</th>
             <td>
-              <input type="time" name="FriBrkStr_2" value="<?php echo $FriBrkStr_2;?>">
+              <input type="time" name="FriBrkStr2" value="<?php echo $FriBrkStr2;?>">
               <span class="reject">*</span>
             </td>
             <td>
-              <input type="time" name="FriBrkEnd_2" value="<?php echo $FriBrkEnd_2;?>">
+              <input type="time" name="FriBrkEnd2" value="<?php echo $FriBrkEnd2;?>">
               <span class="reject">*</span>
             </td>
           </tr>
@@ -958,11 +985,11 @@
           <tr>
             <th class="frmbox">Saturday :</th>
             <td>
-              <input type="time" name="SatBrkStr_2" value="<?php echo $SatBrkStr_2;?>">
+              <input type="time" name="SatBrkStr2" value="<?php echo $SatBrkStr2;?>">
               <span class="reject">*</span>
             </td>
             <td>
-              <input type="time" name="SatBrkEnd_2" value="<?php echo $SatBrkEnd_2;?>">
+              <input type="time" name="SatBrkEnd2" value="<?php echo $SatBrkEnd2;?>">
               <span class="reject">*</span>
             </td>
           </tr>

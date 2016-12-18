@@ -19,7 +19,6 @@
 
   <?php
   include '../Main/getSysPar.php';
-  $rjtMsg = "";
 
   $ShfGrp = "";
   $ShfNo = 0;
@@ -32,7 +31,7 @@
   if ($_SERVER["REQUEST_METHOD"] == "POST")
   {
     $ShfNo = $_POST["ShfNo"];
-    $ShfGrpDsc = $_POST["ShfGrpDsc"];
+    // $ShfGrpDsc = $_POST["ShfGrpDsc"];
     $StaffID = $_POST["StaffID"];
 
     $sql1 =
@@ -50,14 +49,14 @@
     }
     else
     {
-      $rjtMsg = "* Invalid SHIFT NO. ";
       $valid = false;
+      echo "<div class='reject_div'> * Invalid SHIFT NO.</div>";
     }
 
     if ($_POST["StaffID"] == "")
     {
-      $rjtMsg = "* STAFF ID is required";
       $valid = false;
+      echo "<div class='reject_div'> * STAFF ID is required.</div>";
     }
 
     $sql2 =
@@ -69,8 +68,8 @@
     $row2 = $rst2->fetch_assoc();
     if ($row2 == 0)
     {
-      $rjtMsg = "* INVALID STAFF ID";
       $valid = false;
+      echo "<div class='reject_div'> * INVALID STAFF ID.</div>";
     }
     else
     {
@@ -91,9 +90,7 @@
       }
       else
       {
-        $rjtMsg = "Error: " . $sql3 . $conn->error;
-        $_SESSION['rjtMsg'] = "Error: " . $sql3 . "<br>" . $conn->error;
-        echo $_SESSION['rjtMsg'];
+        echo "<div class='reject_div'>Error: " . $sql3 . "<br>" . $conn->error . "</div>";
       }
 
       $conn->close();
@@ -102,7 +99,6 @@
 
   ?>
 
-  <p><span class="reject"><?php echo $rjtMsg; ?></span></p>
   <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
     <table class="frm">
@@ -139,7 +135,7 @@
 
         <tr>
           <th class="frm_btn"colspan="2">
-            <a href="../TimeSheet/StfShfGrp.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
+            <a href="../TimeSheet/ShfGrp.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
             <input type="submit" value="Add">
           </th>
         </tr>
