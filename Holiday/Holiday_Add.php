@@ -35,7 +35,7 @@
     if (empty($_POST["HDate"]))
     {
       $valid = false;
-      echo "<div class='reject_div'> * DATE is required.</div>";
+      echo "<p><div class='reject_div'> * DATE is required.</div></p>";
     }
 
     if($valid)

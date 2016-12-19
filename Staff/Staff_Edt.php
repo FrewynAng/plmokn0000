@@ -115,70 +115,70 @@
     if ($StaffID == "")
     {
       $valid = false;
-      echo "<div class='reject_div'> * STAFF ID is required.</div>";
+      echo "<p><div class='reject_div'> * STAFF ID is required.</div></p>";
     }
 
     if ($Name == "")
     {
       $rjtMsg = "* .";
       $valid = false;
-      echo "<div class='reject_div'> * NAME is required.</div>";
+      echo "<p><div class='reject_div'> * NAME is required.</div></p>";
     }
 
     if ($ICNo == "")
     {
       $rjtMsg = "* .";
       $valid = false;
-      echo "<div class='reject_div'> * IDENTITY NO. is required.</div>";
+      echo "<p><div class='reject_div'> * IDENTITY NO. is required.</div></p>";
     }
 
     if ($PhoneNo == "")
     {
       $rjtMsg = "* CONTACT NO. is required.";
       $valid = false;
-      echo "<div class='reject_div'> * IDENTITY NO. is required.</div>";
+      echo "<p><div class='reject_div'> * IDENTITY NO. is required.</div></p>";
     }
 
     if ($Address1 == "")
     {
       $rjtMsg = "* .";
       $valid = false;
-      echo "<div class='reject_div'> * ADDRESS is required.</div>";
+      echo "<p><div class='reject_div'> * ADDRESS is required.</div></p>";
     }
 
     if ($State == "")
     {
       $rjtMsg = "* .";
       $valid = false;
-      echo "<div class='reject_div'> * STATE is required.</div>";
+      echo "<p><div class='reject_div'> * STATE is required.</div></p>";
     }
 
     if ($Country == "")
     {
       $rjtMsg = "* .";
       $valid = false;
-      echo "<div class='reject_div'> * COUNTRY is required.</div>";
+      echo "<p><div class='reject_div'> * COUNTRY is required.</div></p>";
     }
 
     if ($PostCode == "")
     {
       $rjtMsg = "* .";
       $valid = false;
-      echo "<div class='reject_div'> * POSTCODE is required.</div>";
+      echo "<p><div class='reject_div'> * POSTCODE is required.</div></p>";
     }
 
     if ($Race == "")
     {
       $rjtMsg = "* .";
       $valid = false;
-      echo "<div class='reject_div'> * RACE is required.</div>";
+      echo "<p><div class='reject_div'> * RACE is required.</div></p>";
     }
 
     if ($Religion == "")
     {
       $rjtMsg = "* .";
       $valid = false;
-      echo "<div class='reject_div'> * RACE is required.</div>";
+      echo "<p><div class='reject_div'> * RACE is required.</div></p>";
     }
 
     if($valid)

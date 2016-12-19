@@ -44,7 +44,7 @@
     "../UserGroup/UserGrp.php",
     "../UserGroup/Department.php",
     "../UserGroup/RolePar.php",
-  "../Main/db_Reset.php");
+    "../Main/db_Reset.php");
 
     $AccDsc_ =
     array("Home", "Staff Table", "Leave Table", "Holiday Table",

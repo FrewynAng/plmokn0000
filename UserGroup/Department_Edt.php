@@ -48,7 +48,7 @@
     if ($dpt_desc == "")
     {
       $valid = FALSE;
-      echo "<div class='reject_div'> * DEPARTMENT NAME is required.</div>";
+      echo "<p><div class='reject_div'> * DEPARTMENT NAME is required.</div></p>";
     }
 
     if($valid)

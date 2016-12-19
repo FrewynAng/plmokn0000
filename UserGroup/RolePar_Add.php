@@ -39,7 +39,7 @@
     if ($RoleDesc == "")
     {
       $valid = FALSE;
-      echo "<div class='reject_div'> * ROLE NAME is required.</div>";
+      echo "<p><div class='reject_div'> * ROLE NAME is required.</div></p>";
     }
 
     if($valid)

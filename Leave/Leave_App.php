@@ -57,7 +57,7 @@
     if (empty($_POST["StaffID"]))
     {
       $valid = false;
-      echo "<div class='reject_div'> * STAFF ID is required.</div>";
+      echo "<p><div class='reject_div'> * STAFF ID is required.</div></p>";
     }
 
     $sql1 =
@@ -70,7 +70,7 @@
     if ($row1 == 0)
     {
       $valid = false;
-      echo "<div class='reject_div'> * INVALID STAFF ID.</div>";
+      echo "<p><div class='reject_div'> * INVALID STAFF ID.</div></p>";
     }
 
     $leav_Det = getLeaveDtl($conn, $StaffID, $LeaveTyp);
@@ -169,37 +169,37 @@
     if (empty($_POST["LeaveTyp"]))
     {
       $valid = false;
-      echo "<div class='reject_div'> * LEAVE TYPE is required.</div>";
+      echo "<p><div class='reject_div'> * LEAVE TYPE is required.</div></p>";
     }
 
     if (empty($_POST["Approval"]))
     {
       $valid = false;
-      echo "<div class='reject_div'> * APPROVAL is required.</div>";
+      echo "<p><div class='reject_div'> * APPROVAL is required.</div></p>";
     }
 
     if (date("d-m-Y", strtotime($DateTO)) < date("d-m-Y", strtotime($DateFR)))
     {
       $valid = false;
-      echo "<div class='reject_div'> * DATE TO cannot less than DATE FROM.</div>";
+      echo "<p><div class='reject_div'> * DATE TO cannot less than DATE FROM.</div></p>";
     }
 
     if (empty($_POST["DateFR"]))
     {
       $valid = false;
-      echo "<div class='reject_div'> * LEAVE DATE FROM is required.</div>";
+      echo "<p><div class='reject_div'> * LEAVE DATE FROM is required.</div></p>";
     }
 
     if (empty($_POST["DateTO"]))
     {
       $valid = false;
-      echo "<div class='reject_div'> * LEAVE DATE TO is required.</div>";
+      echo "<p><div class='reject_div'> * LEAVE DATE TO is required.</div></p>";
     }
 
     if (empty($_POST["NoOfDay"]))
     {
       $valid = false;
-      echo "<div class='reject_div'> * NO OF DAY is required.</div>";
+      echo "<p><div class='reject_div'> * NO OF DAY is required.</div></p>";
     }
 
     if($valid)
