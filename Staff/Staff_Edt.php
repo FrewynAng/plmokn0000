@@ -69,8 +69,6 @@
       $Remark2 = $row['Remark2'];
       $Remark3 = $row['Remark3'];
       $Remark = $Remark1 . $Remark2 . $Remark3;
-
-
     }
   }
   //------------------------------------------
@@ -178,12 +176,36 @@
     {
       $rjtMsg = "* .";
       $valid = false;
-      echo "<p><div class='reject_div'> * RACE is required.</div></p>";
+      echo "<p><div class='reject_div'> * RELIGION is required.</div></p>";
+    }
+
+    if ($Department == "")
+    {
+      $valid = false;
+      echo "<p><div class='reject_div'> * Department is required.</div></p>";
+    }
+
+    if ($Position == "")
+    {
+      $valid = false;
+      echo "<p><div class='reject_div'> * POSITION is required.</div></p>";
+    }
+
+    if ($EmpSts == "")
+    {
+      $valid = false;
+      echo "<p><div class='reject_div'> * EMPLOYMENT STATUS is required.</div></p>";
+    }
+
+    if ($DateJoin == "")
+    {
+      $valid = false;
+      echo "<p><div class='reject_div'> * DATE OF JOIN is required.</div></p>";
     }
 
     if($valid)
     {
-      $sql2 =
+      echo $sql2 =
       "UPDATE `StaffMaster`
       SET `Name` = '$Name', `ICNo` = '$ICNo', `Gender` = '$Gender',
       `DOB` = '$DOB', `PhoneNo` = '$PhoneNo', `Email` = '$Email', `Address1` = '$Address1', `Address2` = '$Address2',
@@ -209,7 +231,7 @@
 
   ?>
 
-  <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
 
     <table class="frm">
       <thead>
@@ -237,7 +259,7 @@
         <tr>
           <td class="frm_td">Name :</td>
           <td class="frm_td">
-            <input type="text" name="Name" value="<?php echo $Name;?>">
+            <input type="text" name="Name" value="<?php echo $Name;?>" autofocus>
             <span class="reject">*</span>
           </td>
           <td class="frm_td">IC No. :</td>
@@ -255,8 +277,8 @@
           </td>
           <td class="frm_td">Gender :</td>
           <td class="frm_td">
-            <input type="radio" name="Gender" value="M" checked=""> Male
-            <input type="radio" name="Gender" value="F"> Female
+            <input type="radio" name="Gender" value="M" <?php if($Gender== "M") echo 'checked="checked"'; ?>> Male
+            <input type="radio" name="Gender" value="F" <?php if($Gender== "F") echo 'checked="checked"'; ?>> Female
             <span class="reject">*</span>
           </td>
         </tr>
@@ -308,23 +330,23 @@
           <td class="frm_td">Race :</td>
           <td class="frm_td">
             <select name="Race">
-              <option value=" "</option>
-                <option value="M">Malay</option>
-                <option value="C">Chinese</option>
-                <option value="I">Indian</option>
-                <option value="O">Others</option>
+              <option value=""</option>
+                <option value="M" <?php if($Race == "M") echo 'selected="selected"'; ?>>Malay</option>
+                <option value="C" <?php if($Race == "C") echo 'selected="selected"'; ?>>Chinese</option>
+                <option value="I" <?php if($Race == "I") echo 'selected="selected"'; ?>>Indian</option>
+                <option value="O" <?php if($Race == "O") echo 'selected="selected"'; ?>>Others</option>
               </select>
               <span class="reject">*</span>
             </td>
             <td class="frm_td">Religion :</td>
             <td class="frm_td">
               <select name="Religion">
-                <option value=" "</option>
-                  <option value="I">Islam</option>
-                  <option value="B">Budhist</option>
-                  <option value="H">Hindu</option>
-                  <option value="C">Christian</option>
-                  <option value="O">Others</option>
+                <option value=""</option>
+                  <option value="I" <?php if($Religion== "I") echo 'selected="selected"'; ?>>Islam</option>
+                  <option value="B" <?php if($Religion== "B") echo 'selected="selected"'; ?>>Budhist</option>
+                  <option value="H" <?php if($Religion== "H") echo 'selected="selected"'; ?>>Hindu</option>
+                  <option value="C" <?php if($Religion== "C") echo 'selected="selected"'; ?>>Christian</option>
+                  <option value="O" <?php if($Religion== "O") echo 'selected="selected"'; ?>>Others</option>
                 </select>
                 <span class="reject">*</span>
               </td>
@@ -334,9 +356,9 @@
               <td class="frm_td">Marital Status :</td>
               <td class="frm_td">
                 <select name="MaritalSts">
-                  <option value="S">Single</option>
-                  <option value="M">Married</option>
-                  <option value="D">Divorced</option>
+                  <option value="S" <?php if($MaritalSts== "S") echo 'selected="selected"'; ?>>Single</option>
+                  <option value="M" <?php if($MaritalSts== "M") echo 'selected="selected"'; ?>>Married</option>
+                  <option value="D" <?php if($MaritalSts== "D") echo 'selected="selected"'; ?>>Divorced</option>
                 </select>
                 <span class="reject">*</span>
               </td>
@@ -366,14 +388,62 @@
             </tr>
 
             <tr>
-              <td class="frm_td">Department :</td>
+              <td class="frm_td">Department : </td>
               <td class="frm_td">
-                <input type="text" name="Department" value="<?php echo $Department;?>">
+                <select name="Department">
+                  <option value="">-- Department --</option>
+                  <?php
+
+                  $sql3 =
+                  "SELECT dpt_desc
+                  FROM `department`";
+                  $result3 = $conn->query($sql3);
+
+                  while( $row3 = $result3->fetch_assoc())
+                  {
+                    if($Department == $row3['dpt_desc'])
+                    {
+                      $selected = "selected";
+                    }
+                    else
+                    {
+                      $selected = "";
+                    }
+
+                    echo "<option value='{$row3['dpt_desc']}' {$selected}>{$row3['dpt_desc']}</option>";
+                  }
+
+                  ?>
+                </select>
                 <span class="reject">*</span>
               </td>
-              <td class="frm_td">Position :</td>
+              <td class="frm_td">Position :<?php echo $Position;?></td>
               <td class="frm_td">
-                <input type="text" name="Position" value="<?php echo $Position;?>">
+                <select name="Position">
+                  <option value="">-- Role --</option>
+                  <?php
+
+                  $sql4 =
+                  "SELECT RoleDesc
+                  FROM `RolePar`";
+                  $result4 = $conn->query($sql4);
+
+                  while( $row4 = $result4->fetch_assoc())
+                  {
+                    if($Position == $row4['RoleDesc'])
+                    {
+                      $selected = "selected";
+                    }
+                    else
+                    {
+                      $selected = "";
+                    }
+
+                    echo "<option value='{$row4['RoleDesc']}' {$selected}>{$row4['RoleDesc']}</option>";
+                  }
+
+                  ?>
+                </select>
                 <span class="reject">*</span>
               </td>
             </tr>
@@ -388,10 +458,11 @@
                 <td class="frm_td">Employment Status :</td>
                 <td class="frm_td">
                   <select name="EmpSts">
-                    <option value="E">Employed</option>
-                    <option value="P">Probation</option>
-                    <option value="T">Tranee</option>
-                    <option value="R">Resigned</option>
+                    <option value="">-- Employment Stafus --</option>
+                    <option value="E" <?php if($EmpSts== "E") echo 'selected="selected"'; ?>>Employed</option>
+                    <option value="P" <?php if($EmpSts== "P") echo 'selected="selected"'; ?>>Probation</option>
+                    <option value="T" <?php if($EmpSts== "T") echo 'selected="selected"'; ?>>Tranee</option>
+                    <option value="R" <?php if($EmpSts== "R") echo 'selected="selected"'; ?>>Resigned</option>
                     <span class="reject">*</span>
                   </td>
                 </tr>

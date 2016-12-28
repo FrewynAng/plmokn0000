@@ -67,63 +67,67 @@
 
   ?>
 
-  <table class="lst" width="auto">
-    <thead>
-      <tr class='lst_tr'>
-        <th class="lst_th">Staff <br> ID</th>
-        <th class="lst_th">Date <br> </th>
-        <th class="lst_th">Time <br> In</th>
-        <th class="lst_th">Break <br> Out</th>
-        <th class="lst_th">Break <br> In</th>
-        <th class="lst_th">Lunch <br> Out</th>
-        <th class="lst_th">Lunch <br> In</th>
-        <th class="lst_th">Break <br> Out</th>
-        <th class="lst_th">Break <br> In</th>
-        <th class="lst_th">Time <br> Out</th>
-        <th class="lst_th">Working <br> Dur.</th>
-        <th class="lst_th">Over Time<br> Duration</th>
-        <th class="lst_th">Lunch <br> Dur.</th>
-        <th class="lst_th">Break <br> Dur.</th>
-
-      </tr>
-    </thead>
-
-    <tbody>
-      <?php
-
-      while( $row = $result->fetch_assoc())
-      {
-        $DateIn = $row["WrkDate"];
-        $WrkDate = date("d-m-Y", strtotime($DateIn));
-        //echo "$ScanDate";
-
-        echo
-        "
+  <div class="lst_div">
+    <p><div class="lst_title">TIME SHEET</div></p>
+    <table class="lst" width="auto">
+      <thead>
         <tr class='lst_tr'>
-        <td class='lst_td'>{$row['TagID']}</td>
-        <td class='lst_dt'>$WrkDate</td>
-        <td class='lst_dt'>{$row['TimeIn']}</td>
-        <td class='lst_dt'>{$row['BreakStr']}</td>
-        <td class='lst_dt'>{$row['BreakEnd']}</td>
-        <td class='lst_dt'>{$row['LunchStr']}</td>
-        <td class='lst_dt'>{$row['LunchEnd']}</td>
-        <td class='lst_dt'>{$row['BreakStr']}</td>
-        <td class='lst_dt'>{$row['BreakEnd']}</td>
-        <td class='lst_dt'>{$row['TimeOut']}</td>
-        <td class='lst_dt'>{$row['WrkHour']}</td>
-        <td class='lst_dt'>{$row['OT_Dur']}</td>
-        <td class='lst_dt'>{$row['LunchDur']}</td>
-        <td class='lst_dt'>{$row['BreakDur']}</td>
+          <th class="lst_th">Staff <br> ID</th>
+          <th class="lst_th">Date <br> </th>
+          <th class="lst_th">Time <br> In</th>
+          <th class="lst_th">Break 1<br> Out</th>
+          <th class="lst_th">Break 1<br> In</th>
+          <th class="lst_th">Lunch <br> Out</th>
+          <th class="lst_th">Lunch <br> In</th>
+          <th class="lst_th">Break 2<br> Out</th>
+          <th class="lst_th">Break 2<br> In</th>
+          <th class="lst_th">Time <br> Out</th>
+          <th class="lst_th">Working <br> Dur.</th>
+          <th class="lst_th">Over Time<br> Duration</th>
+          <th class="lst_th">Lunch <br> Dur.</th>
+          <th class="lst_th">Break 1<br> Dur.</th>
+          <th class="lst_th">Break 2<br> Dur.</th>
         </tr>
-        ";
-      }
+      </thead>
 
-      $conn->close();
+      <tbody>
+        <?php
 
-      ?>
+        while( $row = $result->fetch_assoc())
+        {
+          $DateIn = $row["WrkDate"];
+          $WrkDate = date("d-m-Y", strtotime($DateIn));
+          //echo "$ScanDate";
 
-    </tbody>
-  </table>
+          echo
+          "
+          <tr class='lst_tr'>
+          <td class='lst_td'>{$row['TagID']}</td>
+          <td class='lst_dt'>$WrkDate</td>
+          <td class='lst_dt'>{$row['TimeIn']}</td>
+          <td class='lst_dt'>{$row['BreakStr1']}</td>
+          <td class='lst_dt'>{$row['BreakEnd1']}</td>
+          <td class='lst_dt'>{$row['LunchStr']}</td>
+          <td class='lst_dt'>{$row['LunchEnd']}</td>
+          <td class='lst_dt'>{$row['BreakStr2']}</td>
+          <td class='lst_dt'>{$row['BreakEnd2']}</td>
+          <td class='lst_dt'>{$row['TimeOut']}</td>
+          <td class='lst_dt'>{$row['WrkHour']}</td>
+          <td class='lst_dt'>{$row['OT_Dur']}</td>
+          <td class='lst_dt'>{$row['LunchDur']}</td>
+          <td class='lst_dt'>{$row['BreakDur1']}</td>
+          <td class='lst_dt'>{$row['BreakDur2']}</td>
+          </tr>
+          ";
+        }
+
+        $conn->close();
+
+        ?>
+
+      </tbody>
+    </table>
+  </div>
   <?php include '../Main/pagination.php'; ?>
 
 </body>

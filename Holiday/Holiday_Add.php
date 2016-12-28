@@ -62,7 +62,7 @@
 
   ?>
 
-  <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
 
     <table class="frm">
       <thead class="frm_hdr">
@@ -75,7 +75,7 @@
         <tr>
           <td>Holiday Date :</td>
           <td>
-            <input type="date" name="HDate" value="<?php echo $HDate;?>">
+            <input type="date" name="HDate" value="<?php echo $HDate;?>" placeholder="Enter Date">
             <span class="reject">*</span>
           </td>
         </tr>
@@ -91,7 +91,7 @@
 
         <tr>
           <td>Description :</td>
-          <td><input type="text" name="HDesc" value="<?php echo $HDesc;?>"></td>
+          <td><input type="text" name="HDesc" value="<?php echo $HDesc;?>" placeholder="Enter Holiday Description"></td>
         </tr>
 
         <tr>

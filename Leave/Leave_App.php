@@ -297,12 +297,12 @@
             }
             ?>
 
-            <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
 
               <table class="frm">
                 <thead class="frm_hdr">
                   <tr>
-                    <th class="frm_th" colspan="2">Apply Holiday</th>
+                    <th class="frm_th" colspan="2">Leave Application</th>
                   </tr>
                 </thead>
 

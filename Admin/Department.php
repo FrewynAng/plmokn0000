@@ -1,7 +1,7 @@
 <!--
-*****************
-** RolePar.php **
-*****************
+********************
+** Department.php **
+********************
 -->
 
 <?php session_start(); ?>
@@ -10,7 +10,7 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/list.css">
   <meta charset="UTF-8">
   <title>Holiday Table</title>
 </head>
@@ -21,9 +21,9 @@
   include '../Main/getSysPar.php';
   $cmpMsg = $_SESSION['cmpMsg'];
 
-  $tbl_name="RolePar";
+  $tbl_name = "department";
   $adjacents = 1;                               // How many adjacent pages should be shown on each side?
-  $targetpage = "../UserGroup/RolePar.php";   	//your file name  (the name of this file)
+  $targetpage = "../UserGroup/Department.php";   	//your file name  (the name of this file)
   $limit = 15; 							                   	//how many items to show per page
 
   $query = "SELECT COUNT(*) as num FROM $tbl_name";
@@ -53,8 +53,8 @@
   /* Get data. */
   $sql =
   "SELECT *
-  FROM `RolePar`
-  ORDER BY RoleNo
+  FROM `department`
+  ORDER BY dpt_No
   LIMIT $start, $limit";
   $result = $conn->query($sql);
 
@@ -67,14 +67,14 @@
 
   ?>
 
-  <a href="../UserGroup/RolePar_Add.php" target="cdMain">Add Role</a></br></br>
-
+  <p><div class="lst_title">DEPARTMENT TABLE</div></p>
+  <a href="../Admin/Department_Add.php" target="cdMain">Add Department</a></br></br>
   <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
   <table class="lst" id="tblList">
     <thead class="lst_hdr">
       <tr>
-        <th class="lst_th">Role <br>No. </th>
-        <th class="lst_th">Role <br>Description </th>
+        <th class="lst_th">Department <br>No. </th>
+        <th class="lst_th">Department <br> </th>
         <th class="lst_th" colspan="2"></th>
       </tr>
     </thead>
@@ -87,8 +87,8 @@
       {
         echo "
         <tr class='lst_tr'>
-        <td class='lst_td'>{$row['RoleNo']}</td>
-        <td class='lst_td'>{$row['RoleDesc']}</td>
+        <td class='lst_td'>{$row['dpt_No']}</td>
+        <td class='lst_td'>{$row['dpt_desc']}</td>
         <td class='lst_btn' onclick='updData()' style='cursor: pointer;'><a>EDT</a></td>
         <td class='lst_btn' onclick='dltData()' style='cursor: pointer;'><a>DLT</a></td>
         </tr>
@@ -119,18 +119,18 @@
         var x = 1;
         var y = 0;
 
-        var RoleNo = 0;
-        var RoleDesc = "";
+        var dpt_No = 0;
+        var dpt_desc = "";
 
         for (x = 0; x < rowLen; x++)
         {
           getRow[x].onclick = function(e)
           {
-            RoleNo = this.cells[0].innerText;
-            RoleDesc = this.cells[1].innerText;
+            dpt_No = this.cells[0].innerText;
+            dpt_desc = this.cells[1].innerText;
             //alert("2");
             //alert(UsrAccSeq);
-            url = "../UserGroup/RolePar_Dlt.php?RoleNo=" + RoleNo + "&RoleDesc=" + RoleDesc;
+            url = "../UserGroup/Department_Edt.php?dpt_No=" + dpt_No + "&dpt_desc=" + dpt_desc;
             //alert(url)
             window.location = url;
           };
@@ -146,18 +146,18 @@
         var x = 1;
         var y = 0;
 
-        var RoleNo = 0;
-        var RoleDesc = "";
+        var dpt_No = 0;
+        var dpt_desc = "";
 
         for (x = 0; x < rowLen; x++)
         {
           getRow[x].onclick = function(e)
           {
-            RoleNo = this.cells[0].innerText;
-            RoleDesc = this.cells[1].innerText;
+            dpt_No = this.cells[0].innerText;
+            dpt_desc = this.cells[1].innerText;
             //alert("3");
             //alert(UsrAccSeq);
-            url = "../UserGroup/RolePar_Dlt.php?RoleNo=" + RoleNo + "&RoleDesc=" + RoleDesc;
+            url = "../UserGroup/Department_Dlt.php?dpt_No=" + dpt_No + "&dpt_desc=" + dpt_desc;
             //alert(url)
             window.location = url;
           };

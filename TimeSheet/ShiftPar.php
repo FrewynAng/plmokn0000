@@ -2,19 +2,19 @@
 ******************
 ** ShiftPar.php **
 ******************
- -->
+-->
 
 <?php
-  session_start();
+session_start();
 ?>
 
 <!doctype html>
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/Style.css">
-    <meta charset="UTF-8">
-    <title>Holiday Table</title>
+  <link rel="stylesheet" type="text/css" href="../css/list.css">
+  <meta charset="UTF-8">
+  <title>Holiday Table</title>
 </head>
 
 <body class="lst_bdy">
@@ -23,11 +23,12 @@
   include '../Main/getSysPar.php';
 
   $cmpMsg = $_SESSION['cmpMsg'];
-  $sql = "SELECT * FROM `ShiftPar` order by SH_No";
-//execute the SQL query and return records
+  $sql = "SELECT * FROM `shiftpar` order by SH_No";
+  //execute the SQL query and return records
   $result = $conn->query($sql);
   ?>
 
+  <p><div class="lst_title">SHIFT PARAMETER</div></p>
   <a href="../TimeSheet/ShiftPar_Add.php" target="cdMain">Add Shift Parameter</a></br></br>
 
   <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
@@ -63,10 +64,10 @@
       }
 
       echo
-        "
-        </tbody>
-        </table>
-        ";
+      "
+      </tbody>
+      </table>
+      ";
 
       $conn->close();
       $_SESSION['cmpMsg'] = "";
@@ -74,58 +75,58 @@
 
       ?>
 
-  <script language="javascript">
+      <script language="javascript">
 
-  function updData()
-  {
-    // alert("1");
-    var tbl = document.getElementById("tblList");
-    var getRow = tbl.rows;
-    var rowLen = getRow.length;
-    var x = 1;
-    var y = 0;
-
-    var SH_No = 0;
-
-    for (x = 0; x < rowLen; x++)
-    {
-      getRow[x].onclick = function(e)
+      function updData()
       {
-        SH_No = this.cells[0].innerText;
-        //alert("2");
-        //alert(SH_No);
-        url = "../TimeSheet/ShiftPar_Edt.php?SH_No=" + SH_No;
-        window.location = url;
-      };
+        // alert("1");
+        var tbl = document.getElementById("tblList");
+        var getRow = tbl.rows;
+        var rowLen = getRow.length;
+        var x = 1;
+        var y = 0;
+
+        var SH_No = 0;
+
+        for (x = 0; x < rowLen; x++)
+        {
+          getRow[x].onclick = function(e)
+          {
+            SH_No = this.cells[0].innerText;
+            //alert("2");
+            //alert(SH_No);
+            url = "../TimeSheet/ShiftPar_Edt.php?SH_No=" + SH_No;
+            window.location = url;
+          };
+        }
       }
-  }
 
-  function dltData()
-  {
-    //alert("3");
-    var tbl = document.getElementById("tblList");
-    var getRow = tbl.rows;
-    var rowLen = getRow.length;
-    var x = 1;
-    var y = 0;
-
-    var SH_No = 9;
-
-    for (x = 0; x < rowLen; x++)
-    {
-      getRow[x].onclick = function(e)
+      function dltData()
       {
-        SH_No = this.cells[0].innerText;
-        //alert("4");
-        //alert(SH_No);
-        url = "../TimeSheet/ShiftPar_Dlt.php?SH_No=" + SH_No;
-        window.location = url;
-        };
+        //alert("3");
+        var tbl = document.getElementById("tblList");
+        var getRow = tbl.rows;
+        var rowLen = getRow.length;
+        var x = 1;
+        var y = 0;
+
+        var SH_No = 9;
+
+        for (x = 0; x < rowLen; x++)
+        {
+          getRow[x].onclick = function(e)
+          {
+            SH_No = this.cells[0].innerText;
+            //alert("4");
+            //alert(SH_No);
+            url = "../TimeSheet/ShiftPar_Dlt.php?SH_No=" + SH_No;
+            window.location = url;
+          };
+        }
       }
-  }
 
 
-  </script>
+      </script>
 
-</body>
-</html>
+    </body>
+    </html>

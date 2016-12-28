@@ -11,7 +11,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="../css/Style.css">
   <meta charset="UTF-8">
-  <title>Login In</title>
+  <title>Galaxy Time System<</title>
 </head>
 
 <body class="lgnBdy">
@@ -29,6 +29,7 @@
 
   $UsrID = "admin";
   $UsrPass = "admin";
+  $valid = TRUE;
   $rjtMsg = $_SESSION['rjtMsg'];
 
   if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -87,15 +88,15 @@
 
   <!-- <div class="login_box"> -->
   <div class="login_box_main">
-    <div class="login_title"><b>Login</b></div>
+    <div class="login_title">LOG IN</div>
 
     <div class="login_box">
       <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
-        <div class="lgnLbl"><label>User Name :</label></div>
-        <div class="lgnBox"><input type="text" name="UsrID" value="<?php echo $UsrID;?>"></div>
-        <div class="lgnLbl"><label class="lgnLbl">Password :</label></div>
-        <div class="lgnBox"><input type="password" name="UsrPass" value="<?php echo $UsrPass;?>"></div>
-        <div class="lgn_btn"><input type="submit" value="Sign In"></div>
+        <!-- <div><label class="lgnLbl">User Name :</label></div> -->
+        <div><input type="text" class="lgnBox" name="UsrID" placeholder="Enter User ID" value="<?php echo $UsrID;?>" autofocus></div>
+        <!-- <div><label class="lgnLbl">Password :</label></div> -->
+        <div><input type="password" class="lgnBox" name="UsrPass" placeholder="Enter User Password" autocomplete="off" value="<?php echo $UsrPass;?>"></div>
+        <div><input type="submit" class="lgn_btn" value="Log In"></div>
       </form>
     </div>
     <div class="login_box_msg"><?php echo $rjtMsg; ?></div>

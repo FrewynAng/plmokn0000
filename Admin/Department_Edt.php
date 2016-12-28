@@ -9,7 +9,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/form.css">
   <meta charset="UTF-8">
   <title>Leave Application</title>
 </head>
@@ -19,17 +19,26 @@
   include '../Main/getSysPar.php';
   $valid = TRUE;
 
-  $dpt_No = "";
-  $dpt_desc = "";
+  if (($_GET["dpt_No"] <> "") AND ($_GET["dpt_desc"] <> ""))
+  {
+    $dpt_No = $_GET["dpt_No"];
+    $dpt_desc = $_GET["dpt_desc"];
 
-  $sql1 =
-  "SELECT MAX(`dpt_No`) AS max_dpt_No
-  FROM `Department`";
+    $sql1 =
+    "SELECT *
+    FROM `department`
+    WHERE `dpt_No` = '$dpt_No' AND `dpt_desc` = '$dpt_desc'";
 
-  $rst1 = $conn->query($sql1);
-  $row1 = $rst1->fetch_assoc();
+    $rst1 = $conn->query($sql1);
+    $row1 = $rst1->fetch_assoc();
 
-  $dpt_No = $row1["max_dpt_No"] + 1;
+    if ($row1 > 0)
+    {
+      $dpt_No = $row1['dpt_No'];
+      $dpt_desc = $row1['dpt_desc'];
+      $old_dpt_desc = $row1['dpt_desc'];
+    }
+  }
 
   if ($_SERVER["REQUEST_METHOD"] == "POST")
   {
@@ -45,13 +54,14 @@
     if($valid)
     {
       $sql2 =
-      "INSERT INTO `Department` (`dpt_No`, `dpt_desc`)
-      VALUES ('$dpt_No', '$dpt_desc');";
+      "UPDATE `department`
+      SET  `dpt_desc` = '$dpt_desc'
+      WHERE `dpt_No` = '$dpt_No'";
 
       if ($conn->query($sql2) === TRUE)
       {
-        $_SESSION['cmpMsg'] = "DEPARTMENT added.";
-        header('Location:../UserGroup/Department.php');
+        $_SESSION['cmpMsg'] = "DEPARTMENT updated.";
+        header('Location:../Admin/Department.php');
       }
       else
       {
@@ -61,15 +71,13 @@
 
     $conn->close();
   }
-
-
   ?>
 
-  <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
     <table class="frm">
       <thead class="frm_hdr">
         <tr>
-          <th class="frm_th" colspan="2">Add Department</th>
+          <th class="frm_th" colspan="2">Edit Department</th>
         </tr>
       </thead>
 
@@ -85,15 +93,15 @@
         <tr>
           <td>Department Name :</td>
           <td>
-            <input type="text" name="dpt_desc" value="<?php echo $dpt_desc;?>">
+            <input type="text" name="dpt_desc" value="<?php echo $dpt_desc;?>" placeholder="Enter Department Name">
             <span class="reject">*</span>
           </td>
         </tr>
 
         <tr>
           <th class="frm_btn"colspan="2">
-            <a href="../UserGroup/Department.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
-            <input type="submit" value="Add">
+            <a href="../Admin/Department.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
+            <input type="submit" value="Save">
           </th>
         </tr>
 

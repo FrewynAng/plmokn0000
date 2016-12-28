@@ -1,6 +1,6 @@
 <!--
 *****************
-** UserGrp.php **
+** RolePar.php **
 *****************
 -->
 
@@ -10,7 +10,7 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/list.css">
   <meta charset="UTF-8">
   <title>Holiday Table</title>
 </head>
@@ -21,9 +21,9 @@
   include '../Main/getSysPar.php';
   $cmpMsg = $_SESSION['cmpMsg'];
 
-  $tbl_name="UsrGrpPar";
+  $tbl_name="RolePar";
   $adjacents = 1;                               // How many adjacent pages should be shown on each side?
-  $targetpage = "../UserGroup/UserGrp.php";   	//your file name  (the name of this file)
+  $targetpage = "../Admin/RolePar.php";   	//your file name  (the name of this file)
   $limit = 15; 							                   	//how many items to show per page
 
   $query = "SELECT COUNT(*) as num FROM $tbl_name";
@@ -53,8 +53,8 @@
   /* Get data. */
   $sql =
   "SELECT *
-  FROM `UsrGrpPar`
-  ORDER BY UsrGrp, UsrGrp, UsrAccSeq
+  FROM `RolePar`
+  ORDER BY RoleNo
   LIMIT $start, $limit";
   $result = $conn->query($sql);
 
@@ -67,16 +67,14 @@
 
   ?>
 
-  <a href="../UserGroup/UserGrp_Add.php" target="cdMain">Add User Group</a></br></br>
-
+  <p><div class="lst_title">ROLE TABLE</div></p>
+  <a href="../Admin/RolePar_Add.php" target="cdMain">Add Role</a></br></br>
   <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
   <table class="lst" id="tblList">
     <thead class="lst_hdr">
       <tr>
-        <th class="lst_th">User Group <br> </th>
-        <th class="lst_th">User Group <br> </th>
-        <th class="lst_th">User Access <br> Sequence</th>
-        <th class="lst_th">Description <br> </th>
+        <th class="lst_th">Role <br>No. </th>
+        <th class="lst_th">Role <br>Description </th>
         <th class="lst_th" colspan="2"></th>
       </tr>
     </thead>
@@ -89,10 +87,8 @@
       {
         echo "
         <tr class='lst_tr'>
-        <td class='lst_td'>{$row['UsrGrp']}</td>
-        <td class='lst_td'>{$row['UsrGrpNam']}</td>
-        <td class='lst_td'>{$row['UsrAccSeq']}</td>
-        <td class='lst_td'>{$row['UsrAccDsc']}</td>
+        <td class='lst_td'>{$row['RoleNo']}</td>
+        <td class='lst_td'>{$row['RoleDesc']}</td>
         <td class='lst_btn' onclick='updData()' style='cursor: pointer;'><a>EDT</a></td>
         <td class='lst_btn' onclick='dltData()' style='cursor: pointer;'><a>DLT</a></td>
         </tr>
@@ -116,27 +112,27 @@
 
       function updData()
       {
-        alert("1");
+        // alert("1");
         var tbl = document.getElementById("tblList");
         var getRow = tbl.rows;
         var rowLen = getRow.length;
         var x = 1;
         var y = 0;
 
-        var UsrGrp = 0;
-        var UsrAccSeq = 0;
+        var RoleNo = 0;
+        var RoleDesc = "";
 
         for (x = 0; x < rowLen; x++)
         {
           getRow[x].onclick = function(e)
           {
-            UsrGrp = this.cells[0].innerText;
-            UsrAccSeq = this.cells[2].innerText;
-            alert("2");
-            alert(UsrAccSeq);
-            url = "../UserGroup/UserGrp_Dlt_.php?UsrGrp=" + UsrGrp + "&&UsrAccSeq=" + UsrAccSeq;
-            alert(url)
-            //window.location = url;
+            RoleNo = this.cells[0].innerText;
+            RoleDesc = this.cells[1].innerText;
+            //alert("2");
+            //alert(UsrAccSeq);
+            url = "../Admin/RolePar_Dlt.php?RoleNo=" + RoleNo + "&RoleDesc=" + RoleDesc;
+            //alert(url)
+            window.location = url;
           };
         }
       }
@@ -150,18 +146,18 @@
         var x = 1;
         var y = 0;
 
-        var UsrGrp = 0;
-        var UsrAccSeq = 0;
+        var RoleNo = 0;
+        var RoleDesc = "";
 
         for (x = 0; x < rowLen; x++)
         {
           getRow[x].onclick = function(e)
           {
-            UsrGrp = this.cells[0].innerText;
-            UsrAccSeq = this.cells[2].innerText;
+            RoleNo = this.cells[0].innerText;
+            RoleDesc = this.cells[1].innerText;
             //alert("3");
             //alert(UsrAccSeq);
-            url = "../UserGroup/UserGrp_Dlt.php?UsrGrp=" + UsrGrp + "&UsrAccSeq=" + UsrAccSeq;
+            url = "../Admin/RolePar_Dlt.php?RoleNo=" + RoleNo + "&RoleDesc=" + RoleDesc;
             //alert(url)
             window.location = url;
           };

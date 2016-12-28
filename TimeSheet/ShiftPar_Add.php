@@ -93,7 +93,7 @@
 
   $sql1 =
   "SELECT MAX(`SH_No`) AS _SH_No
-  FROM `ShiftPar`";
+  FROM `shiftpar`";
 
   $result = $conn->query($sql1);
   $row = $result->fetch_assoc();
@@ -354,7 +354,7 @@
     if($valid)
     {
       $sql =
-      "INSERT INTO `ShiftPar` (`SH_No`, `SH_Name`, `SH_WrkDay`, `SH_WrkHour`, `SH_MaxLen`, `SH_Grp`, `SH_Flx`, `SH_OT_Cal`,
+      "INSERT INTO `shiftpar` (`SH_No`, `SH_Name`, `SH_WrkDay`, `SH_WrkHour`, `SH_MaxLen`, `SH_Grp`, `SH_Flx`, `SH_OT_Cal`,
         `SH_SunStr`, `SH_SunEnd`, `SH_MonStr`, `SH_MonEnd`, `SH_TueStr`, `SH_TueEnd`, `SH_WedStr`, `SH_WedEnd`, `SH_ThuStr`, `SH_ThuEnd`, `SH_FriStr`, `SH_FriEnd`, `SH_SatStr`, `SH_SatEnd`,
         `SH_Grc`, `SH_LOW`, `SH_LchDur`,
         `SunLchStr`, `SunLchEnd`, `MonLchStr`, `MonLchEnd`, `TueLchStr`, `TueLchEnd`, `WedLchStr`, `WedLchEnd`, `ThuLchStr`, `ThuLchEnd`, `FriLchStr`, `FriLchEnd`, `SatLchStr`, `SatLchEnd`,
@@ -397,7 +397,7 @@
 
       ?>
 
-      <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+      <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
 
         <table class="frm">
           <thead class="frm_hdr">
@@ -406,597 +406,597 @@
 
           <tbody>
             <!--
-              <tr>
-                <th class="frm_th" colspan="4">Shift Group</th>
-              </tr>
-
-              <tr>
-                <td>Shift Group</td>
-                <td><input type="number" name="SH_Grp" value="<?php echo $SH_Grp;?>"></td>
-              </tr>
-
-              <tr>
-                <td colspan="4"><font color="white">/t </font></td>
-              </tr>
-            -->
-
             <tr>
-              <th class="frm_th" colspan="4">Add Shift Parameter</th>
-            </tr>
+            <th class="frm_th" colspan="4">Shift Group</th>
+          </tr>
 
-            <tr>
-              <td>Shift No. :</td>
-              <td>
-                <input type="number" name="SH_No" value="<?php echo $SH_No;?>">
-                <span class="reject">*</span>
-              </td>
-              <td>Shift Name :</td>
-              <td>
-                <input type="text" name="SH_Name" value="<?php echo $SH_Name;?>">
-                <span class="reject">*</span>
-              </td>
-            </tr>
+          <tr>
+          <td>Shift Group</td>
+          <td><input type="number" name="SH_Grp" value="<?php echo $SH_Grp;?>"></td>
+        </tr>
 
-            <tr>
-              <td>Working Hour :</td>
-              <td>
-                <select name="SH_WrkHour" value="<?php echo $SH_WrkHour;?>">
-                  <option value="01">1 hour</option>
-                  <option value="02">2 hours</option>
-                  <option value="03">3 hours</option>
-                  <option value="04">4 hours</option>
-                  <option value="05">5 hours</option>
-                  <option value="06">6 hours</option>
-                  <option value="07">7 hours</option>
-                  <option value="08" selected>8 hours</option>
-                  <option value="09">9 hours</option>
-                  <option value="10">10 hours</option>
-                  <option value="11">11 hours</option>
-                  <option value="12">12 hours</option>
-                  <option value="13">13 hours</option>
-                  <option value="14">14 hours</option>
-                  <option value="15">15 hours</option>
-                  <option value="16">16 hours</option>
-                  <option value="17">17 hours</option>
-                  <option value="18">18 hours</option>
-                  <option value="19">19 hours</option>
-                  <option value="20">20 hours</option>
-                  <option value="21">21 hours</option>
-                  <option value="22">22 hours</option>
-                  <option value="23">23 hours</option>
-                  <option value="24">24 hours</option>
-                </select>
-              </td>
-              <td>Flexibility :</td>
-              <td>
-                <input type="checkbox" name="SH_Flx" value="Y">Yes
-              </td>
-            </tr>
+        <tr>
+        <td colspan="4"><font color="white">/t </font></td>
+      </tr>
+    -->
 
-            <tr>
-              <td>Shift Working Day :</td>
-              <td colspan="3">
-                <input type="checkbox" name="wrkDay[]" id="wrkDay" value="Sunday">Sunday
-                <input type="checkbox" name="wrkDay[]" id="wrkDay" value="Monday" checked>Monday
-                <input type="checkbox" name="wrkDay[]" id="wrkDay" value="Tuesday" checked>Tuesday
-                <input type="checkbox" name="wrkDay[]" id="wrkDay" value="Wednesday" checked>Wednesday
-                <input type="checkbox" name="wrkDay[]" id="wrkDay" value="Thursday" checked>Thursday
-                <input type="checkbox" name="wrkDay[]" id="wrkDay" value="Friday" checked>Friday
-                <input type="checkbox" name="wrkDay[]" id="wrkDay" value="Saturday">Saturday
-              </td>
-            </tr>
+    <tr>
+      <th class="frm_th" colspan="4">Add Shift Parameter</th>
+    </tr>
 
-            <tr>
-              <td>Working Hour Grace</td>
-              <td>
-                <select name="SH_Grc" value="<?php echo $SH_Grc;?>">
-                  <option value="0">0 minute</option>
-                  <option value="15" selected>15 minutes</option>
-                  <option value="30">30 minutes</option>
-                  <option value="45">45 minutes</option>
-                  <option value="60">60 minutes</option>
-                </select>
-              </td>
-              <td>LOW</td>
-              <td>
-                <select name="SH_LOW" value="<?php echo $SH_LOW;?>">
-                  <option value="0">0 minute</option>
-                  <option value="15">15 minutes</option>
-                  <option value="30">30 minutes</option>
-                  <option value="45">45 minutes</option>
-                  <option value="60">60 minutes</option>
-                </select>
-              </td>
-            </tr>
+    <tr>
+      <td>Shift No. :</td>
+      <td>
+        <input type="number" name="SH_No" value="<?php echo $SH_No;?>">
+        <span class="reject">*</span>
+      </td>
+      <td>Shift Name :</td>
+      <td>
+        <input type="text" name="SH_Name" value="<?php echo $SH_Name;?>">
+        <span class="reject">*</span>
+      </td>
+    </tr>
 
-            <tr>
-              <td>OT Calculation Before and After :</td>
-              <td>
-                <select name="SH_OT_Cal" value="<?php echo $SH_OT_Cal;?>">
-                  <option value="15">15 minutes</option>
-                  <option value="30">30 minutes</option>
-                  <option value="45" selected>45 minutes</option>
-                  <option value="60">60 minutes</option>
-                  <option value="90">90 minutes</option>
-                  <option value="120">120 minutes</option>
-                </td>
-              </tr>
+    <tr>
+      <td>Working Hour :</td>
+      <td>
+        <select name="SH_WrkHour" value="<?php echo $SH_WrkHour;?>">
+          <option value="01">1 hour</option>
+          <option value="02">2 hours</option>
+          <option value="03">3 hours</option>
+          <option value="04">4 hours</option>
+          <option value="05">5 hours</option>
+          <option value="06">6 hours</option>
+          <option value="07">7 hours</option>
+          <option value="08" selected>8 hours</option>
+          <option value="09">9 hours</option>
+          <option value="10">10 hours</option>
+          <option value="11">11 hours</option>
+          <option value="12">12 hours</option>
+          <option value="13">13 hours</option>
+          <option value="14">14 hours</option>
+          <option value="15">15 hours</option>
+          <option value="16">16 hours</option>
+          <option value="17">17 hours</option>
+          <option value="18">18 hours</option>
+          <option value="19">19 hours</option>
+          <option value="20">20 hours</option>
+          <option value="21">21 hours</option>
+          <option value="22">22 hours</option>
+          <option value="23">23 hours</option>
+          <option value="24">24 hours</option>
+        </select>
+      </td>
+      <td>Flexibility :</td>
+      <td>
+        <input type="checkbox" name="SH_Flx" value="Y">Yes
+      </td>
+    </tr>
 
-              <tr>
-                <td colspan="4"><font color="white">/t </font></td>
-              </tr>
+    <tr>
+      <td>Shift Working Day :</td>
+      <td colspan="3">
+        <input type="checkbox" name="wrkDay[]" id="wrkDay" value="Sunday">Sunday
+        <input type="checkbox" name="wrkDay[]" id="wrkDay" value="Monday" checked>Monday
+        <input type="checkbox" name="wrkDay[]" id="wrkDay" value="Tuesday" checked>Tuesday
+        <input type="checkbox" name="wrkDay[]" id="wrkDay" value="Wednesday" checked>Wednesday
+        <input type="checkbox" name="wrkDay[]" id="wrkDay" value="Thursday" checked>Thursday
+        <input type="checkbox" name="wrkDay[]" id="wrkDay" value="Friday" checked>Friday
+        <input type="checkbox" name="wrkDay[]" id="wrkDay" value="Saturday">Saturday
+      </td>
+    </tr>
 
-              <!-- Shift Time -->
-              <tr>
-                <th class="frmbox"></th>
-                <th class="frmbox">Shift Start Time</th>
-                <th class="frmbox">Shift End Time</th>
-                <th class="frmbox"></th>
-                <th></th>
-              </tr>
+    <tr>
+      <td>Working Hour Grace</td>
+      <td>
+        <select name="SH_Grc" value="<?php echo $SH_Grc;?>">
+          <option value="0">0 minute</option>
+          <option value="15" selected>15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="45">45 minutes</option>
+          <option value="60">60 minutes</option>
+        </select>
+      </td>
+      <td>LOW</td>
+      <td>
+        <select name="SH_LOW" value="<?php echo $SH_LOW;?>">
+          <option value="0">0 minute</option>
+          <option value="15">15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="45">45 minutes</option>
+          <option value="60">60 minutes</option>
+        </select>
+      </td>
+    </tr>
 
-              <!-- Sunday -->
-              <tr>
-                <th class="frmbox">Sunday :</th>
-                <td>
-                  <input type="time" name="SH_SunStr" value="<?php echo $SH_SunStr;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="SH_SunEnd" value="<?php echo $SH_SunEnd;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+    <tr>
+      <td>OT Calculation Before and After :</td>
+      <td>
+        <select name="SH_OT_Cal" value="<?php echo $SH_OT_Cal;?>">
+          <option value="15">15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="45" selected>45 minutes</option>
+          <option value="60">60 minutes</option>
+          <option value="90">90 minutes</option>
+          <option value="120">120 minutes</option>
+        </td>
+      </tr>
 
-              <!-- Monday -->
-              <tr>
-                <th class="frmbox">Monday :</th>
-                <td>
-                  <input type="time" name="SH_MonStr" value="<?php echo $SH_MonStr;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="SH_MonEnd" value="<?php echo $SH_MonEnd;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <tr>
+        <td colspan="4"><font color="white">/t </font></td>
+      </tr>
 
-              <!-- Tueaday -->
-              <tr>
-                <th class="frmbox">Tuesday :</th>
-                <td>
-                  <input type="time" name="SH_TueStr" value="<?php echo $SH_TueStr;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="SH_TueEnd" value="<?php echo $SH_TueEnd;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Shift Time -->
+      <tr>
+        <th class="frmbox"></th>
+        <th class="frmbox">Shift Start Time</th>
+        <th class="frmbox">Shift End Time</th>
+        <th class="frmbox"></th>
+        <th></th>
+      </tr>
 
-              <!-- Wednesday -->
-              <tr>
-                <th class="frmbox">Wednesday :</th>
-                <td>
-                  <input type="time" name="SH_WedStr" value="<?php echo $SH_WedStr;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="SH_WedEnd" value="<?php echo $SH_WedEnd;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Sunday -->
+      <tr>
+        <th class="frmbox">Sunday :</th>
+        <td>
+          <input type="time" name="SH_SunStr" value="<?php echo $SH_SunStr;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="SH_SunEnd" value="<?php echo $SH_SunEnd;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Thursday -->
-              <tr>
-                <th class="frmbox">Thursday :</th>
-                <td>
-                  <input type="time" name="SH_ThuStr" value="<?php echo $SH_ThuStr;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="SH_ThuEnd" value="<?php echo $SH_ThuEnd;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Monday -->
+      <tr>
+        <th class="frmbox">Monday :</th>
+        <td>
+          <input type="time" name="SH_MonStr" value="<?php echo $SH_MonStr;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="SH_MonEnd" value="<?php echo $SH_MonEnd;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Friday -->
-              <tr>
-                <th class="frmbox">Friday :</th>
-                <td>
-                  <input type="time" name="SH_FriStr" value="<?php echo $SH_FriStr;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="SH_FriEnd" value="<?php echo $SH_FriEnd;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Tueaday -->
+      <tr>
+        <th class="frmbox">Tuesday :</th>
+        <td>
+          <input type="time" name="SH_TueStr" value="<?php echo $SH_TueStr;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="SH_TueEnd" value="<?php echo $SH_TueEnd;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Saturday -->
-              <tr>
-                <th class="frmbox">Saturday :</th>
-                <td>
-                  <input type="time" name="SH_SatStr" value="<?php echo $SH_SatStr;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="SH_SatEnd" value="<?php echo $SH_SatEnd;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Wednesday -->
+      <tr>
+        <th class="frmbox">Wednesday :</th>
+        <td>
+          <input type="time" name="SH_WedStr" value="<?php echo $SH_WedStr;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="SH_WedEnd" value="<?php echo $SH_WedEnd;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <tr>
-                <td colspan="4"><font color="white">/t </font></td>
-              </tr>
+      <!-- Thursday -->
+      <tr>
+        <th class="frmbox">Thursday :</th>
+        <td>
+          <input type="time" name="SH_ThuStr" value="<?php echo $SH_ThuStr;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="SH_ThuEnd" value="<?php echo $SH_ThuEnd;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
+
+      <!-- Friday -->
+      <tr>
+        <th class="frmbox">Friday :</th>
+        <td>
+          <input type="time" name="SH_FriStr" value="<?php echo $SH_FriStr;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="SH_FriEnd" value="<?php echo $SH_FriEnd;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
+
+      <!-- Saturday -->
+      <tr>
+        <th class="frmbox">Saturday :</th>
+        <td>
+          <input type="time" name="SH_SatStr" value="<?php echo $SH_SatStr;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="SH_SatEnd" value="<?php echo $SH_SatEnd;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="4"><font color="white">/t </font></td>
+      </tr>
 
 
-              <!-- Lunch Parameter -->
-              <tr>
-                <th class="frm_th" colspan="4">Lunch Parameters</th>
-              </tr>
+      <!-- Lunch Parameter -->
+      <tr>
+        <th class="frm_th" colspan="4">Lunch Parameters</th>
+      </tr>
 
-              <tr>
-                <td>Lunch Time Duration :</td>
-                <td>
-                  <select name="SH_LchDur" value="<?php echo $SH_LchDur;?>">
-                    <option value="30">30 minutes</option>
-                    <option value="60" selected>60 minutes</option>
-                    <option value="90">90 minutes</option>
-                    <option value="120">120 minutes</option>
-                    <option value="150">150 minutes</option>
-                  </select>
-                </td>
-                <td>Lunch Grace Time :</td>
-                <td>
-                  <select name="SH_LchGrc" value="<?php echo $SH_LchGrc;?>">
-                    <option value="0">0 minute</option>
-                    <option value="15" selected>15 minutes</option>
-                    <option value="30">30 minutes</option>
-                    <option value="45">45 minutes</option>
-                    <option value="60">60 minutes</option>
-                  </select>
-                </td>
-              </tr>
+      <tr>
+        <td>Lunch Time Duration :</td>
+        <td>
+          <select name="SH_LchDur" value="<?php echo $SH_LchDur;?>">
+            <option value="30">30 minutes</option>
+            <option value="60" selected>60 minutes</option>
+            <option value="90">90 minutes</option>
+            <option value="120">120 minutes</option>
+            <option value="150">150 minutes</option>
+          </select>
+        </td>
+        <td>Lunch Grace Time :</td>
+        <td>
+          <select name="SH_LchGrc" value="<?php echo $SH_LchGrc;?>">
+            <option value="0">0 minute</option>
+            <option value="15" selected>15 minutes</option>
+            <option value="30">30 minutes</option>
+            <option value="45">45 minutes</option>
+            <option value="60">60 minutes</option>
+          </select>
+        </td>
+      </tr>
 
-              <tr>
-                <td>Lunch Time Flexibility :</td>
-                <td>
-                  <input type="checkbox" name="SH_LchFlx" value="Y" checked>Yes
-                </td>
-              </tr>
+      <tr>
+        <td>Lunch Time Flexibility :</td>
+        <td>
+          <input type="checkbox" name="SH_LchFlx" value="Y" checked>Yes
+        </td>
+      </tr>
 
-              <tr>
-                <td colspan="4"><font color="white">/t </font></td>
-              </tr>
+      <tr>
+        <td colspan="4"><font color="white">/t </font></td>
+      </tr>
 
-              <!-- Sunday -->
-              <tr>
-                <th class="frmbox">Sunday :</th>
-                <td>
-                  <input type="time" name="SunLchStr" value="<?php echo $SunLchStr;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="SunLchEnd" value="<?php echo $SunLchEnd;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Sunday -->
+      <tr>
+        <th class="frmbox">Sunday :</th>
+        <td>
+          <input type="time" name="SunLchStr" value="<?php echo $SunLchStr;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="SunLchEnd" value="<?php echo $SunLchEnd;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Monday -->
-              <tr>
-                <th class="frmbox">Monday :</th>
-                <td>
-                  <input type="time" name="MonLchStr" value="<?php echo $MonLchStr;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="MonLchEnd" value="<?php echo $MonLchEnd;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Monday -->
+      <tr>
+        <th class="frmbox">Monday :</th>
+        <td>
+          <input type="time" name="MonLchStr" value="<?php echo $MonLchStr;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="MonLchEnd" value="<?php echo $MonLchEnd;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Tueaday -->
-              <tr>
-                <th class="frmbox">Tuesday :</th>
-                <td>
-                  <input type="time" name="TueLchStr" value="<?php echo $TueLchStr;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="TueLchEnd" value="<?php echo $TueLchEnd;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Tueaday -->
+      <tr>
+        <th class="frmbox">Tuesday :</th>
+        <td>
+          <input type="time" name="TueLchStr" value="<?php echo $TueLchStr;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="TueLchEnd" value="<?php echo $TueLchEnd;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Wednesday -->
-              <tr>
-                <th class="frmbox">Wednesday :</th>
-                <td>
-                  <input type="time" name="WedLchStr" value="<?php echo $WedLchStr;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="WedLchEnd" value="<?php echo $WedLchEnd;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Wednesday -->
+      <tr>
+        <th class="frmbox">Wednesday :</th>
+        <td>
+          <input type="time" name="WedLchStr" value="<?php echo $WedLchStr;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="WedLchEnd" value="<?php echo $WedLchEnd;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Thursday -->
-              <tr>
-                <th class="frmbox">Thursday :</th>
-                <td>
-                  <input type="time" name="ThuLchStr" value="<?php echo $ThuLchStr;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="ThuLchEnd" value="<?php echo $ThuLchEnd;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Thursday -->
+      <tr>
+        <th class="frmbox">Thursday :</th>
+        <td>
+          <input type="time" name="ThuLchStr" value="<?php echo $ThuLchStr;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="ThuLchEnd" value="<?php echo $ThuLchEnd;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Friday -->
-              <tr>
-                <th class="frmbox">Friday :</th>
-                <td>
-                  <input type="time" name="FriLchStr" value="<?php echo $FriLchStr;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="FriLchEnd" value="<?php echo $FriLchEnd;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Friday -->
+      <tr>
+        <th class="frmbox">Friday :</th>
+        <td>
+          <input type="time" name="FriLchStr" value="<?php echo $FriLchStr;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="FriLchEnd" value="<?php echo $FriLchEnd;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Saturday -->
-              <tr>
-                <th class="frmbox">Saturday :</th>
-                <td>
-                  <input type="time" name="SatLchStr" value="<?php echo $SatLchStr;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="SatLchEnd" value="<?php echo $SatLchEnd;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Saturday -->
+      <tr>
+        <th class="frmbox">Saturday :</th>
+        <td>
+          <input type="time" name="SatLchStr" value="<?php echo $SatLchStr;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="SatLchEnd" value="<?php echo $SatLchEnd;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <tr>
-                <td colspan="4"><font color="white">/t </font></td>
-              </tr>
+      <tr>
+        <td colspan="4"><font color="white">/t </font></td>
+      </tr>
 
-              <!-- Break 1 Parameter -->
-              <tr>
-                <th class="frm_th" colspan="4">Break 1 Parameters</th>
-              </tr>
+      <!-- Break 1 Parameter -->
+      <tr>
+        <th class="frm_th" colspan="4">Break 1 Parameters</th>
+      </tr>
 
-              <tr>
-                <td>Enable Break 1 :</td>
-                <td>
-                  <input type="checkbox" name="Break1" value="Y" checked>Yes
-                </td>
-              </tr>
+      <tr>
+        <td>Enable Break 1 :</td>
+        <td>
+          <input type="checkbox" name="Break1" value="Y" checked>Yes
+        </td>
+      </tr>
 
-              <tr>
-                <td colspan="4"><font color="white">/t </font></td>
-              </tr>
+      <tr>
+        <td colspan="4"><font color="white">/t </font></td>
+      </tr>
 
-              <!-- Sunday -->
-              <tr>
-                <th class="frmbox">Sunday :</th>
-                <td>
-                  <input type="time" name="SunBrkStr1" value="<?php echo $SunBrkStr1;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="SunBrkEnd1" value="<?php echo $SunBrkEnd1;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Sunday -->
+      <tr>
+        <th class="frmbox">Sunday :</th>
+        <td>
+          <input type="time" name="SunBrkStr1" value="<?php echo $SunBrkStr1;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="SunBrkEnd1" value="<?php echo $SunBrkEnd1;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Monday -->
-              <tr>
-                <th class="frmbox">Monday :</th>
-                <td>
-                  <input type="time" name="MonBrkStr1" value="<?php echo $MonBrkStr1;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="MonBrkEnd1" value="<?php echo $MonBrkEnd1;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Monday -->
+      <tr>
+        <th class="frmbox">Monday :</th>
+        <td>
+          <input type="time" name="MonBrkStr1" value="<?php echo $MonBrkStr1;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="MonBrkEnd1" value="<?php echo $MonBrkEnd1;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Tueaday -->
-              <tr>
-                <th class="frmbox">Tuesday :</th>
-                <td>
-                  <input type="time" name="TueBrkStr1" value="<?php echo $TueBrkStr1;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="TueBrkEnd1" value="<?php echo $TueBrkEnd1;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Tueaday -->
+      <tr>
+        <th class="frmbox">Tuesday :</th>
+        <td>
+          <input type="time" name="TueBrkStr1" value="<?php echo $TueBrkStr1;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="TueBrkEnd1" value="<?php echo $TueBrkEnd1;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Wednesday -->
-              <tr>
-                <th class="frmbox">Wednesday :</th>
-                <td>
-                  <input type="time" name="WedBrkStr1" value="<?php echo $WedBrkStr1;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="WedBrkEnd1" value="<?php echo $WedBrkEnd1;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Wednesday -->
+      <tr>
+        <th class="frmbox">Wednesday :</th>
+        <td>
+          <input type="time" name="WedBrkStr1" value="<?php echo $WedBrkStr1;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="WedBrkEnd1" value="<?php echo $WedBrkEnd1;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Thursday -->
-              <tr>
-                <th class="frmbox">Thursday :</th>
-                <td>
-                  <input type="time" name="ThuBrkStr1" value="<?php echo $ThuBrkStr1;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="ThuBrkEnd1" value="<?php echo $ThuBrkEnd1;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Thursday -->
+      <tr>
+        <th class="frmbox">Thursday :</th>
+        <td>
+          <input type="time" name="ThuBrkStr1" value="<?php echo $ThuBrkStr1;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="ThuBrkEnd1" value="<?php echo $ThuBrkEnd1;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Friday -->
-              <tr>
-                <th class="frmbox">Friday :</th>
-                <td>
-                  <input type="time" name="FriBrkStr1" value="<?php echo $FriBrkStr1;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="FriBrkEnd1" value="<?php echo $FriBrkEnd1;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Friday -->
+      <tr>
+        <th class="frmbox">Friday :</th>
+        <td>
+          <input type="time" name="FriBrkStr1" value="<?php echo $FriBrkStr1;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="FriBrkEnd1" value="<?php echo $FriBrkEnd1;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Saturday -->
-              <tr>
-                <th class="frmbox">Saturday :</th>
-                <td>
-                  <input type="time" name="SatBrkStr1" value="<?php echo $SatBrkStr1;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="SatBrkEnd1" value="<?php echo $SatBrkEnd1;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Saturday -->
+      <tr>
+        <th class="frmbox">Saturday :</th>
+        <td>
+          <input type="time" name="SatBrkStr1" value="<?php echo $SatBrkStr1;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="SatBrkEnd1" value="<?php echo $SatBrkEnd1;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <tr>
-                <td colspan="4"><font color="white">/t </font></td>
-              </tr>
+      <tr>
+        <td colspan="4"><font color="white">/t </font></td>
+      </tr>
 
-              <!-- Break 1 Parameter -->
-              <tr>
-                <th class="frm_th" colspan="4">Break 2 Parameters</th>
-              </tr>
+      <!-- Break 1 Parameter -->
+      <tr>
+        <th class="frm_th" colspan="4">Break 2 Parameters</th>
+      </tr>
 
-              <tr>
-                <td>Enable Break 2 :</td>
-                <td>
-                  <input type="checkbox" name="Break2" value="Y" checked>Yes
-                </td>
-              </tr>
+      <tr>
+        <td>Enable Break 2 :</td>
+        <td>
+          <input type="checkbox" name="Break2" value="Y" checked>Yes
+        </td>
+      </tr>
 
-              <tr>
-                <td colspan="4"><font color="white">/t </font></td>
-              </tr>
+      <tr>
+        <td colspan="4"><font color="white">/t </font></td>
+      </tr>
 
-              <!-- Sunday -->
-              <tr>
-                <th class="frmbox">Sunday :</th>
-                <td>
-                  <input type="time" name="SunBrkStr2" value="<?php echo $SunBrkStr2;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="SunBrkEnd2" value="<?php echo $SunBrkEnd2;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Sunday -->
+      <tr>
+        <th class="frmbox">Sunday :</th>
+        <td>
+          <input type="time" name="SunBrkStr2" value="<?php echo $SunBrkStr2;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="SunBrkEnd2" value="<?php echo $SunBrkEnd2;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Monday -->
-              <tr>
-                <th class="frmbox">Monday :</th>
-                <td>
-                  <input type="time" name="MonBrkStr2" value="<?php echo $MonBrkStr2;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="MonBrkEnd2" value="<?php echo $MonBrkEnd2;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Monday -->
+      <tr>
+        <th class="frmbox">Monday :</th>
+        <td>
+          <input type="time" name="MonBrkStr2" value="<?php echo $MonBrkStr2;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="MonBrkEnd2" value="<?php echo $MonBrkEnd2;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Tueaday -->
-              <tr>
-                <th class="frmbox">Tuesday :</th>
-                <td>
-                  <input type="time" name="TueBrkStr2" value="<?php echo $TueBrkStr2;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="TueBrkEnd2" value="<?php echo $TueBrkEnd2;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Tueaday -->
+      <tr>
+        <th class="frmbox">Tuesday :</th>
+        <td>
+          <input type="time" name="TueBrkStr2" value="<?php echo $TueBrkStr2;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="TueBrkEnd2" value="<?php echo $TueBrkEnd2;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Wednesday -->
-              <tr>
-                <th class="frmbox">Wednesday :</th>
-                <td>
-                  <input type="time" name="WedBrkStr2" value="<?php echo $WedBrkStr2;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="WedBrkEnd2" value="<?php echo $WedBrkEnd2;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Wednesday -->
+      <tr>
+        <th class="frmbox">Wednesday :</th>
+        <td>
+          <input type="time" name="WedBrkStr2" value="<?php echo $WedBrkStr2;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="WedBrkEnd2" value="<?php echo $WedBrkEnd2;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Thursday -->
-              <tr>
-                <th class="frmbox">Thursday :</th>
-                <td>
-                  <input type="time" name="ThuBrkStr2" value="<?php echo $ThuBrkStr2;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="ThuBrkEnd2" value="<?php echo $ThuBrkEnd2;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Thursday -->
+      <tr>
+        <th class="frmbox">Thursday :</th>
+        <td>
+          <input type="time" name="ThuBrkStr2" value="<?php echo $ThuBrkStr2;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="ThuBrkEnd2" value="<?php echo $ThuBrkEnd2;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Friday -->
-              <tr>
-                <th class="frmbox">Friday :</th>
-                <td>
-                  <input type="time" name="FriBrkStr2" value="<?php echo $FriBrkStr2;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="FriBrkEnd2" value="<?php echo $FriBrkEnd2;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Friday -->
+      <tr>
+        <th class="frmbox">Friday :</th>
+        <td>
+          <input type="time" name="FriBrkStr2" value="<?php echo $FriBrkStr2;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="FriBrkEnd2" value="<?php echo $FriBrkEnd2;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <!-- Saturday -->
-              <tr>
-                <th class="frmbox">Saturday :</th>
-                <td>
-                  <input type="time" name="SatBrkStr2" value="<?php echo $SatBrkStr2;?>">
-                  <span class="reject">*</span>
-                </td>
-                <td>
-                  <input type="time" name="SatBrkEnd2" value="<?php echo $SatBrkEnd2;?>">
-                  <span class="reject">*</span>
-                </td>
-              </tr>
+      <!-- Saturday -->
+      <tr>
+        <th class="frmbox">Saturday :</th>
+        <td>
+          <input type="time" name="SatBrkStr2" value="<?php echo $SatBrkStr2;?>">
+          <span class="reject">*</span>
+        </td>
+        <td>
+          <input type="time" name="SatBrkEnd2" value="<?php echo $SatBrkEnd2;?>">
+          <span class="reject">*</span>
+        </td>
+      </tr>
 
-              <tr>
-                <td colspan="4"><font color="white">/t </font></td>
-              </tr>
+      <tr>
+        <td colspan="4"><font color="white">/t </font></td>
+      </tr>
 
-              <tr>
-                <th class="frm_btn"colspan="4">
-                  <a href="../TimeSheet/ShiftPar.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
-                  <input type="submit" value="Add">
-                </th>
-              </tr>
+      <tr>
+        <th class="frm_btn"colspan="4">
+          <a href="../TimeSheet/ShiftPar.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
+          <input type="submit" value="Add">
+        </th>
+      </tr>
 
-            </tbody>
-          </table>
-        </form>
+    </tbody>
+  </table>
+</form>
 
-      </body>
-      </html>
+</body>
+</html>

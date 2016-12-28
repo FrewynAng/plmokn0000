@@ -19,7 +19,7 @@ session_start();
     //echo $HDate;
 
     $sql =
-    "DELETE FROM `ShiftPar`
+    "DELETE FROM `shiftpar`
      WHERE
      `SH_No` = '$SH_No'";
 

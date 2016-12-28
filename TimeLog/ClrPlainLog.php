@@ -16,7 +16,7 @@ session_start();
   include '../Main/getSysPar.php';
 
   $sql1 = "DELETE FROM `PlainLog`";
-  $sql2 = "DELETE FROM `TagLog`";
+  $sql2 = "DELETE FROM `taglog`";
   $sql3 = "DELETE FROM `TimeSheet`";
 
   if (($conn->query($sql1) === TRUE) AND ($conn->query($sql2) === TRUE) AND ($conn->query($sql3) === TRUE))

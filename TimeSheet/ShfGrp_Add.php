@@ -36,7 +36,7 @@
 
     $sql1 =
     "SELECT `SH_No`, `SH_Name`
-    FROM `shiftPar`
+    FROM `shiftpar`
     WHERE `SH_No` = '$ShfNo'";
     // echo $sql1;
 
@@ -86,7 +86,7 @@
       if ($conn->query($sql3) === TRUE)
       {
         $_SESSION['cmpMsg'] = "Staff added to shift group.";
-        header('Location:../TimeSheet/StfShfGrp.php');
+        header('Location:../TimeSheet/ShfGrp.php');
       }
       else
       {
@@ -99,7 +99,7 @@
 
   ?>
 
-  <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
 
     <table class="frm">
       <thead class="frm_hdr">
@@ -112,37 +112,53 @@
         <tr>
           <td>Shift No :</td>
           <td>
-            <input type="number" name="ShfNo" value="<?php echo $ShfNo;?>">
+            <select name="ShfNo">
+              <option value="" selected>-- Shift No. --</option>
+              <?php
+
+              $sql4 =
+              "SELECT *
+              FROM `shiftpar`
+              ORDER BY SH_No";
+              $result4 = $conn->query($sql4);
+
+              while( $row4 = $result4->fetch_assoc())
+              {
+                echo "<option value='{$row4['SH_No']}'>{$row4['SH_No']} > {$row4['SH_Name']}</option>";
+              }
+
+              ?>
+            </select>
             <span class="reject">*</span>
           </td>
         </tr>
 
         <!-- <tr>
-          <td>Shift Group Description :</td>
-          <td>
-            <input type="text" name="ShfGrpDsc" value="<?php echo $ShfGrpDsc;?>">
-            <span class="reject">*</span>
-          </td>
-        </tr> -->
+        <td>Shift Group Description :</td>
+        <td>
+        <input type="text" name="ShfGrpDsc" value="<?php echo $ShfGrpDsc;?>">
+        <span class="reject">*</span>
+      </td>
+    </tr> -->
 
-        <tr>
-          <td>Staff ID :</td>
-          <td>
-            <input type="text" name="StaffID" value="<?php echo $StaffID;?>">
-            <span class="reject">*</span>
-          </td>
-        </tr>
+    <tr>
+      <td>Staff ID :</td>
+      <td>
+        <input type="text" name="StaffID" value="<?php echo $StaffID;?>">
+        <span class="reject">*</span>
+      </td>
+    </tr>
 
-        <tr>
-          <th class="frm_btn"colspan="2">
-            <a href="../TimeSheet/ShfGrp.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
-            <input type="submit" value="Add">
-          </th>
-        </tr>
+    <tr>
+      <th class="frm_btn"colspan="2">
+        <a href="../TimeSheet/ShfGrp.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
+        <input type="submit" value="Add">
+      </th>
+    </tr>
 
-      </tbody>
-    </table>
-  </form>
+  </tbody>
+</table>
+</form>
 
 </body>
 </html>

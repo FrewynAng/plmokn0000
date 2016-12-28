@@ -157,7 +157,7 @@
         StaffID = this.cells[2].innerText;
         //alert("4");
         //alert(ShfGrp);
-        url = "../TimeSheet/StfShfGrp_Dlt.php?ShfNo=" + ShfNo + "&StaffID=" + StaffID;
+        url = "../TimeSheet/ShfGrp_Dlt.php?ShfNo=" + ShfNo + "&StaffID=" + StaffID;
         window.location = url;
       };
     }

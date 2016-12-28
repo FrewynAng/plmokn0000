@@ -23,6 +23,7 @@
 
   if (!empty($_FILES['LogFile_']))
   {
+    $valid = TRUE;
     $file = $_FILES['LogFile_'];
     // print_r($file);
 
@@ -35,37 +36,46 @@
 
     // file extension
     $file_ext = explode('.', $file_name);
-    $file_ext = strtolower(end($file_ext));
 
-    $allow = array('txt', 'jpg');
+    $allow = array('TXT', 'JPG');
 
-    if (in_array($file_ext, $allow))
+    if (in_array($file_ext[1], $allow))
     {
-      if ($file_err == 0)
-      {
-        if ($file_size <= 2097152)
-        {
-          // $file_name_new = uniqid('', true) . "." . $file_ext;
-          $file_name_new = $file_name . "_" . date("Ymd_His") . "." . $file_ext;
-          $_SESSION['LogFile'] = $file_name_new;
-          $file_dest = "../Timelog/LogFile/" . $file_name_new;
-
-          if (move_uploaded_file($file_tmp, $file_dest))
-          {
-            echo "<p><span class='complete'>File Uploaded.</span></p>";
-            include "../TimeLog/LoadLogFile.php";
-          }
-        }
-      }
-
+      $valid = FALSE;
     }
+    else
+    {
+      echo "<div class='reject_div'>Error: Invalid File Type."  . "<br>"  . "</div>";
+    }
+
+    //   if ($file_err == 0)
+    //   {
+    //     if ($file_size <= 2097152)
+    //     {
+    // $file_name_new = uniqid('', true) . "." . $file_ext;
+    $file_name_new = $file_ext[0] . "_" . date("Ymd_His") . "." . $file_ext[1];
+    $_SESSION['LogFile'] = $file_name_new;
+    $file_dest = "../TimeLog/LogFile/" . $file_name_new;
+
+    if (valid == TRUE)
+    {
+      if (move_uploaded_file($file_tmp, $file_dest))
+      {
+        echo "<p><span class='complete'>File Uploaded.</span></p>";
+        include "../TimeLog/LoadLogFile.php";
+      }
+      else
+      {
+        echo "<div class='reject_div'>Error: File not uploaded."  . "<br>"  . "</div>";
+      }
+    }
+
 
   }
 
   $conn->close();
   ?>
 
-  <p><span class="reject"><?php echo $rjtMsg; ?></span></p>
   <form method="post" enctype="multipart/form-data" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
     <table class="frm">

@@ -154,7 +154,31 @@
     if ($Religion == "")
     {
       $valid = false;
-      echo "<p><div class='reject_div'> * RACE is required.</div></p>";
+      echo "<p><div class='reject_div'> * RELIGION is required.</div></p>";
+    }
+
+    if ($Department == "")
+    {
+      $valid = false;
+      echo "<p><div class='reject_div'> * Department is required.</div></p>";
+    }
+
+    if ($Position == "")
+    {
+      $valid = false;
+      echo "<p><div class='reject_div'> * POSITION is required.</div></p>";
+    }
+
+    if ($EmpSts == "")
+    {
+      $valid = false;
+      echo "<p><div class='reject_div'> * EMPLOYMENT STATUS is required.</div></p>";
+    }
+
+    if ($DateJoin == "")
+    {
+      $valid = false;
+      echo "<p><div class='reject_div'> * DATE OF JOIN is required.</div></p>";
     }
 
     if($valid)
@@ -187,7 +211,7 @@
 
       ?>
 
-      <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+      <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
 
         <table class="frm">
           <thead>
@@ -202,7 +226,7 @@
             <tr>
               <td class="frm_td">Staff ID :</td>
               <td class="frm_td">
-                <input type="text" name="StaffID" value="<?php echo $StaffID;?>">
+                <input type="text" name="StaffID" value="<?php echo $StaffID;?>" autofocus>
                 <span class="reject">*</span>
               </td>
               <td class="frm_td">Tag ID :</td>
@@ -286,7 +310,7 @@
               <td class="frm_td">Race :</td>
               <td class="frm_td">
                 <select name="Race">
-                  <option value=" " selected></option>
+                  <option value="" selected>-- Race --</option>
                   <option value="M">Malay</option>
                   <option value="C">Chinese</option>
                   <option value="I">Indian</option>
@@ -297,7 +321,7 @@
               <td class="frm_td">Religion :</td>
               <td class="frm_td">
                 <select name="Religion">
-                  <option value=" " selected></option>
+                  <option value="" selected>-- Religion --</option>
                   <option value="I">Islam</option>
                   <option value="B">Budhist</option>
                   <option value="H">Hindu</option>
@@ -312,6 +336,7 @@
               <td class="frm_td">Marital Status :</td>
               <td class="frm_td">
                 <select name="MaritalSts">
+                  <option value="" selected>-- Marital Status --</option>
                   <option value="S">Single</option>
                   <option value="M">Married</option>
                   <option value="D">Divorced</option>
@@ -346,12 +371,42 @@
             <tr>
               <td class="frm_td">Department :</td>
               <td class="frm_td">
-                <input type="text" name="Department" value="<?php echo $Department;?>">
+                <select name="Department">
+                  <option value="" selected>-- Department --</option>
+                  <?php
+
+                  echo $sql2 =
+                  "SELECT dpt_desc
+                  FROM `department`";
+                  $result = $conn->query($sql2);
+
+                  while( $row2 = $result->fetch_assoc())
+                  {
+                    echo "<option value='{$row2['dpt_desc']}'>{$row2['dpt_desc']}</option>";
+                  }
+
+                  ?>
+                </select>
                 <span class="reject">*</span>
               </td>
               <td class="frm_td">Position :</td>
               <td class="frm_td">
-                <input type="text" name="Position" value="<?php echo $Position;?>">
+                <select name="Position">
+                  <option value="" selected>-- Role --</option>
+                  <?php
+
+                  echo $sql3 =
+                  "SELECT RoleDesc
+                  FROM `RolePar`";
+                  $result3 = $conn->query($sql3);
+
+                  while( $row3 = $result3->fetch_assoc())
+                  {
+                    echo "<option value='{$row3['RoleDesc']}'>{$row3['RoleDesc']}</option>";
+                  }
+
+                  ?>
+                </select>
                 <span class="reject">*</span>
               </td>
             </tr>
@@ -360,12 +415,13 @@
               <td class="frm_td">Group :</td>
               <td class="frm_td">
                 <select name="UsrGrpSeq">
-                  <option value="1">Admim</option>
+                  <option value="" selected>-- Group --</option>
                   <span class="reject">*</span>
                 </td>
                 <td class="frm_td">Employment Status :</td>
                 <td class="frm_td">
                   <select name="EmpSts">
+                    <option value="" selected>-- Employment Status --</option>
                     <option value="E">Employed</option>
                     <option value="P">Probation</option>
                     <option value="T">Tranee</option>
@@ -428,6 +484,7 @@
               </tbody>
             </table>
           </form>
+
 
         </body>
         </html>

@@ -67,14 +67,16 @@
 
   ?>
 
+  <p><div class="lst_title">STAFF MASTER</div></p>
   <a href="../Staff/Staff_Add.php" target="cdMain">Add Staff</a><br><br>
-
   <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
   <table class="lst" id="tblList" align="center">
     <thead class="lst_hdr">
       <tr>
         <th class="lst_th">Staff <br> ID</th>
         <th class="lst_th">Name</th>
+        <th class="lst_th">Department</th>
+        <th class="lst_th">Position</th>
         <th class="lst_th">IC <br> No.</th>
         <th class="lst_th">Gender</th>
         <th class="lst_th">Date <br> Of Birth</th>
@@ -96,6 +98,8 @@
         <tr class='lst_tr'>
         <td class='lst_id'>{$row['StaffID']}</td>
         <td class='lst_td'>{$row['Name']}</td>
+        <td class='lst_td'>{$row['Department']}</td>
+        <td class='lst_td'>{$row['Position']}</td>
         <td class='lst_td'>{$row['ICNo']}</td>
         <td class='lst_td'>{$row['Gender']}</td>
         <td class='lst_dt'>$DOB</td>

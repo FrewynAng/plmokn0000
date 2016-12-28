@@ -1,7 +1,7 @@
 <!--
-*********************
-** UserGrp_Dlt.php **
-*********************
+************************
+** Department_Dlt.php **
+************************
 -->
 
 <?php session_start(); ?>
@@ -9,7 +9,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/Style.css">
+    <link rel="stylesheet" type="text/css" href="../css/form.css">
     <meta charset="UTF-8">
     <title>Delete Holiday</title>
 </head>
@@ -18,19 +18,19 @@
 
     <?php
     include '../Main/getSysPar.php';
-    $UsrGrp = $_GET["UsrGrp"];
-    $UsrAccSeq = $_GET["UsrAccSeq"];
+    $dpt_No = $_GET["dpt_No"];
+    $dpt_desc = $_GET["dpt_desc"];
     //echo $UsrAccSeq;
 
     $sql =
-    "DELETE FROM `UsrGrpPar`
+    "DELETE FROM `department`
      WHERE
-     `UsrGrp` = '$UsrGrp' AND `UsrAccSeq` = '$UsrAccSeq'";
+     `dpt_No` = '$dpt_No' AND `dpt_desc` = '$dpt_desc'";
 
     if ($conn->query($sql) === TRUE)
     {
       $_SESSION['cmpMsg'] = "Record Deleted.";
-      header('Location:../UserGroup/UserGrp.php');
+      header('Location:../Admin/Department.php');
     }
     else
     {

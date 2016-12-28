@@ -29,7 +29,7 @@
   if ($conn->query($sql) === TRUE)
   {
     $_SESSION['cmpMsg'] = "Record Deleted.";
-    header('Location:../TimeSheet/StfShfGrp.php');
+    header('Location:../TimeSheet/ShfGrp.php');
   }
   else
   {

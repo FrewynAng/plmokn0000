@@ -1,6 +1,6 @@
 <!--
 *********************
-** RolePar_Dlt.php **
+** UserGrp_Dlt.php **
 *********************
 -->
 
@@ -9,7 +9,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/Style.css">
+    <link rel="stylesheet" type="text/css" href="../css/form.css">
     <meta charset="UTF-8">
     <title>Delete Holiday</title>
 </head>
@@ -18,19 +18,19 @@
 
     <?php
     include '../Main/getSysPar.php';
-    $RoleNo = $_GET["RoleNo"];
-    $RoleDesc = $_GET["RoleDesc"];
+    $UsrGrp = $_GET["UsrGrp"];
+    $UsrAccSeq = $_GET["UsrAccSeq"];
     //echo $UsrAccSeq;
 
     $sql =
-    "DELETE FROM `RolePar`
+    "DELETE FROM `UsrGrpPar`
      WHERE
-     `RoleNo` = '$RoleNo' AND `RoleDesc` = '$RoleDesc'";
+     `UsrGrp` = '$UsrGrp' AND `UsrAccSeq` = '$UsrAccSeq'";
 
     if ($conn->query($sql) === TRUE)
     {
       $_SESSION['cmpMsg'] = "Record Deleted.";
-      header('Location:../UserGroup/RolePar.php');
+      header('Location:../Admin/UserGrp.php');
     }
     else
     {

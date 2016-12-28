@@ -26,7 +26,7 @@
   $targetpage = "../Staff/Stf_BirthD.php";     	//your file name  (the name of this file)
   $limit = 15; 							                   	//how many items to show per page
 
-  $DTFR = date("m-d", strtotime("13-06-1985"));
+  $DTFR = date("m-d");
   // echo $DTFR;
 
   $query =
@@ -62,6 +62,7 @@
   "SELECT StaffID, Name, DOB, Gender, PhoneNo
   FROM `StaffMaster`
   WHERE substring(DOB, 6, 5) = '$DTFR'
+  ORDER BY Name
   LIMIT $start, $limit";
   $result = $conn->query($sql);
 
@@ -75,7 +76,7 @@
   ?>
 
 
-  <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
+  <p><div class="lst_title">BIRTHDAY STAR OF THE DAY</div></p>
   <table class="lst" id="tblList" align="center">
     <thead class="lst_hdr">
       <tr>

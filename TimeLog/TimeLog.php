@@ -21,7 +21,7 @@
   include '../Main/getSysPar.php';
   $cmpMsg = $_SESSION['cmpMsg'];
 
-  $tbl_name="TagLog";
+  $tbl_name="taglog";
   $adjacents = 1;                               // How many adjacent pages should be shown on each side?
   $targetpage = "../TimeLog/TimeLog.php";     	//your file name  (the name of this file)
   $limit = 15; 							                   	//how many items to show per page
@@ -53,7 +53,7 @@
   /* Get data. */
   $sql =
   "SELECT *
-  FROM `TagLog`
+  FROM `taglog`
   ORDER BY TagID, TagDate, TagTime, TagMchNo
   LIMIT $start, $limit";
   $result = $conn->query($sql);
@@ -67,10 +67,13 @@
 
   ?>
 
-  <a href="../TimeLog/uplLogFile.php" target="cdMain">*Upload Log File* </a>
-  <a href="../TimeLog/LoadLogFile.php" target="cdMain">*Load Log File*  </a>
-  <a href="../TimeLog/ViewPlainLog.php" target="cdMain">*View Loaded File* </a>
-  <a href="../TimeLog/ClrPlainLog.php" target="cdMain">*Clear Loaded File* </a></br>
+  <p><div class="lst_title">LOG FILE LOADED</div></p>
+  <ul>
+    <li><a class = "active" href = "../TimeLog/uplLogFile.php" target="cdMain">Upload Log File</a></li>
+    <li><a href = "../TimeLog/ViewPlainLog.php" target="cdMain">View Loaded File</a></li>
+    <li><a href = "../TimeLog/ClrPlainLog.php" target="cdMain">Clear Loaded File</a></li>
+    <li style="float:right"><a href="#about">About</a></li>
+  </ul>
 
   <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
   <table class="lst">

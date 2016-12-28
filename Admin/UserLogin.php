@@ -1,7 +1,7 @@
 <!--
-********************
-** Department.php **
-********************
+*****************
+** UserGrp.php **
+*****************
 -->
 
 <?php session_start(); ?>
@@ -10,7 +10,7 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/list.css">
   <meta charset="UTF-8">
   <title>Holiday Table</title>
 </head>
@@ -21,9 +21,9 @@
   include '../Main/getSysPar.php';
   $cmpMsg = $_SESSION['cmpMsg'];
 
-  $tbl_name = "Department";
+  $tbl_name="UsrLogin";
   $adjacents = 1;                               // How many adjacent pages should be shown on each side?
-  $targetpage = "../UserGroup/Department.php";   	//your file name  (the name of this file)
+  $targetpage = "../Admin/UserLogin.php";   	//your file name  (the name of this file)
   $limit = 15; 							                   	//how many items to show per page
 
   $query = "SELECT COUNT(*) as num FROM $tbl_name";
@@ -53,8 +53,8 @@
   /* Get data. */
   $sql =
   "SELECT *
-  FROM `Department`
-  ORDER BY dpt_No
+  FROM `UsrLogin`
+  ORDER BY UsrID
   LIMIT $start, $limit";
   $result = $conn->query($sql);
 
@@ -67,14 +67,15 @@
 
   ?>
 
-  <a href="../UserGroup/Department_Add.php" target="cdMain">Add Department</a></br></br>
-
+  <p><div class="lst_title">USER TABLE</div></p>
+  <a href="../Admin/UserLogin_Add.php" target="cdMain">Add User</a></br></br>
   <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
   <table class="lst" id="tblList">
     <thead class="lst_hdr">
       <tr>
-        <th class="lst_th">Department <br>No. </th>
-        <th class="lst_th">Department <br> </th>
+        <th class="lst_th">User Login ID <br> </th>
+        <th class="lst_th">User Access Group <br> </th>
+        <th class="lst_th">User Status <br></th>
         <th class="lst_th" colspan="2"></th>
       </tr>
     </thead>
@@ -87,8 +88,9 @@
       {
         echo "
         <tr class='lst_tr'>
-        <td class='lst_td'>{$row['dpt_No']}</td>
-        <td class='lst_td'>{$row['dpt_desc']}</td>
+        <td class='lst_td'>{$row['UsrID']}</td>
+        <td class='lst_td'>{$row['UsrGrp']}</td>
+        <td class='lst_td'>{$row['UsrSts']}</td>
         <td class='lst_btn' onclick='updData()' style='cursor: pointer;'><a>EDT</a></td>
         <td class='lst_btn' onclick='dltData()' style='cursor: pointer;'><a>DLT</a></td>
         </tr>
@@ -119,20 +121,18 @@
         var x = 1;
         var y = 0;
 
-        var dpt_No = 0;
-        var dpt_desc = "";
+        var UsrID = "";
 
         for (x = 0; x < rowLen; x++)
         {
           getRow[x].onclick = function(e)
           {
-            dpt_No = this.cells[0].innerText;
-            dpt_desc = this.cells[1].innerText;
-            //alert("2");
-            //alert(UsrAccSeq);
-            url = "../UserGroup/Department_Edt.php?dpt_No=" + dpt_No + "&dpt_desc=" + dpt_desc;
-            //alert(url)
-            window.location = url;
+            UsrID = this.cells[0].innerText;
+            // alert("2");
+            // alert(UsrAccSeq);
+            url = "../Admin/UserLogin_Edt.php?UsrID=" + UsrID;
+            // alert(url)
+            //window.location = url;
           };
         }
       }
@@ -146,18 +146,16 @@
         var x = 1;
         var y = 0;
 
-        var dpt_No = 0;
-        var dpt_desc = "";
+        var UsrID = "";
 
         for (x = 0; x < rowLen; x++)
         {
           getRow[x].onclick = function(e)
           {
-            dpt_No = this.cells[0].innerText;
-            dpt_desc = this.cells[1].innerText;
+            UsrID = this.cells[0].innerText;UsrAccSeq = this.cells[2].innerText;
             //alert("3");
             //alert(UsrAccSeq);
-            url = "../UserGroup/Department_Dlt.php?dpt_No=" + dpt_No + "&dpt_desc=" + dpt_desc;
+            url = "../Admin/UserLogin_Dlt.php?UsrID=" + UsrID;
             //alert(url)
             window.location = url;
           };

@@ -45,16 +45,9 @@
 
   if ($_SERVER["REQUEST_METHOD"] == "POST")
   {
-    $HDate = $_POST["HDate"];
     $HType = $_POST["HType"];
     $HDesc = $_POST["HDesc"];
     $valid = true;
-
-    if (empty($_POST["HDate"]))
-    {
-      $valid = false;
-      echo "<p><div class='reject_div'> * DATE is required.</div></p>";
-    }
 
     if($valid)
     {
@@ -79,7 +72,7 @@
 
   ?>
 
-  <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
 
     <table class="frm">
       <thead class="frm_hdr">
@@ -101,7 +94,7 @@
           <td>Holiday Type :</td>
           <td>
             <select name="HType" value="<?php echo $HType;?>">
-              <option value="PH">Public Holiday</option>
+              <option value="PH" <?php if($HType == "PH") echo 'selected="selected"'; ?>>Public Holiday</option>
             </select>
           </td>
         </tr>

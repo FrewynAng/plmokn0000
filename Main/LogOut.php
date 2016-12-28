@@ -27,7 +27,8 @@
     $_SESSION['UsrGrp'] = "000";
     session_destroy();
     // header('Location:../Main/Login.php');
-    echo "<script>window.open('../Main/Login.php', '_parent')</script>";
+    $url = "";
+    echo "<script>window.open('../Main/LogIn.php', '_parent')</script>";
   }
 
   $conn->close();

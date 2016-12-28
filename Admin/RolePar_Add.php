@@ -9,7 +9,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/form.css">
   <meta charset="UTF-8">
   <title>Add Role</title>
 </head>
@@ -51,7 +51,7 @@
       if ($conn->query($sql2) === TRUE)
       {
         $_SESSION['cmpMsg'] = "ROLE added.";
-        header('Location:../UserGroup/RolePar.php');
+        header('Location:../Admin/RolePar.php');
       }
       else
       {
@@ -65,7 +65,7 @@
 
   ?>
 
-  <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+  <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
     <table class="frm">
       <thead class="frm_hdr">
         <tr>
@@ -85,14 +85,14 @@
         <tr>
           <td>Role Name :</td>
           <td>
-            <input type="text" name="RoleDesc" value="<?php echo $RoleDesc;?>">
+            <input type="text" name="RoleDesc" value="<?php echo $RoleDesc;?>" placeholder="Enter Role">
             <span class="reject">*</span>
           </td>
         </tr>
 
         <tr>
           <th class="frm_btn"colspan="2">
-            <a href="../UserGroup/RolePar.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
+            <a href="../Admin/RolePar.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
             <input type="submit" value="Add">
           </th>
         </tr>
