@@ -4,22 +4,25 @@
 *******************
 -->
 
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/list.css">
   <meta charset="UTF-8">
-  <title>Staff Master</title>
+  <title>GalaxyTime</title>
 </head>
 
 <body class="lst_bdy">
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
   $cmpMsg = $_SESSION['cmpMsg'];
+
+  echo "<div class='title'>STAFF MASTER</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
 
   $tbl_name="StaffMaster";
   $adjacents = 1;                               // How many adjacent pages should be shown on each side?
@@ -67,9 +70,6 @@
 
   ?>
 
-  <p><div class="lst_title">STAFF MASTER</div></p>
-  <a href="../Staff/Staff_Add.php" target="cdMain">Add Staff</a><br><br>
-  <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
   <table class="lst" id="tblList" align="center">
     <thead class="lst_hdr">
       <tr>
@@ -104,8 +104,8 @@
         <td class='lst_td'>{$row['Gender']}</td>
         <td class='lst_dt'>$DOB</td>
         <td class='lst_td'>{$row['PhoneNo']}</td>
-        <td class='lst_btn' onclick='updData()' style='cursor: pointer;'><a>EDT</a></td>
-        <td class='lst_btn' onclick='dltData()' style='cursor: pointer;'><a>DLT</a></td>
+        <td class='lst_btn' onclick='updData($menu)' style='cursor: pointer;'><a>EDT</a></td>
+        <td class='lst_btn' onclick='dltData($menu)' style='cursor: pointer;'><a>DLT</a></td>
         </tr>
         ";
       }
@@ -121,7 +121,7 @@
 
   <script language="javascript">
 
-  function updData()
+  function updData(menu)
   {
     //alert("1");
     var tbl = document.getElementById("tblList");
@@ -139,13 +139,14 @@
         StaffID = this.cells[0].innerText;
         //alert("2");
         //alert(StaffID);
-        url = "../Staff/Staff_Edt.php?StaffID=" + StaffID;
+        url = "../Staff/Staff_Edt.php?menu=" + menu + "&StaffID=" + StaffID;
+        // alert(url)
         window.location = url;
       };
     }
   }
 
-  function dltData()
+  function dltData(menu)
   {
     //alert("3");
     var tbl = document.getElementById("tblList");
@@ -163,14 +164,14 @@
         StaffID = this.cells[0].innerText;
         //alert("4");
         //alert(HDate);
-        url = "../Staff/Staff_Dlt.php?StaffID=" + StaffID;
+        url = "../Staff/Staff_Dlt.php?menu=" + menu + "&StaffID=" + StaffID;
         window.location = url;
       };
     }
   }
-
-
   </script>
+
+</div>
 
 </body>
 </html>

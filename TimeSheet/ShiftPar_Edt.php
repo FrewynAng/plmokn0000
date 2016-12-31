@@ -1,6 +1,6 @@
 <!--
 *********************
-**ShiftPar_Add.php **
+**ShiftPar_Edt.php **
 *********************
 -->
 
@@ -10,16 +10,22 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/form.css">
   <meta charset="UTF-8">
-  <title>Add Shift</title>
+  <title>GalaxyTime</title>
 </head>
 
-<body>
+<body class="form_body">
 
   <?php
-  include '../Main/getSysPar.php';
-  $cmpMsg = "";
+  include '../Main/navBar.php';
+  $cmpMsg = $_SESSION['cmpMsg'];
+  $valid = TRUE;
+
+  echo "<div class='title'>EDIT SHIFT</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
 
   if ($_GET["SH_No"] <> "")
   {
@@ -393,7 +399,8 @@
       if ($conn->query($sql2) === TRUE)
       {
         $_SESSION['cmpMsg'] = "SHIFT PARAMETER updated.";
-        header('Location:../TimeSheet/ShiftPar.php');
+        $url = "Location:../TimeSheet/ShiftPar.php?menu={$menu}";
+        header($url);
       }
       else
       {
@@ -442,7 +449,7 @@
   </td>
   <td>Shift Name :</td>
   <td>
-    <input type="text" name="SH_Name" value="<?php echo $SH_Name;?>" autofocus>
+    <input type="text" name="SH_Name" value="<?php echo $SH_Name;?>" autofocus required="">
     <span class="reject">*</span>
   </td>
 </tr>
@@ -1040,7 +1047,7 @@
 
   <tr>
     <th class="frm_btn"colspan="4">
-      <a href="../TimeSheet/ShiftPar.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
+      <a href="../TimeSheet/ShiftPar.php?menu=<?php echo $menu;?>" target="_self"><input type="button" onclick="" value="Cancel"/></a>
       <input type="submit" value="Save">
     </th>
   </tr>
@@ -1048,6 +1055,6 @@
 </tbody>
 </table>
 </form>
-
+</div>
 </body>
 </html>

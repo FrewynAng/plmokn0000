@@ -9,9 +9,9 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/login.css">
   <meta charset="UTF-8">
-  <title>Galaxy Time System<</title>
+  <title>GalaxyTime </title>
 </head>
 
 <body class="lgnBdy">
@@ -65,16 +65,15 @@
 
       $result = $conn->query($sql);
       $row = $result->fetch_assoc();
+      // print_r($row);
 
       if ($row > 0)
       {
-        //session_regenerate_id();
+        session_regenerate_id();
         $_SESSION['UsrID'] = $row["UsrID"] ;
         $_SESSION['UsrGrp'] = $row["UsrGrp"] ;
-        //session_write_close();
 
-        //echo $_SESSION['UsrID'] . $_SESSION['UsrGrp'];
-        header('Location:../Main/_main.php');
+        header('Location:../Staff/Stf_BirthD.php');
       }
       else
       {
@@ -93,9 +92,9 @@
     <div class="login_box">
       <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
         <!-- <div><label class="lgnLbl">User Name :</label></div> -->
-        <div><input type="text" class="lgnBox" name="UsrID" placeholder="Enter User ID" value="<?php echo $UsrID;?>" autofocus></div>
+        <div><input type="text" class="lgnBox" name="UsrID" placeholder="Enter User ID" value="<?php echo $UsrID;?>" autofocus required></div>
         <!-- <div><label class="lgnLbl">Password :</label></div> -->
-        <div><input type="password" class="lgnBox" name="UsrPass" placeholder="Enter User Password" autocomplete="off" value="<?php echo $UsrPass;?>"></div>
+        <div><input type="password" class="lgnBox" name="UsrPass" placeholder="Enter User Password" autocomplete="off" value="<?php echo $UsrPass;?>" required></div>
         <div><input type="submit" class="lgn_btn" value="Log In"></div>
       </form>
     </div>

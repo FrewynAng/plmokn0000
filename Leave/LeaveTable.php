@@ -4,22 +4,25 @@
 ********************
 -->
 
-<?php session_start(); ?>
-
 <!doctype html>
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/list.css">
   <meta charset="UTF-8">
-  <title>Leave Table</title>
+  <title>LGalaxyTime</title>
 </head>
 
 <body class="lst_bdy">
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
   $cmpMsg = $_SESSION['cmpMsg'];
+
+  echo "<div class='title'>Leave Table</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
 
   $tbl_name="LeaveTable";
   $adjacents = 1;                               // How many adjacent pages should be shown on each side?
@@ -67,9 +70,6 @@
 
   ?>
 
-  <a href="../Leave/Leave_App.php" target="cdMain">Apply Leave</a></br></br>
-
-  <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
   <table class="lst" id="tblList">
     <thead class="lst_hdr">
       <tr>
@@ -117,8 +117,8 @@
         <td class='lst_td'>{$row['HL_Bal']}</td>
         <td class='lst_td'>{$row['EL_Apl']}</td>
         <td class='lst_td'>{$row['UL_Apl']}</td>
-        <td class='lst_btn' onclick='updData()' style='cursor: pointer;'><a>EDT</a></td>
-        <td class='lst_btn' onclick='dltData()' style='cursor: pointer;'><a>DLT</a></td>
+        <td class='lst_btn' onclick='updData($menu)' style='cursor: pointer;'><a>EDT</a></td>
+        <td class='lst_btn' onclick='dltData($menu)' style='cursor: pointer;'><a>DLT</a></td>
         </tr>
         ";
       }
@@ -134,7 +134,7 @@
 
   <script language="javascript">
 
-  function updData()
+  function updData(menu)
   {
     //alert("1");
     var tbl = document.getElementById("tblList");
@@ -149,20 +149,20 @@
       {
         StaffID = this.cells[0].innerText;
         LeaveTyp = this.cells[2].innerText;
-        DateFR = this.cells[4].innerText;
-        DateTO = this.cells[5].innerText;
-        NoOfDay = this.cells[6].innerText;
+        DateFR = this.cells[5].innerText;
+        DateTO = this.cells[6].innerText;
+        NoOfDay = this.cells[7].innerText;
         //alert("2");
-        //alert(StaffID);
+        // alert(NoOfDay);
 
-        //url = "../Leave/Leave_Dlt_.php?StaffID=" + StaffID + "&&LeaveTyp" + LeaveTyp + "&&DateFR" + DateFR + "&&DateTO" + DateTO + "&&NoOfDay" + NoOfDay;
-        //alert(url);
-        //window.location = url;
+        url = "../Leave/Leave_Edt.php?menu=" + menu + "&StaffID=" + StaffID + "&LeaveTyp=" + LeaveTyp + "&DateFR=" + DateFR + "&DateTO=" + DateTO + "&NoOfDay=" + NoOfDay;
+        // alert(url);
+        // window.location = url;
       };
     }
   }
 
-  function dltData()
+  function dltData(menu)
   {
     //alert("3");
     var tbl = document.getElementById("tblList");
@@ -183,7 +183,7 @@
         //alert("4");
         // alert(NoOfDay);
 
-        url = "../Leave/Leave_Dlt.php?StaffID=" + StaffID + "&LeaveTyp=" + LeaveTyp + "&DateFR=" + DateFR + "&DateTO=" + DateTO + "&NoOfDay=" + NoOfDay;
+        url = "../Leave/Leave_Dlt.php?menu=" + menu + "&StaffID=" + StaffID + "&LeaveTyp=" + LeaveTyp + "&DateFR=" + DateFR + "&DateTO=" + DateTO + "&NoOfDay=" + NoOfDay;
         // alert(url);
         window.location = url;
       };
@@ -191,6 +191,7 @@
   }
 
   </script>
+</div>
 
 </body>
 </html>

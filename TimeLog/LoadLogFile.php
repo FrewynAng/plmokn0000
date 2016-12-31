@@ -4,9 +4,11 @@
 *********************
 -->
 
-<?php session_start(); ?>
-
 <html>
+<head>
+  <title>GalaxyTime</title>
+</head>
+
 <body>
   <?php
   include '../Main/getSysPar.php';
@@ -58,7 +60,8 @@
     if (($conn->query($sql1) === TRUE) AND ($conn->query($sql2) === TRUE))
     {
       $_SESSION['cmpMsg'] = "Total count loaded : " . $LoadCnt;
-      header("Location:../TimeSheet/TimeSheet.php");
+      $url = "Location:../TimeSheet/TimeSheet.php?menu={$menu}";
+      header($url);
     }
     else
     {

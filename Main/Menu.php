@@ -10,9 +10,9 @@
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/menu.css">
   <meta charset="UTF-8">
-  <title>Menu Tree</title>
+  <title>GalaxyTime</title>
 </head>
 
 <body class="mnu_body">

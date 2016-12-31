@@ -11,16 +11,15 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../css/form.css">
     <meta charset="UTF-8">
-    <title>Delete Holiday</title>
+    <title>GalaxyTime</title>
 </head>
 
 <body>
 
     <?php
-    include '../Main/getSysPar.php';
+    include '../Main/navBar.php';
     $UsrGrp = $_GET["UsrGrp"];
     $UsrAccSeq = $_GET["UsrAccSeq"];
-    //echo $UsrAccSeq;
 
     $sql =
     "DELETE FROM `UsrGrpPar`
@@ -30,7 +29,8 @@
     if ($conn->query($sql) === TRUE)
     {
       $_SESSION['cmpMsg'] = "Record Deleted.";
-      header('Location:../Admin/UserGrp.php');
+      $url = "Location:../Admin/UserGrp.php?menu={$menu}";
+      header($url);
     }
     else
     {

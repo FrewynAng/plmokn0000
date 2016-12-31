@@ -4,15 +4,12 @@
 ********************
 -->
 
-<?php session_start(); ?>
-
 <!doctype html>
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
   <meta charset="UTF-8">
-  <title>Process TimeSheet</title>
+  <title>GalaxyTime</title>
 </head>
 
 <body>
@@ -72,9 +69,6 @@
 
     if ($Inz == "Y")
     {
-      //  "is this work?<br>";
-      // echo "Day End > " . date("Y-m-d H:i:s", $dayEnd) . "<br>";
-      // echo "Current ID > " . $curID . " " . $row["TagID"] . "<br>";
       GOTO Inz;
     }
 

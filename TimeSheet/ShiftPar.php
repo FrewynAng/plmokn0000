@@ -4,34 +4,31 @@
 ******************
 -->
 
-<?php
-session_start();
-?>
-
 <!doctype html>
 <html lang="en">
 
 <head>
   <link rel="stylesheet" type="text/css" href="../css/list.css">
   <meta charset="UTF-8">
-  <title>Holiday Table</title>
+  <title>GalaxyTime</title>
 </head>
 
 <body class="lst_bdy">
 
   <?php
-  include '../Main/getSysPar.php';
-
+  include '../Main/navBar.php';
   $cmpMsg = $_SESSION['cmpMsg'];
+
+  echo "<div class='title'>SHIFT MAINTENANCE</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
+
   $sql = "SELECT * FROM `shiftpar` order by SH_No";
   //execute the SQL query and return records
   $result = $conn->query($sql);
   ?>
 
-  <p><div class="lst_title">SHIFT PARAMETER</div></p>
-  <a href="../TimeSheet/ShiftPar_Add.php" target="cdMain">Add Shift Parameter</a></br></br>
-
-  <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
   <table class="lst" id="tblList">
     <thead class="lst_hdr">
       <tr>
@@ -57,8 +54,8 @@ session_start();
         <td class='lst_td'>{$row['SH_Name']}</td>
         <td class='lst_td'>{$row['SH_WrkDay']}</td>
         <td class='lst_td'>{$row['SH_WrkHour']} Hour(s)</td>
-        <td class='lst_btn' onclick='updData()' style='cursor: pointer;'><a>EDT</a></td>
-        <td class='lst_btn' onclick='dltData()' style='cursor: pointer;'><a>DLT</a></td>
+        <td class='lst_btn' onclick='updData($menu)' style='cursor: pointer;'><a>EDT</a></td>
+        <td class='lst_btn' onclick='dltData($menu)' style='cursor: pointer;'><a>DLT</a></td>
         </tr>
         ";
       }
@@ -77,7 +74,7 @@ session_start();
 
       <script language="javascript">
 
-      function updData()
+      function updData(menu)
       {
         // alert("1");
         var tbl = document.getElementById("tblList");
@@ -95,13 +92,13 @@ session_start();
             SH_No = this.cells[0].innerText;
             //alert("2");
             //alert(SH_No);
-            url = "../TimeSheet/ShiftPar_Edt.php?SH_No=" + SH_No;
+            url = "../TimeSheet/ShiftPar_Edt.php?menu=" + menu + "&SH_No=" + SH_No;
             window.location = url;
           };
         }
       }
 
-      function dltData()
+      function dltData(menu)
       {
         //alert("3");
         var tbl = document.getElementById("tblList");
@@ -119,14 +116,13 @@ session_start();
             SH_No = this.cells[0].innerText;
             //alert("4");
             //alert(SH_No);
-            url = "../TimeSheet/ShiftPar_Dlt.php?SH_No=" + SH_No;
+            url = "../TimeSheet/ShiftPar_Dlt.php?menu=" + menu + "&SH_No=" + SH_No;
             window.location = url;
           };
         }
       }
-
-
       </script>
+    </div>
 
-    </body>
-    </html>
+  </body>
+  </html>

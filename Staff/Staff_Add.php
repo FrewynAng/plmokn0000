@@ -4,21 +4,26 @@
 *******************
 -->
 
-<?php session_start(); ?>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/form.css">
   <meta charset="UTF-8">
-  <title>Add Staff</title>
+  <title>GalaxyTime</title>
 </head>
 
-<body>
+<body class="form_body">
+
   <?php
-  include '../Main/getSysPar.php';
-  $cmpMsg = "";
+  include '../Main/navBar.php';
+  $cmpMsg = $_SESSION['cmpMsg'];
   $valid = TRUE;
+
+  echo "<div class='title'>ADD NEW STAFF</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
 
   $StaffID = "";
   $TagID = 00000000;
@@ -198,7 +203,8 @@
           if ($conn->query($sql) === TRUE)
           {
             $_SESSION['cmpMsg'] = "Staff created successfully";
-            header('Location:../Staff/StaffMast.php');
+            $url = "Location:../Staff/StaffMast.php?menu={$menu}";
+            header($url);
           }
           else
           {
@@ -226,12 +232,12 @@
             <tr>
               <td class="frm_td">Staff ID :</td>
               <td class="frm_td">
-                <input type="text" name="StaffID" value="<?php echo $StaffID;?>" autofocus>
+                <input type="text" name="StaffID" value="<?php echo $StaffID;?>" autofocus required="">
                 <span class="reject">*</span>
               </td>
               <td class="frm_td">Tag ID :</td>
               <td class="frm_td">
-                <input type="number" name="TagID" value="<?php echo $TagID;?>">
+                <input type="number" name="TagID" value="<?php echo $TagID;?>" required="">
                 <span class="reject">*</span>
               </td>
             </tr>
@@ -239,12 +245,12 @@
             <tr>
               <td class="frm_td">Name :</td>
               <td class="frm_td">
-                <input type="text" name="Name" value="<?php echo $Name;?>">
+                <input type="text" name="Name" value="<?php echo $Name;?>" required="">
                 <span class="reject">*</span>
               </td>
               <td class="frm_td">IC No. :</td>
               <td class="frm_td">
-                <input type="text" name="ICNo" value="<?php echo $ICNo;?>">
+                <input type="text" name="ICNo" value="<?php echo $ICNo;?>" required="">
                 <span class="reject">*</span>
               </td>
             </tr>
@@ -252,7 +258,7 @@
             <tr>
               <td class="frm_td">Date Of Birth :</td>
               <td class="frm_td">
-                <input type="date" name="DOB" value="<?php echo $DOB;?>">
+                <input type="date" name="DOB" value="<?php echo $DOB;?>" required="">
                 <span class="reject">*</span>
               </td>
               <td class="frm_td">Gender :</td>
@@ -266,7 +272,7 @@
             <tr>
               <td class="frm_td">Mobile No. :</td>
               <td class="frm_td">
-                <input type="text" name="PhoneNo" value="<?php echo $PhoneNo;?>">
+                <input type="text" name="PhoneNo" value="<?php echo $PhoneNo;?>" required="">
                 <span class="reject">*</span>
               </td>
               <td class="frm_td">Email Address :</td>
@@ -276,12 +282,12 @@
             <tr>
               <td class="frm_td">Address :</td>
               <td class="frm_td">
-                <input type="text" name="Address1" value="<?php echo $Address1;?>">
+                <input type="text" name="Address1" value="<?php echo $Address1;?>" required="">
                 <span class="reject">*</span>
               </td>
               <td class="frm_td">State :</td>
               <td class="frm_td">
-                <input type="text" name="State" value="<?php echo $State;?>">
+                <input type="text" name="State" value="<?php echo $State;?>" required="">
                 <span class="reject">*</span>
               </td>
             </tr>
@@ -291,7 +297,7 @@
               <td class="frm_td"><input type="text" name="Address2" value="<?php echo $Address2;?>"></td>
               <td class="frm_td">Country :</td>
               <td class="frm_td">
-                <input type="text" name="Country" value="<?php echo $Country;?>">
+                <input type="text" name="Country" value="<?php echo $Country;?>" required="">
                 <span class="reject">*</span>
               </td>
             </tr>
@@ -301,7 +307,7 @@
               <td class="frm_td"><input type="text" name="Address3" value="<?php echo $Address3;?>"></td>
               <td class="frm_td">Post Code :</td>
               <td class="frm_td">
-                <input type="text" name="PostCode" value="<?php echo $PostCode;?>">
+                <input type="text" name="PostCode" value="<?php echo $PostCode;?>" required="">
                 <span class="reject">*</span>
               </td>
             </tr>
@@ -433,12 +439,12 @@
                 <tr>
                   <td class="frm_td">Annual Leave Entitle :</td>
                   <td class="frm_td">
-                    <input type="text" name="ALEnt" value="<?php echo $ALEnt;?>">
+                    <input type="text" name="ALEnt" value="<?php echo $ALEnt;?>" required="">
                     <span class="reject">*</span>
                   </td>
                   <td class="frm_td">Date Join :</td>
                   <td class="frm_td">
-                    <input type="date" name="DateJoin" value="<?php echo $DateJoin;?>">
+                    <input type="date" name="DateJoin" value="<?php echo $DateJoin;?>" required="">
                     <span class="reject">*</span>
                   </td>
                 </tr>
@@ -476,7 +482,7 @@
 
                 <tr>
                   <th class="frm_btn"colspan="4">
-                    <a href="../Staff/StaffMast.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
+                    <a href="../Staff/StaffMast.php?menu=<?php echo $menu;?>" target="_parent"><input type="button" onclick="" value="Cancel"/></a>
                     <input type="submit" value="Add">
                   </th>
                 </tr>
@@ -484,7 +490,8 @@
               </tbody>
             </table>
           </form>
+        </div>
 
 
-        </body>
-        </html>
+      </body>
+      </html>

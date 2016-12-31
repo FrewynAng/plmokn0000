@@ -4,22 +4,27 @@
 ********************
 -->
 
-<?php session_start(); ?>
-
 <!DOCTYPE HTML>
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/form.css">
   <meta charset="UTF-8">
-  <title>Upload Log File</title>
+  <title>GalaxyTime</title>
 </head>
 
-<body>
+<body class="form_body">
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
+  $cmpMsg = $_SESSION['cmpMsg'];
+  $valid = TRUE;
   $rjtMsg = "";
+
+  echo "<div class='title'>UPLOAD LOG FILE</div>";
+  echo "<div class='complete'>{$rjtMsg}</div>";
+
+  echo "<div class='container'>";
 
   if (!empty($_FILES['LogFile_']))
   {
@@ -39,7 +44,7 @@
 
     $allow = array('TXT', 'JPG');
 
-    if (in_array($file_ext[1], $allow))
+    if (in_array(strtoupper($file_ext[1]), $allow))
     {
       $valid = FALSE;
     }
@@ -91,7 +96,7 @@
 
         <tr>
           <th class="frm_btn" colspan="4">
-            <a href="../Staff/Stf_BirthD.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
+            <a href="../Staff/Stf_BirthD.php?menu=<?php echo $menu;?>" target="_self"><input type="button" onclick="" value="Cancel"/></a>
             <input type="submit" value="Upload"/>
           </th>
         </tr>
@@ -99,6 +104,7 @@
       </tbody>
     </table>
   </form>
+</div>
 
 </body>
 </html>

@@ -1,24 +1,30 @@
 <!--
 *********************
-** Holiday_Add.php **
+** Holiday_Edt.php **
 *********************
 -->
-
-<?php session_start(); ?>
 
 <!DOCTYPE HTML>
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/form.css">
   <meta charset="UTF-8">
-  <title>Add Holiday</title>
+  <title>GalaxyTime</title>
 </head>
 
-<body>
+<body class="form_body">
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
+  $cmpMsg = $_SESSION['cmpMsg'];
+  $valid = TRUE;
+
+  echo "<div class='title'>EDIT HOLIDAY</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
+
   $rjtMsg = "";
 
   if ($_GET["HDate"] <> "")
@@ -59,7 +65,8 @@
       if ($conn->query($sql2) === TRUE)
       {
         $_SESSION['cmpMsg'] = "Holiday Updated.";
-        header('Location:../Holiday/HolidayTable.php');
+        $url = "Location:../Holiday/HolidayTable.php?menu={$menu}";
+        header($url);
       }
       else
       {
@@ -101,12 +108,12 @@
 
         <tr>
           <td>Description :</td>
-          <td><input type="text" name="HDesc" value="<?php echo $HDesc;?>"></td>
+          <td><input type="text" name="HDesc" value="<?php echo $HDesc;?>" autofocus=""></td>
         </tr>
 
         <tr>
           <th class="frm_btn"colspan="2">
-            <a href="../Holiday/HolidayTable.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
+            <a href="../Holiday/HolidayTable.php?menu=<?php echo $menu;?>" target="_self"><input type="button" onclick="" value="Cancel"/></a>
             <input type="submit" value="Save">
           </th>
         </tr>
@@ -114,6 +121,7 @@
       </tbody>
     </table>
   </form>
+</div>
 
 </body>
 </html>

@@ -4,22 +4,26 @@
 *****************
 -->
 
-<?php session_start(); ?>
-
 <!doctype html>
 <html lang="en">
 
 <head>
   <link rel="stylesheet" type="text/css" href="../css/list.css">
   <meta charset="UTF-8">
-  <title>Holiday Table</title>
+  <title>GalaxyTime</title>
 </head>
 
 <body class="lst_bdy">
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
   $cmpMsg = $_SESSION['cmpMsg'];
+
+  echo "<div class='title'>ROLE MAINTENANCE</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+  echo "</div>";
+
+  echo "<div class='container'>";
 
   $tbl_name="RolePar";
   $adjacents = 1;                               // How many adjacent pages should be shown on each side?
@@ -66,10 +70,10 @@
   $lpm1 = $lastpage - 1;					        	//last page minus 1
 
   ?>
+  <ul>
+    <li><a href="../Admin/RolePar_Add.php?menu=<?php echo $menu;?>" target="_parent">Add Role</a></li>
+  </ul>
 
-  <p><div class="lst_title">ROLE TABLE</div></p>
-  <a href="../Admin/RolePar_Add.php" target="cdMain">Add Role</a></br></br>
-  <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
   <table class="lst" id="tblList">
     <thead class="lst_hdr">
       <tr>
@@ -89,8 +93,8 @@
         <tr class='lst_tr'>
         <td class='lst_td'>{$row['RoleNo']}</td>
         <td class='lst_td'>{$row['RoleDesc']}</td>
-        <td class='lst_btn' onclick='updData()' style='cursor: pointer;'><a>EDT</a></td>
-        <td class='lst_btn' onclick='dltData()' style='cursor: pointer;'><a>DLT</a></td>
+        <td class='lst_btn' onclick='updData($menu)' style='cursor: pointer;'><a>EDT</a></td>
+        <td class='lst_btn' onclick='dltData($menu)' style='cursor: pointer;'><a>DLT</a></td>
         </tr>
         ";
       }
@@ -107,10 +111,9 @@
       $_SESSION['rjtMsg'] = "";
       ?>
 
-
       <script language="javascript">
 
-      function updData()
+      function updData(menu)
       {
         // alert("1");
         var tbl = document.getElementById("tblList");
@@ -130,14 +133,14 @@
             RoleDesc = this.cells[1].innerText;
             //alert("2");
             //alert(UsrAccSeq);
-            url = "../Admin/RolePar_Dlt.php?RoleNo=" + RoleNo + "&RoleDesc=" + RoleDesc;
+            url = "../Admin/RolePar_Edt.php?menu=" + menu + "&RoleNo=" + RoleNo + "&RoleDesc=" + RoleDesc;
             //alert(url)
-            window.location = url;
+            // window.location = url;
           };
         }
       }
 
-      function dltData()
+      function dltData(menu)
       {
         //alert("3");
         var tbl = document.getElementById("tblList");
@@ -157,13 +160,14 @@
             RoleDesc = this.cells[1].innerText;
             //alert("3");
             //alert(UsrAccSeq);
-            url = "../Admin/RolePar_Dlt.php?RoleNo=" + RoleNo + "&RoleDesc=" + RoleDesc;
+            url = "../Admin/RolePar_Dlt.php?menu=" + menu + "&RoleNo=" + RoleNo + "&RoleDesc=" + RoleDesc;
             //alert(url)
             window.location = url;
           };
         }
       }
       </script>
+    </div>
 
-    </body>
-    </html>
+  </body>
+  </html>
