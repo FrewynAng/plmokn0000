@@ -9,16 +9,15 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/form.css">
   <meta charset="UTF-8">
-  <title>Delete Holiday</title>
+  <title>GalaxyTime</title>
 </head>
 
 <body>
 
   <?php
-  include '../Main/getSysPar.php';
-
+  include '../Main/navBar.php';
   $StaffID = $_GET["StaffID"];
   //echo $HDate;
 
@@ -30,7 +29,8 @@
   if ($conn->query($sql) === TRUE)
   {
     $_SESSION['cmpMsg'] = "Record Deleted.";
-    header('Location:../Staff/StaffMast.php');
+    $url = "Location:../Staff/StaffMast.php?menu={$menu}";
+    header($url);
   }
   else
   {

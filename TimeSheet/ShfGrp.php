@@ -1,25 +1,28 @@
 <!--
 **********************
-** StfShfGrp.php **
+** ShfGrp.php **
 **********************
 -->
-
-<?php session_start(); ?>
 
 <!doctype html>
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/list.css">
   <meta charset="UTF-8">
-  <title>Staff Shift Group</title>
+  <title>GalaxyTime</title>
 </head>
 
 <body class="lst_bdy">
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
   $cmpMsg = $_SESSION['cmpMsg'];
+
+  echo "<div class='title'>SHIFT GROUP</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
 
   $tbl_name="StfShfGrp";
   $adjacents = 1;                               // How many adjacent pages should be shown on each side?
@@ -67,9 +70,6 @@
 
   ?>
 
-  <a href="../TimeSheet/ShfGrp_Add.php" target="cdMain">Add Shift Group</a></br></br>
-
-  <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
   <table class="lst" id="tblList">
     <thead class="lst_hdr">
       <tr>
@@ -95,8 +95,8 @@
         <td class='lst_id'>{$row['StaffID']}</td>
         <td class='lst_id'>{$row['TagID']}</td>
         <td class='lst_td'>{$row['StaffNam']}</td>
-        <td class='lst_btn' onclick='updData()' style='cursor: pointer;'><a>EDT</a></td>
-        <td class='lst_btn' onclick='dltData()' style='cursor: pointer;'><a>DLT</a></td>
+        <td class='lst_btn' onclick='updData($menu)' style='cursor: pointer;'><a>EDT</a></td>
+        <td class='lst_btn' onclick='dltData($menu)' style='cursor: pointer;'><a>DLT</a></td>
         </tr>
         ";
       }
@@ -111,7 +111,7 @@
 
   <script language="javascript">
 
-  function updData()
+  function updData(menu)
   {
     //alert("1");
     var tbl = document.getElementById("tblList");
@@ -131,13 +131,13 @@
         StaffID = this.cells[2].innerText;
         //alert("2");
         //alert(ShfGrp);
-        url = "../TimeSheet/StfShfGrp_Edt.php?ShfNo=" + ShfNo + "&StaffID=" + StaffID;
+        url = "../TimeSheet/StfShfGrp_Edt.php?menu=" + menu + "&ShfNo=" + ShfNo + "&StaffID=" + StaffID;
         window.location = url;
       };
     }
   }
 
-  function dltData()
+  function dltData(menu)
   {
     //alert("3");
     var tbl = document.getElementById("tblList");
@@ -157,13 +157,14 @@
         StaffID = this.cells[2].innerText;
         //alert("4");
         //alert(ShfGrp);
-        url = "../TimeSheet/ShfGrp_Dlt.php?ShfNo=" + ShfNo + "&StaffID=" + StaffID;
+        url = "../TimeSheet/ShfGrp_Dlt.php?menu=" + menu + "&ShfNo=" + ShfNo + "&StaffID=" + StaffID;
         window.location = url;
       };
     }
   }
 
   </script>
+</div>
 
 </body>
 </html>

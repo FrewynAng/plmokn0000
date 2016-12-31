@@ -4,19 +4,25 @@
 *********************
 -->
 
-<?php session_start(); ?>
-
 <html>
 
 <head>
   <link rel="stylesheet" type="text/css" href="../css/form.css">
   <meta charset="UTF-8">
-  <title>Add Role</title>
+  <title>GalaxyTime</title>
 </head>
 
-<body>
+<body class="form_body">
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
+  $cmpMsg = $_SESSION['cmpMsg'];
+  $valid = TRUE;
+
+  echo "<div class='title'>ADD NEW ROLE</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
+
   $valid = TRUE;
 
   $RoleNo = "";
@@ -51,7 +57,8 @@
       if ($conn->query($sql2) === TRUE)
       {
         $_SESSION['cmpMsg'] = "ROLE added.";
-        header('Location:../Admin/RolePar.php');
+        $url = "Location:../Admin/RolePar.php?menu={$menu}";
+        header($url);
       }
       else
       {
@@ -85,14 +92,14 @@
         <tr>
           <td>Role Name :</td>
           <td>
-            <input type="text" name="RoleDesc" value="<?php echo $RoleDesc;?>" placeholder="Enter Role">
+            <input type="text" name="RoleDesc" value="<?php echo $RoleDesc;?>" placeholder="Enter Role" autofocus="" required="">
             <span class="reject">*</span>
           </td>
         </tr>
 
         <tr>
           <th class="frm_btn"colspan="2">
-            <a href="../Admin/RolePar.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
+            <a href="../Admin/RolePar.php?menu=<?php echo $menu;?>" target="_self"><input type="button" onclick="" value="Cancel"/></a>
             <input type="submit" value="Add">
           </th>
         </tr>
@@ -100,6 +107,7 @@
       </tbody>
     </table>
   </form>
+</div>
 
 </body>
 </html>

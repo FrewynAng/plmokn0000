@@ -1,26 +1,29 @@
 <!--
-*********************
-** Holiday_App.php **
-*********************
+*******************
+** Leave_App.php **
+*******************
 -->
-
-<?php session_start(); ?>
 
 <!DOCTYPE HTML>
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/form.css">
   <meta charset="UTF-8">
-  <title>Add Holiday</title>
+  <title>GalaxyTime</title>
 </head>
 
-<body>
+<body class="form_body">
 
   <?php
-  include '../Main/getSysPar.php';
-
+  include '../Main/navBar.php';
+  $cmpMsg = $_SESSION['cmpMsg'];
   $valid = TRUE;
+
+  echo "<div class='title'>Apply New Leave</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
 
   $StaffID = "";
   $DateApl = date("d-m-Y");
@@ -216,7 +219,8 @@
           if ($conn->query($sql4) === TRUE)
           {
             $_SESSION['cmpMsg'] = "Leave Application created successfully";
-            header('Location:../Leave/LeaveTable.php');
+            $url = "Location:../Leave/LeaveTable.php?menu={$menu}";
+            header($url);
           }
           else
           {
@@ -310,7 +314,7 @@
                   <tr>
                     <td class="frm_td">Staff ID :</td>
                     <td class="frm_td">
-                      <input type="text" name="StaffID" value="<?php echo $StaffID;?>">
+                      <input type="text" name="StaffID" value="<?php echo $StaffID;?>" autofocus required="">
                       <span class="reject">*</span>
                     </td>
                   </tr>
@@ -332,7 +336,7 @@
                   <tr>
                     <td class="frm_td">Approval :</td>
                     <td class="frm_td">
-                      <input type="text" name="Approval" value="<?php echo $Approval;?>">
+                      <input type="text" name="Approval" value="<?php echo $Approval;?>" required="">
                       <span class="reject">*</span>
                     </td>
                   </tr>
@@ -340,7 +344,7 @@
                   <tr>
                     <td class="frm_td">Date From :</td>
                     <td class="frm_td">
-                      <input type="date" name="DateFR" value="<?php echo $DateFR;?>">
+                      <input type="date" name="DateFR" value="<?php echo $DateFR;?>" required="">
                       <span class="reject">*</span>
                     </td>
                   </tr>
@@ -348,7 +352,7 @@
                   <tr>
                     <td class="frm_td">Date To :</td>
                     <td class="frm_td">
-                      <input type="date" name="DateTO" value="<?php echo $DateTO;?>">
+                      <input type="date" name="DateTO" value="<?php echo $DateTO;?>" required="">
                       <span class="reject">*</span>
                     </td>
                   </tr>
@@ -356,7 +360,7 @@
                   <tr>
                     <td class="frm_td">No. Of Day :</td>
                     <td class="frm_td">
-                      <input type="number" name="NoOfDay" value="<?php echo $NoOfDay;?>">
+                      <input type="number" name="NoOfDay" value="<?php echo $NoOfDay;?>" required="">
                       <span class="reject">*</span>
                     </td>
                   </tr>
@@ -368,7 +372,7 @@
 
                   <tr>
                     <th class="frm_btn" colspan="2">
-                      <a href="../Leave/LeaveTable.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
+                      <a href="../Leave/LeaveTable.php?menu=<?php echo $menu;?>" target="_self"><input type="button" onclick="" value="Cancel"/></a>
                       <input type="submit" value="Apply">
                     </th>
                   </tr>
@@ -378,6 +382,7 @@
 
               </table>
             </form>
+          </div>
 
-          </body>
-          </html>
+        </body>
+        </html>

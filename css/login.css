@@ -1,0 +1,109 @@
+.lgnBdy
+{
+  background-color: #fcfcef;
+  background-image: url("../img/bg_01.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;;
+}
+
+.lgnBox
+{
+  /*width: 300px;*/
+  background: white;
+  border: 2px solid #e7e7e7;
+  margin: 20px auto;
+  padding: 15px;
+  width: 85%;
+  display: block;
+  border-radius: 3px;
+  font-size: 18px;
+  transition: opacity 0.4s;
+  text-align: left;
+  height: auto;
+  -webkit-appearance: none;
+  /*position: relative; top: 3%;*/
+}
+
+.lgn_btn
+{
+  background: #214a8c;
+  border: 2px solid #e7e7e7;
+  margin: 20px auto;
+  padding: 15px;
+  width: 80%;
+  display: block;
+  border-radius: 3px;
+  font-size: 18px;
+  color: white;
+  transition: opacity 0.4s;
+  text-align: center;;
+  height: auto;
+  -webkit-appearance: none;
+}
+
+.lgn_btn:hover
+{
+  background: white;
+  border: 2px solid #214a8c;
+  margin: 20px auto;
+  padding: 15px;
+  width: 80%;
+  display: block;
+  border-radius: 3px;
+  font-size: 18px;
+  color: red;
+  transition: opacity 0.4s;
+  text-align: center;;
+  height: auto;
+  -webkit-appearance: none;
+}
+
+.login_box_main
+{
+  position:fixed;
+  top: 40%;
+  left: 50%;
+  width:30em;
+  height: auto;
+  margin-top: -9em; /*set to a negative number 1/2 of your height*/
+  margin-left: -15em; /*set to a negative number 1/2 of your width*/
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+.login_title
+{
+  background: white;
+  border: 0px solid #e7e7e7;
+  margin: 40px auto;
+  padding: 15px;
+  width: 85%;
+  display: block;
+  border-radius: 3px;
+  font-size: 38px;
+  font-family: Helvetica;
+  vertical-align: middle;
+  color: #214a8c;
+  transition: opacity 0.4s;
+  text-align: center;;
+  height: auto;
+  -webkit-appearance: none;
+}
+
+.login_box_msg
+{
+  background: white;
+  border: 0px solid red;
+  margin: 5px auto;
+  padding: 5px;
+  width: 85%;
+  height: auto;
+  display: block;
+  border-radius: 1px;
+  font-size: 12px;
+  font-family: Helvetica;
+  color: red;
+  transition: opacity 0.4s;
+  text-align: center;;
+  -webkit-appearance: none;
+}

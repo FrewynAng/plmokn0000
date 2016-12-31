@@ -11,7 +11,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="../css/Style.css">
   <meta charset="UTF-8">
-  <title>Log Out</title>
+  <title>GalaxyTime</title>
 </head>
 
 <body class="mnu_body">

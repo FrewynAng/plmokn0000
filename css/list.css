@@ -1,0 +1,116 @@
+.lst_bdy
+{
+  background-color: #fcfcef;
+  /*background-image: url("../img/bg_02.jpg");*/
+  /*background-repeat: no-repeat;*/
+  /*background-size: 100% ;*/
+}
+
+.lst
+{
+  width: 100%;
+  border-bottom: 2px solid black;
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+}
+
+.lst_th
+{
+  background-color: #e0dbf9;
+  color: black;
+  border-bottom: 2px solid black;
+  border-left: 0px;
+  border-right: 0px;
+  text-align: left;
+  border-spacing: 0px;
+}
+
+.lst_td
+{
+  text-align: left;
+  border-bottom: 1px solid #b3b6bc;
+}
+
+.lst_id, .lst_dt
+{
+  text-align: left;
+  border-bottom: 1px solid #b3b6bc;
+  width: 90px;
+}
+
+.lst_btn
+{
+  text-align: left;
+  border-bottom: 1px solid #b3b6bc;
+  width: 30px;
+}
+
+.lst_tr:nth-child(even)
+{
+  background-color: #fff1d1;
+}
+
+.lst_tr:hover
+{
+  background-color: #f1f1f1;
+  color: black;
+  overflow: hidden;
+}
+
+/*pagination*/
+div.pagination
+{
+  padding: 3px;
+  margin: 3px;
+}
+
+div.pagination a
+{
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #626263;
+  text-decoration: none; /* no underline */
+  color: #626263;
+}
+
+div.pagination a:hover, div.pagination a:active
+{
+  border: 1px solid #e0dbf9;
+  color: red;
+  text-decoration: underline;
+}
+
+div.pagination span.current
+{
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #000099;
+  font-weight: bold;
+  background-color: #e0dbf9;
+  color: #000000;
+}
+
+div.pagination span.disabled
+{
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #d1d1d1;
+  color: #d1d1d1;
+}
+
+.reject
+{
+  color: red;
+}
+
+/* Error Handling*/
+.reject_div
+{
+  background-color: white;
+  width: 99%;
+  font-size: 18px;
+  color: red;
+  border: solid 1px red;
+  padding: 2px;
+}

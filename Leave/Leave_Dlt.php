@@ -9,26 +9,21 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/form.css">
   <meta charset="UTF-8">
-  <title>Delete Holiday</title>
+  <title>GalaxyTime</title>
 </head>
 
 <body>
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
 
   $StaffID = $_GET["StaffID"];
   $LeaveTyp = $_GET["LeaveTyp"];
   $DateFR = date("Y-m-d", strtotime($_GET["DateFR"]));
   $DateTO = date("Y-m-d", strtotime($_GET["DateTO"]));
   $NoOfDay = $_GET["NoOfDay"];
-  // echo $StaffID . "<br>";
-  // echo $LeaveTyp . "<br>";
-  // echo $DateFR . "<br>";
-  // echo $DateTO . "<br>";
-  // echo $NoOfDay . "<br>";
 
   $sql =
   "DELETE FROM `LeaveTable`
@@ -38,7 +33,8 @@
   if ($conn->query($sql) === TRUE)
   {
     $_SESSION['cmpMsg'] = "Record Deleted.";
-    header('Location:../Leave/LeaveTable.php');
+    $url = "Location:../Leave/LeaveTable.php?menu={$menu}";
+    header($url);
   }
   else
   {

@@ -1,19 +1,22 @@
-<?php
-session_start();
- ?>
+<!--
+*********************
+** ClrPlainLog.php **
+*********************
+-->
+
+<?php session_start(); ?>
 
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
   <meta charset="UTF-8">
-  <title>Log File</title>
+  <title>GalaxyTime</title>
 </head>
 
 <body>
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
 
   $sql1 = "DELETE FROM `PlainLog`";
   $sql2 = "DELETE FROM `taglog`";
@@ -22,7 +25,8 @@ session_start();
   if (($conn->query($sql1) === TRUE) AND ($conn->query($sql2) === TRUE) AND ($conn->query($sql3) === TRUE))
   {
     echo "Log File Clear successfully</br>";
-    header("Location:../TimeLog/TimeLog.php");
+    $url = "Location:../TimeLog/TimeLog.php?menu={$menu}";
+    header($url);
   }
   else
   {

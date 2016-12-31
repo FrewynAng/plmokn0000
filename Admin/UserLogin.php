@@ -1,10 +1,8 @@
 <!--
-*****************
-** UserGrp.php **
-*****************
+*******************
+** UserLogin.php **
+*******************
 -->
-
-<?php session_start(); ?>
 
 <!doctype html>
 <html lang="en">
@@ -12,14 +10,19 @@
 <head>
   <link rel="stylesheet" type="text/css" href="../css/list.css">
   <meta charset="UTF-8">
-  <title>Holiday Table</title>
+  <title>GalaxyTime</title>
 </head>
 
 <body class="lst_bdy">
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
   $cmpMsg = $_SESSION['cmpMsg'];
+
+  echo "<div class='title'>USER MAINTENANCE</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
 
   $tbl_name="UsrLogin";
   $adjacents = 1;                               // How many adjacent pages should be shown on each side?
@@ -67,9 +70,7 @@
 
   ?>
 
-  <p><div class="lst_title">USER TABLE</div></p>
-  <a href="../Admin/UserLogin_Add.php" target="cdMain">Add User</a></br></br>
-  <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
+  <a href="../Admin/UserLogin_Add.php?menu=<?php echo $menu;?>" target="_self">Add User</a></br></br>
   <table class="lst" id="tblList">
     <thead class="lst_hdr">
       <tr>
@@ -91,8 +92,8 @@
         <td class='lst_td'>{$row['UsrID']}</td>
         <td class='lst_td'>{$row['UsrGrp']}</td>
         <td class='lst_td'>{$row['UsrSts']}</td>
-        <td class='lst_btn' onclick='updData()' style='cursor: pointer;'><a>EDT</a></td>
-        <td class='lst_btn' onclick='dltData()' style='cursor: pointer;'><a>DLT</a></td>
+        <td class='lst_btn' onclick='updData($menu)' style='cursor: pointer;'><a>EDT</a></td>
+        <td class='lst_btn' onclick='dltData($menu)' style='cursor: pointer;'><a>DLT</a></td>
         </tr>
         ";
       }
@@ -112,7 +113,7 @@
 
       <script language="javascript">
 
-      function updData()
+      function updData(menu)
       {
         // alert("1");
         var tbl = document.getElementById("tblList");
@@ -130,14 +131,14 @@
             UsrID = this.cells[0].innerText;
             // alert("2");
             // alert(UsrAccSeq);
-            url = "../Admin/UserLogin_Edt.php?UsrID=" + UsrID;
+            url = "../Admin/UserLogin_Edt.php?menu=" + menu + "&UsrID=" + UsrID;
             // alert(url)
             //window.location = url;
           };
         }
       }
 
-      function dltData()
+      function dltData(menu)
       {
         //alert("3");
         var tbl = document.getElementById("tblList");
@@ -155,13 +156,14 @@
             UsrID = this.cells[0].innerText;UsrAccSeq = this.cells[2].innerText;
             //alert("3");
             //alert(UsrAccSeq);
-            url = "../Admin/UserLogin_Dlt.php?UsrID=" + UsrID;
+            url = "../Admin/UserLogin_Dlt.php?menu=" + menu + "&UsrID=" + UsrID;
             //alert(url)
             window.location = url;
           };
         }
       }
       </script>
+    </div>
 
     </body>
     </html>

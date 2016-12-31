@@ -1,23 +1,29 @@
 <!--
-*********************
-** UserGrp_Add.php **
-*********************
+***********************
+** UserLogin_Add.php **
+***********************
 -->
-
-<?php session_start(); ?>
 
 <html>
 
 <head>
   <link rel="stylesheet" type="text/css" href="../css/form.css">
   <meta charset="UTF-8">
-  <title>Leave Application</title>
+  <title>GalaxyTime</title>
 </head>
 
-<body>
+<body class="form_body">
+
   <?php
-  include '../Main/getSysPar.php';
-  $valid = true;
+  include '../Main/navBar.php';
+  $cmpMsg = $_SESSION['cmpMsg'];
+  $valid = TRUE;
+
+  echo "<div class='title'>ADD USER</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+  echo "</div>";
+
+  echo "<div class='container'>";
 
   $UsrID = "";
   $UsrPass = "";
@@ -59,7 +65,8 @@
       if ($conn->query($sql) === TRUE)
       {
         $_SESSION['cmpMsg'] = "User added.";
-        header('Location:../Admin/UserLogin.php');
+        $url = "Location:../Admin/UserLogin.php?menu={$menu}";
+        header($url);
       }
       else
       {
@@ -72,7 +79,6 @@
   ?>
 
   <form method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
-    <p><div class="lst_title">ADD LOGIN USER</div></p>
     <table class="frm">
       <thead class="frm_hdr">
         <tr>
@@ -84,7 +90,7 @@
         <tr>
           <td class="frm_td">User Login ID :</td>
           <td class="frm_td">
-            <input type="text" name="UsrID" value="<?php echo $UsrID;?>" autofocus>
+            <input type="text" name="UsrID" value="<?php echo $UsrID;?>" autofocus required="">
             <span class="reject">*</span>
             <td></td>
             <td></td>
@@ -94,7 +100,7 @@
         <tr>
           <td class="frm_td">User Login Password :</td>
           <td class="frm_td">
-            <input type="password" name="UsrPass" value="<?php echo $UsrPass;?>">
+            <input type="password" name="UsrPass" value="<?php echo $UsrPass;?>" required="">
             <span class="reject">*</span>
             <td></td>
             <td></td>
@@ -142,7 +148,7 @@
 
         <tr>
           <th class="frm_btn" colspan="4">
-            <a href="../Admin/UserLogin.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
+            <a href="../Admin/UserLogin.php?menu=<?php echo $menu;?>" target="_self"><input type="button" onclick="" value="Cancel"/></a>
             <input type="submit" value="Add">
           </th>
         </tr>
@@ -150,6 +156,7 @@
       </tbody>
     </table>
   </form>
+</div>
 
 </body>
 </html>

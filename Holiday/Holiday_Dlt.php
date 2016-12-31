@@ -1,6 +1,6 @@
 <!--
 *********************
-** Holidau_Dlt.php **
+** Holiday_Dlt.php **
 *********************
 -->
 
@@ -9,15 +9,15 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/form.css">
   <meta charset="UTF-8">
-  <title>Delete Holiday</title>
+  <title>GalaxyTime</title>
 </head>
 
 <body>
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
 
   $HDate = date("Y-m-d", strtotime($_GET["HDate"]));
   //echo $HDate;
@@ -30,7 +30,8 @@
   if ($conn->query($sql) === TRUE)
   {
     $_SESSION['cmpMsg'] = "Record Deleted.";
-    header('Location:../Holiday/HolidayTable.php');
+    $url = "Location:../Holiday/HolidayTable.php?menu={$menu}";
+    header($url);
   }
   else
   {

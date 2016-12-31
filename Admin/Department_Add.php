@@ -4,20 +4,25 @@
 ************************
 -->
 
-<?php session_start(); ?>
-
 <html>
 
 <head>
   <link rel="stylesheet" type="text/css" href="../css/form.css">
   <meta charset="UTF-8">
-  <title>Leave Application</title>
+  <title>GalaxyTime</title>
 </head>
 
-<body>
+<body class="form_body">
+
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
+  $cmpMsg = $_SESSION['cmpMsg'];
   $valid = TRUE;
+
+  echo "<div class='title'>ADD NEW DEPARTMENT</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
 
   $dpt_No = "";
   $dpt_desc = "";
@@ -51,7 +56,8 @@
       if ($conn->query($sql2) === TRUE)
       {
         $_SESSION['cmpMsg'] = "DEPARTMENT added.";
-        header('Location:../Admin/Department.php');
+        $url = "Location:../Admin/Department.php?menu={$menu}";
+        header($url);
       }
       else
       {
@@ -85,14 +91,14 @@
         <tr>
           <td>Department Name :</td>
           <td>
-            <input type="text" name="dpt_desc" value="<?php echo $dpt_desc;?>" placeholder="Enter Department Name">
+            <input type="text" name="dpt_desc" value="<?php echo $dpt_desc;?>" placeholder="Enter Department Name" autofocus="" required="">
             <span class="reject">*</span>
           </td>
         </tr>
 
         <tr>
           <th class="frm_btn"colspan="2">
-            <a href="../Admin/Department.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
+            <a href="../Admin/Department.php?menu=<?php echo $menu;?> " target="_self"><input type="button" onclick="" value="Cancel"/></a>
             <input type="submit" value="Add">
           </th>
         </tr>
@@ -100,6 +106,7 @@
       </tbody>
     </table>
   </form>
+</div>
 
 </body>
 </html>

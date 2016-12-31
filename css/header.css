@@ -1,0 +1,21 @@
+.hdr_Bdy
+{
+  background-color: #fcfcef;
+  /*background-image: url("../img/header.jpeg");*/
+  /*background-repeat: no-repeat;*/
+  background-size: 14%;
+}
+
+.div_header
+{
+  position: fixed;
+  top: 30%;
+  left: 3%;
+  width: auto;
+  height: auto;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: arial;
+  text-align: center;
+  color: black;
+}

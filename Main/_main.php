@@ -10,7 +10,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-  <title>Galaxy Time System</title>
+  <title>GalaxyTime</title>
   <link rel="stylesheet" type="text/css" href="../css/Style.css">
   <meta charset="UTF-8">
 </head>

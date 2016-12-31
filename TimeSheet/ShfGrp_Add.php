@@ -1,24 +1,29 @@
 <!--
 ***********************
-** StfShfGrp_Add.php **
+** ShfGrp_Add.php **
 ***********************
 -->
-
-<?php session_start(); ?>
 
 <!DOCTYPE HTML>
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/form.css">
   <meta charset="UTF-8">
-  <title>Add Staff Shift Group</title>
+  <title>GalaxyTime</title>
 </head>
 
-<body>
+<body class="form_body">
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
+  $cmpMsg = $_SESSION['cmpMsg'];
+  $valid = TRUE;
+  
+  echo "<div class='title'>ADD STAFF SHIFT</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
 
   $ShfGrp = "";
   $ShfNo = 0;
@@ -53,12 +58,6 @@
       echo "<div class='reject_div'> * Invalid SHIFT NO.</div>";
     }
 
-    if ($_POST["StaffID"] == "")
-    {
-      $valid = false;
-      echo "<div class='reject_div'> * STAFF ID is required.</div>";
-    }
-
     $sql2 =
     "SELECT *
     FROM `StaffMaster`
@@ -86,7 +85,8 @@
       if ($conn->query($sql3) === TRUE)
       {
         $_SESSION['cmpMsg'] = "Staff added to shift group.";
-        header('Location:../TimeSheet/ShfGrp.php');
+        $url = "Location:../TimeSheet/ShfGrp.php?menu={$menu}";
+        header($url);
       }
       else
       {
@@ -144,14 +144,14 @@
     <tr>
       <td>Staff ID :</td>
       <td>
-        <input type="text" name="StaffID" value="<?php echo $StaffID;?>">
+        <input type="text" name="StaffID" value="<?php echo $StaffID;?>" required="">
         <span class="reject">*</span>
       </td>
     </tr>
 
     <tr>
       <th class="frm_btn"colspan="2">
-        <a href="../TimeSheet/ShfGrp.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
+        <a href="../TimeSheet/ShfGrp.php?menu=<?php echo $menu;?>" target="_self"><input type="button" onclick="" value="Cancel"/></a>
         <input type="submit" value="Add">
       </th>
     </tr>

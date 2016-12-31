@@ -1,25 +1,29 @@
 <!--
-*******************
-** StaffMAst.php **
-*******************
+********************
+** Stf_BirthD.php **
+********************
 -->
 
-<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/list.css">
   <meta charset="UTF-8">
-  <title>Staff Master</title>
+  <title>GalaxyTime</title>
 </head>
 
 <body class="lst_bdy">
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
   $cmpMsg = $_SESSION['cmpMsg'];
+
+  echo "<div class='title'>BIRTHDAY STAR OF THE DAY</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
 
   $tbl_name="StaffMaster";
   $adjacents = 1;                               // How many adjacent pages should be shown on each side?
@@ -75,9 +79,7 @@
 
   ?>
 
-
-  <p><div class="lst_title">BIRTHDAY STAR OF THE DAY</div></p>
-  <table class="lst" id="tblList" align="center">
+  <table class="lst" id="tblList" align="">
     <thead class="lst_hdr">
       <tr>
         <th class="lst_th">Staff <br> ID</th>
@@ -167,6 +169,7 @@
 
 
   </script>
+</div>
 
 </body>
 </html>

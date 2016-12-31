@@ -4,23 +4,20 @@
 ************************
 -->
 
-<?php session_start(); ?>
-
 <html>
 
 <head>
     <link rel="stylesheet" type="text/css" href="../css/form.css">
     <meta charset="UTF-8">
-    <title>Delete Holiday</title>
+    <title>GalaxyTime</title>
 </head>
 
 <body>
 
     <?php
-    include '../Main/getSysPar.php';
+    include '../Main/navBar.php';
     $dpt_No = $_GET["dpt_No"];
     $dpt_desc = $_GET["dpt_desc"];
-    //echo $UsrAccSeq;
 
     $sql =
     "DELETE FROM `department`
@@ -30,7 +27,8 @@
     if ($conn->query($sql) === TRUE)
     {
       $_SESSION['cmpMsg'] = "Record Deleted.";
-      header('Location:../Admin/Department.php');
+      $url = "Location:../Admin/Department.php?menu={$menu}";
+      header($url);
     }
     else
     {

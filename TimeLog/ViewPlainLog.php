@@ -1,20 +1,29 @@
-<?php
-session_start();
- ?>
+<!--
+**********************
+** ViewPlainLog.php **
+**********************
+-->
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/list.css">
   <meta charset="UTF-8">
-  <title>Add Staff</title>
+  <title>GalaxyTime</title>
 </head>
 
-<body>
+<body class="lst_bdy">
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
+  $cmpMsg = $_SESSION['cmpMsg'];
+  $valid = TRUE;
+
+  echo "<div class='title'>View Loaded Log File (Plain Text)</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
 
   $sql = "SELECT * FROM `PlainLog`";
   //execute the SQL query and return records
@@ -22,7 +31,7 @@ session_start();
 
   if ($result->num_rows > 0)
   {
-  //output data of each row
+    //output data of each row
     while($row = $result->fetch_assoc())
     {
       echo "Log : <b style='color:blue'>" . $row["Log"]  . "</b>" . " Time : " . $row["TimeLd_"] . "<br>";
@@ -30,15 +39,13 @@ session_start();
   }
   else
   {
-      echo "0 results </br>" ;
+    echo "0 results </br>" ;
   }
-  echo
-  "
-  </br><a href='../TimeLog/TimeLog.php' target='cdMain'>View Log File</a></br>
-  ";
 
   $conn->close();
   ?>
+</div>
+
 
 </body>
 </html>

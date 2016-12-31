@@ -4,27 +4,30 @@
 *****************
 -->
 
-<?php session_start(); ?>
-
 <!doctype html>
 <html lang="en">
 
 <head>
   <link rel="stylesheet" type="text/css" href="../css/list.css">
   <meta charset="UTF-8">
-  <title>Holiday Table</title>
+  <title>GalaxyTime</title>
 </head>
 
 <body class="lst_bdy">
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
   $cmpMsg = $_SESSION['cmpMsg'];
+
+  echo "<div class='title'>USER ACCESS</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
 
   $tbl_name="UsrGrpPar";
   $adjacents = 1;                               // How many adjacent pages should be shown on each side?
   $targetpage = "../Admin/UserGrp.php";   	//your file name  (the name of this file)
-  $limit = 15; 							                   	//how many items to show per page
+  $limit = 20; 							                   	//how many items to show per page
 
   $query = "SELECT COUNT(*) as num FROM $tbl_name";
   $result = $conn->query($query);
@@ -67,9 +70,7 @@
 
   ?>
 
-  <p><div class="lst_title">USER GROUP TABLE</div></p>
-  <a href="../Admin/UserGrp_Add.php" target="cdMain">Add User Group</a></br></br>
-  <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
+  <a href="../Admin/UserGrp_Add.php?menu=<?php echo $menu;?>" target="_parent">Add User Group</a></br></br>
   <table class="lst" id="tblList">
     <thead class="lst_hdr">
       <tr>
@@ -93,8 +94,8 @@
         <td class='lst_td'>{$row['UsrGrpNam']}</td>
         <td class='lst_td'>{$row['UsrAccSeq']}</td>
         <td class='lst_td'>{$row['UsrAccDsc']}</td>
-        <td class='lst_btn' onclick='updData()' style='cursor: pointer;'><a>EDT</a></td>
-        <td class='lst_btn' onclick='dltData()' style='cursor: pointer;'><a>DLT</a></td>
+        <td class='lst_btn' onclick='updData($menu)' style='cursor: pointer;'><a>EDT</a></td>
+        <td class='lst_btn' onclick='dltData($menu)' style='cursor: pointer;'><a>DLT</a></td>
         </tr>
         ";
       }
@@ -114,7 +115,7 @@
 
       <script language="javascript">
 
-      function updData()
+      function updData(menu)
       {
         alert("1");
         var tbl = document.getElementById("tblList");
@@ -134,14 +135,14 @@
             UsrAccSeq = this.cells[2].innerText;
             alert("2");
             alert(UsrAccSeq);
-            url = "../Admin/UserGrp_Dlt_.php?UsrGrp=" + UsrGrp + "&&UsrAccSeq=" + UsrAccSeq;
+            url = "../Admin/UserGrp_Dlt_.php?menu=" + menu + "&UsrGrp=" + UsrGrp + "&&UsrAccSeq=" + UsrAccSeq;
             alert(url)
             //window.location = url;
           };
         }
       }
 
-      function dltData()
+      function dltData(menu)
       {
         //alert("3");
         var tbl = document.getElementById("tblList");
@@ -161,13 +162,14 @@
             UsrAccSeq = this.cells[2].innerText;
             //alert("3");
             //alert(UsrAccSeq);
-            url = "../Admin/UserGrp_Dlt.php?UsrGrp=" + UsrGrp + "&UsrAccSeq=" + UsrAccSeq;
+            url = "../Admin/UserGrp_Dlt.php?menu=" + menu + "&UsrGrp=" + UsrGrp + "&UsrAccSeq=" + UsrAccSeq;
             //alert(url)
             window.location = url;
           };
         }
       }
       </script>
+    </div>
 
-    </body>
-    </html>
+  </body>
+  </html>

@@ -1,8 +1,10 @@
 <!--
-**********************
-** ShiftPar_Dlt.php **
-**********************
+***********************
+** UserLogin_Dlt.php **
+***********************
 -->
+
+<?php session_start(); ?>
 
 <html>
 
@@ -16,20 +18,17 @@
 
     <?php
     include '../Main/navBar.php';
-    $cmpMsg = $_SESSION['cmpMsg'];
-
-    $SH_No = $_GET["SH_No"];
-    //echo $HDate;
+    $UsrID = $_GET["UsrID"];
 
     $sql =
-    "DELETE FROM `shiftpar`
+    "DELETE FROM `UsrLogin`
      WHERE
-     `SH_No` = '$SH_No'";
+     `UsrID` = '$UsrID'";
 
     if ($conn->query($sql) === TRUE)
     {
       $_SESSION['cmpMsg'] = "Record Deleted.";
-      $url = "Location:../TimeSheet/ShiftPar.php?menu={$menu}";
+      $url = "Location:../Admin/UserLogin.php?menu={$menu}";
       header($url);
     }
     else

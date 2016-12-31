@@ -11,16 +11,15 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../css/form.css">
     <meta charset="UTF-8">
-    <title>Delete Holiday</title>
+    <title>GalaxyTime</title>
 </head>
 
 <body>
 
     <?php
-    include '../Main/getSysPar.php';
+    include '../Main/navBar.php';
     $RoleNo = $_GET["RoleNo"];
     $RoleDesc = $_GET["RoleDesc"];
-    //echo $UsrAccSeq;
 
     $sql =
     "DELETE FROM `RolePar`
@@ -30,7 +29,8 @@
     if ($conn->query($sql) === TRUE)
     {
       $_SESSION['cmpMsg'] = "Record Deleted.";
-      header('Location:../Admin/RolePar.php');
+      $url = "Location:../Admin/RolePar.php?menu={$menu}";
+      header($url);
     }
     else
     {

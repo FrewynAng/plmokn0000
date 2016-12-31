@@ -1,6 +1,6 @@
 <!--
 *******************
-** Staff_Add.php **
+** Staff_Edt.php **
 *******************
 -->
 
@@ -9,16 +9,23 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/form.css">
   <meta charset="UTF-8">
-  <title>Edit Staff</title>
+  <title>GalaxyTime</title>
 </head>
 
-<body>
+<body class="form_body">
+
   <?php
-  include '../Main/getSysPar.php';
-  $rjtMsg = "";
-  $cmpMsg = "";
+  include '../Main/navBar.php';
+  $cmpMsg = $_SESSION['cmpMsg'];
+  $valid = TRUE;
+
+  echo "<div class='title'>EDIT STAFF</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+  echo "</div>";
+
+  echo "<div class='container'>";
 
   if ($_GET["StaffID"] <> "")
   {
@@ -205,7 +212,7 @@
 
     if($valid)
     {
-      echo $sql2 =
+      $sql2 =
       "UPDATE `StaffMaster`
       SET `Name` = '$Name', `ICNo` = '$ICNo', `Gender` = '$Gender',
       `DOB` = '$DOB', `PhoneNo` = '$PhoneNo', `Email` = '$Email', `Address1` = '$Address1', `Address2` = '$Address2',
@@ -219,7 +226,8 @@
       if ($conn->query($sql2) === TRUE)
       {
         $_SESSION['cmpMsg'] = "STAFF updated successfully";
-        header('Location:../Staff/StaffMast.php');
+        $url = "Location:../Staff/StaffMast.php?menu={$menu}";
+        header($url);
       }
       else
       {
@@ -259,12 +267,12 @@
         <tr>
           <td class="frm_td">Name :</td>
           <td class="frm_td">
-            <input type="text" name="Name" value="<?php echo $Name;?>" autofocus>
+            <input type="text" name="Name" value="<?php echo $Name;?>" autofocus required="">
             <span class="reject">*</span>
           </td>
           <td class="frm_td">IC No. :</td>
           <td class="frm_td">
-            <input type="text" name="ICNo" value="<?php echo $ICNo;?>">
+            <input type="text" name="ICNo" value="<?php echo $ICNo;?>" required="">
             <span class="reject">*</span>
           </td>
         </tr>
@@ -272,7 +280,7 @@
         <tr>
           <td class="frm_td">Date Of Birth :</td>
           <td class="frm_td">
-            <input type="date" name="DOB" value="<?php echo $DOB;?>">
+            <input type="date" name="DOB" value="<?php echo $DOB;?>" required="">
             <span class="reject">*</span>
           </td>
           <td class="frm_td">Gender :</td>
@@ -286,7 +294,7 @@
         <tr>
           <td class="frm_td">Mobile No. :</td>
           <td class="frm_td">
-            <input type="text" name="PhoneNo" value="<?php echo $PhoneNo;?>">
+            <input type="text" name="PhoneNo" value="<?php echo $PhoneNo;?>" required="">
             <span class="reject">*</span>
           </td>
           <td class="frm_td">Email Address :</td>
@@ -296,12 +304,12 @@
         <tr>
           <td class="frm_td">Address :</td>
           <td class="frm_td">
-            <input type="text" name="Address1" value="<?php echo $Address1;?>">
+            <input type="text" name="Address1" value="<?php echo $Address1;?>" required="">
             <span class="reject">*</span>
           </td>
           <td class="frm_td">State :</td>
           <td class="frm_td">
-            <input type="text" name="State" value="<?php echo $State;?>">
+            <input type="text" name="State" value="<?php echo $State;?>" required="">
             <span class="reject">*</span>
           </td>
         </tr>
@@ -311,7 +319,7 @@
           <td class="frm_td"><input type="text" name="Address2" value="<?php echo $Address2;?>"></td>
           <td class="frm_td">Country :</td>
           <td class="frm_td">
-            <input type="text" name="Country" value="<?php echo $Country;?>">
+            <input type="text" name="Country" value="<?php echo $Country;?>" required="">
             <span class="reject">*</span>
           </td>
         </tr>
@@ -321,7 +329,7 @@
           <td class="frm_td"><input type="text" name="Address3" value="<?php echo $Address3;?>"></td>
           <td class="frm_td">Post Code :</td>
           <td class="frm_td">
-            <input type="text" name="PostCode" value="<?php echo $PostCode;?>">
+            <input type="text" name="PostCode" value="<?php echo $PostCode;?>" required="">
             <span class="reject">*</span>
           </td>
         </tr>
@@ -470,12 +478,12 @@
                 <tr>
                   <td class="frm_td">Annual Leave Entitle :</td>
                   <td class="frm_td">
-                    <input type="text" name="ALEnt" value="<?php echo $ALEnt;?>">
+                    <input type="text" name="ALEnt" value="<?php echo $ALEnt;?>" required="">
                     <span class="reject">*</span>
                   </td>
                   <td class="frm_td">Date Join :</td>
                   <td class="frm_td">
-                    <input type="date" name="DateJoin" value="<?php echo $DateJoin;?>">
+                    <input type="date" name="DateJoin" value="<?php echo $DateJoin;?>" required="">
                     <span class="reject">*</span>
                   </td>
                 </tr>
@@ -512,7 +520,7 @@
 
                 <tr>
                   <th class="frm_btn"colspan="4">
-                    <a href="../Staff/StaffMast.php" target="_self"><input type="button" onclick="" value="Cancel"/></a>
+                    <a href="../Staff/StaffMast.php?menu=<?php echo $menu;?>" target="_self"><input type="button" onclick="" value="Cancel"/></a>
                     <input type="submit" value="Save">
                   </th>
                 </tr>
@@ -520,6 +528,7 @@
               </tbody>
             </table>
           </form>
+        </div>
 
-        </body>
-        </html>
+      </body>
+      </html>

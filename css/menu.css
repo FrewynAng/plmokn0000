@@ -1,0 +1,41 @@
+.mnu_body
+{
+  background-color: #d4d6d8;
+}
+
+.mnu
+{
+  position: fixed;
+  width: 400px;
+  height: auto;
+  border: solid 0px white;
+  background-color: #fcfcef;
+}
+
+.mnu_lnk
+{
+  background-color: #fcfcef;
+  width: 140px;
+  height: 21px;
+  font-size: 18px;
+  text-align: left;
+  vertical-align: middle;
+  /*margin-left: 2%;*/
+  color: #214a8c;
+  position: relative; left: 2%;
+  /*padding: 1px;*/
+}
+
+.mnu_lnk:hover
+{
+  background-color: #d4d6d8;
+  width: 140px;
+  height: 24px;
+  font-size: 19px;
+  text-align: left;
+  vertical-align: middle;
+  color: #214a8c;
+  position: relative; left: 2%;
+  border: solid 1px #214a8c;
+  padding: 1px;
+}

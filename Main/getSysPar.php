@@ -18,9 +18,6 @@
 
   <?php
   date_default_timezone_set('Asia/Singapore');
-  //$_SESSION['logged_in'] = true; //set you've logged in
-  //$_SESSION['last_activity'] = time(); //your last activity was now, having logged in.
-  //$_SESSION['expire_time'] = 3*60*60; //expire time in seconds: three hours (you must change this)
 
   if($_SESSION['UsrID'] == "LogOut" || $_SESSION['UsrID'] == "")
   {
@@ -37,18 +34,13 @@
   $SerPort = $_SERVER['SERVER_PORT'];
   $Host= gethostname();
   $Host_IP = gethostbyname($Host);
+  $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+  $pieces = parse_url($actual_link);
+  // print_r($pieces);
   $_SESSION['Host_IP'] = $Host_IP;
-  // echo $_SERVER['HTTP_USER_AGENT'] . "\n\n";
-  // $browser = get_browser();
 
   // print_r($_SESSION);
   // echo "</br>";
-
-  //echo "<br> Host Name :" . $Host;
-  // echo "<br> Host IP :" . $Host_IP . "<br>";
-  //echo "<br> Host Address :" . $SerAdd;
-  //echo "<br> Host Port :" . $SerPort . "<br>";
-  // $myfile = fopen("../TimeLog/LogFile/AGL_001.txt", "r") or die("Unable to open file!");
   //_____________________________________________________________
   $servername = "localhost";
   $username = "root";

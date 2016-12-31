@@ -4,8 +4,6 @@
 ********************
 -->
 
-<?php session_start(); ?>
-
 <!doctype html>
 <html lang="en">
 
@@ -18,8 +16,13 @@
 <body class="lst_bdy">
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
   $cmpMsg = $_SESSION['cmpMsg'];
+
+  echo "<div class='title'>DEPARTMENT MAINTENANCE</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
 
   $tbl_name = "department";
   $adjacents = 1;                               // How many adjacent pages should be shown on each side?
@@ -67,9 +70,7 @@
 
   ?>
 
-  <p><div class="lst_title">DEPARTMENT TABLE</div></p>
-  <a href="../Admin/Department_Add.php" target="cdMain">Add Department</a></br></br>
-  <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
+  <a href="../Admin/Department_Add.php?menu=<?php echo $menu; ?>" target="_self">Add Department</a></br></br>
   <table class="lst" id="tblList">
     <thead class="lst_hdr">
       <tr>
@@ -81,7 +82,6 @@
 
     <tbody>
       <?php
-      //include '../Main/chgDateFmt.php';
 
       while($row = $result->fetch_assoc())
       {
@@ -89,8 +89,8 @@
         <tr class='lst_tr'>
         <td class='lst_td'>{$row['dpt_No']}</td>
         <td class='lst_td'>{$row['dpt_desc']}</td>
-        <td class='lst_btn' onclick='updData()' style='cursor: pointer;'><a>EDT</a></td>
-        <td class='lst_btn' onclick='dltData()' style='cursor: pointer;'><a>DLT</a></td>
+        <td class='lst_btn' onclick='updData($menu)' style='cursor: pointer;'><a>EDT</a></td>
+        <td class='lst_btn' onclick='dltData($menu)' style='cursor: pointer;'><a>DLT</a></td>
         </tr>
         ";
       }
@@ -110,7 +110,7 @@
 
       <script language="javascript">
 
-      function updData()
+      function updData(menu)
       {
         // alert("1");
         var tbl = document.getElementById("tblList");
@@ -130,14 +130,14 @@
             dpt_desc = this.cells[1].innerText;
             //alert("2");
             //alert(UsrAccSeq);
-            url = "../UserGroup/Department_Edt.php?dpt_No=" + dpt_No + "&dpt_desc=" + dpt_desc;
+            url = "../Admin/Department_Edt.php?menu=" + menu + "&dpt_No=" + dpt_No + "&dpt_desc=" + dpt_desc;
             //alert(url)
             window.location = url;
           };
         }
       }
 
-      function dltData()
+      function dltData(menu)
       {
         //alert("3");
         var tbl = document.getElementById("tblList");
@@ -157,13 +157,14 @@
             dpt_desc = this.cells[1].innerText;
             //alert("3");
             //alert(UsrAccSeq);
-            url = "../UserGroup/Department_Dlt.php?dpt_No=" + dpt_No + "&dpt_desc=" + dpt_desc;
-            //alert(url)
+            url = "../Admin/Department_Dlt.php?menu=" + menu + "&dpt_No=" + dpt_No + "&dpt_desc=" + dpt_desc;
+            // alert(url)
             window.location = url;
           };
         }
       }
       </script>
+    </div>
 
-    </body>
-    </html>
+  </body>
+  </html>

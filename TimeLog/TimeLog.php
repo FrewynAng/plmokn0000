@@ -4,27 +4,30 @@
 *****************
 -->
 
-<?php session_start(); ?>
-
 <!doctype html>
 <html lang="en">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="../css/Style.css">
+  <link rel="stylesheet" type="text/css" href="../css/list.css">
   <meta charset="UTF-8">
-  <title>Log File</title>
+  <title>GalaxyTime</title>
 </head>
 
 <body class="lst_bdy">
 
   <?php
-  include '../Main/getSysPar.php';
+  include '../Main/navBar.php';
   $cmpMsg = $_SESSION['cmpMsg'];
+  
+  echo "<div class='title'>VIEW LOADED LOG FILE</div>";
+  echo "<div class='complete'>{$cmpMsg}</div>";
+
+  echo "<div class='container'>";
 
   $tbl_name="taglog";
   $adjacents = 1;                               // How many adjacent pages should be shown on each side?
   $targetpage = "../TimeLog/TimeLog.php";     	//your file name  (the name of this file)
-  $limit = 15; 							                   	//how many items to show per page
+  $limit = 50; 							                   	//how many items to show per page
 
   $query = "SELECT COUNT(*) as num FROM $tbl_name";
   $result = $conn->query($query);
@@ -67,15 +70,6 @@
 
   ?>
 
-  <p><div class="lst_title">LOG FILE LOADED</div></p>
-  <ul>
-    <li><a class = "active" href = "../TimeLog/uplLogFile.php" target="cdMain">Upload Log File</a></li>
-    <li><a href = "../TimeLog/ViewPlainLog.php" target="cdMain">View Loaded File</a></li>
-    <li><a href = "../TimeLog/ClrPlainLog.php" target="cdMain">Clear Loaded File</a></li>
-    <li style="float:right"><a href="#about">About</a></li>
-  </ul>
-
-  <p><span class="complete"><?php echo $cmpMsg; ?></span></p>
   <table class="lst">
     <thead>
       <tr>
@@ -126,6 +120,7 @@
     </tbody>
   </table>
   <?php include '../Main/pagination.php'; ?>
+</div>
 
 </body>
 </html>
